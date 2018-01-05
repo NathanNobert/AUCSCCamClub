@@ -27,14 +27,20 @@ let win
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({show: false});
 
-  // and load the index.html of the app.
+  //sets the window to be maximized based on the screen size
+  win.maximize();
+
+  //Load the index.html of the app.
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'src/index.html'),
     protocol: 'file:',
     slashes: true
   }))
+
+  //waiting to show the screen until now allows the screen and elements to load.
+  win.show();
 
   // Open the DevTools.
  // win.webContents.openDevTools()
