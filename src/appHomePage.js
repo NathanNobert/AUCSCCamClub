@@ -39,6 +39,8 @@ signInSubmit.addEventListener('click', () => {
   }
 }, false)
 
+window.maximize();
+
 
 // const {app, BrowserWindow} = require('electron')
 // const path = require('path')
