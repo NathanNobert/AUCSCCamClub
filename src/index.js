@@ -59,49 +59,7 @@ function createWindow () {
 }//createWindow
 
 
-
-// const notifyBtn = document.getElementById('signInSubmit')
-// notifyBtn.addEventListener('click', function (event) {
-//       const modalPath = path.join('file://', __dirname, 'appHomePage.html')
-//       let win = new BrowserWindow({ width: 400, height: 200 })
-//       win.on('close', function () { win = null })
-//       win.loadURL(modalPath)
-//       win.show()
-//     })
-
-
-var attempt = 3; // Variable to count number of attempts.
-/*
-This function runs when the submit button to login is clicked. 
-This checks the user entered username and password against the hard coded in info *currently*
-*/
-function checkLogin(){
-  var username = document.getElementById("signInUsername").value;
-  var password = document.getElementById("signInPassword").value;
-
-
-  //hard coding in the usernames and password
-  if ( username == "admin" && password == "password"){
-    alert ("Login successfully");
-    window.Location = "appHomePage.html"; //Brings the user to next page
-    return true;
-  }
-  else{
-    attempt --;// Decrementing by one.
-    alert("You have left "+attempt+" attempt;");
-    // Disabling fields after 3 attempts.
-    if( attempt == 0){
-      document.getElementById("signInUsername").disabled = true;
-      document.getElementById("signInPassword").disabled = true;
-      document.getElementById("signInSubmit").disabled = true;
-      return false;
-    }//if
-  }//else
-}//checkLogin
-
-
-
-app.on('ready', createWindow)
+ app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -114,3 +72,12 @@ app.on('activate', () => {
     createWindow()
   }
 }) //app.on
+
+exports.openWindow = (filename) => {
+  let win = new BrowserWindow({width:400, height:400});
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, 'appHomePage.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
+}
