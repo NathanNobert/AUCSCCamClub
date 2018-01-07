@@ -26,16 +26,19 @@ const url = require('url')
 
 let win
 
+/*
+This function starts the first window for the user to see the interface
+*/
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({show: false});
+  win = new BrowserWindow({show: false, width: 800, height: 600});
 
   //sets the window to be maximized based on the screen size
-  win.maximize();
+  //win.maximize();
 
   //Load the index.html of the app.
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'src/index.html'),
+    pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
@@ -53,18 +56,28 @@ function createWindow () {
     // when you should delete the corresponding element.
     win = null
   })
-}
+}//createWindow
 
-app.on('ready', createWindow)
+
+ app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
-})
+})//app.on
 
 app.on('activate', () => {
   if (win === null) {
     createWindow()
   }
-})
+}) //app.on
+
+exports.openWindow = (filename) => {
+  let win = new BrowserWindow({width:400, height:400});
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, 'appHomePage.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
+}
