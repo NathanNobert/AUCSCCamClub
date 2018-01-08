@@ -4,6 +4,12 @@ const url = require('url')
 
 
 
-function myFunction() {
-    document.getElementById("demo").innerHTML = window.location.replace("donorForm.html");
+function openNextPage(idOfButton) {
+	if(idOfButton === 'Donors'){
+    	document.getElementById(idOfButton).innerHTML = window.location.replace("donorForm.html");
+	}else if(idOfButton === 'volunteer'){
+		document.getElementById(idOfButton).innerHTML = window.location.replace("volunteerForm.html")
+	}else{
+		document.getElementById(idOfbutton).innterHTML = window.location.replace("memberForm.html")
+	}
 }
