@@ -12,7 +12,7 @@ function confirmLogin(){
   var username = document.getElementById("signInUsername").value;
   var password = document.getElementById("signInPassword").value;
   //hard coding in the usernames and password
-  if (username == "admin" && password == "password"){
+  if (username == "" && password == ""){
     return true;
   }else{
     attempts--;

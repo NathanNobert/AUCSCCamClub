@@ -1,15 +1,13 @@
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
-const url = require('url')
-
-
-
+/**openNextPage()
+This function is called when the buttons Volunteer, Donor and Member are clicked.
+It changes the window to the corresponding window to fill out the forms.
+**/
 function openNextPage(idOfButton) {
-	if(idOfButton === 'Donors'){
-    	document.getElementById(idOfButton).innerHTML = window.location.replace("donorForm.html");
-	}else if(idOfButton === 'volunteer'){
-		document.getElementById(idOfButton).innerHTML = window.location.replace("volunteerForm.html")
+	if(idOfButton === "Donors"){
+    	document.getElementById(Donors).innerHTML = window.location.replace("donorForm.html");
+	}else if(idOfButton === "volunteer"){
+		document.getElementById(volunteer).innerHTML = window.location.replace("volunteerForm.html")
 	}else{
-		document.getElementById(idOfbutton).innterHTML = window.location.replace("memberForm.html")
+		document.getElementById(member).innterHTML = window.location.replace("memberForm.html")
 	}
 }
