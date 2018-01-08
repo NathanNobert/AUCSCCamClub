@@ -1,17 +1,3 @@
-
-.jumbotron {
-
-}
-.display-4 {
-	text-align: center;
-	color: red;
-	font-family: Arial;
-}
-
-.btn-warning{
-	size: 200%;
-}
-
 .container-fluid{
 	background-color: rgb(51,51,51);
 }
@@ -20,6 +6,7 @@
 	background-color: rgb(102,204,0);
 }
 #validationDefaultUsername{
+	
 }
 
 #text{
@@ -36,3 +23,6 @@
 	background-color: rgb(51,51,51);
 }
 
+#background {
+	background: #66CC00 none no-repeat scroll 0 0;
+}
