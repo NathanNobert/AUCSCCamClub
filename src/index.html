@@ -15,26 +15,124 @@ This will be the sign on screen
 
 </head>
 <body>
-	<div class="jumbotron">
-	  <h1 class="display-4">Hello, world!</h1>
-	  <p class="lead">This is where we will place our sign in information for the client</p>
-	  <hr class="my-4">
-	  <p>Its a nice container for displaying information</p>
+
+	<div class="container-fluid">
+		<form>
+
+
+			<div class="form-row">
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault01">First name</label>
+					<input type="text" class="form-control" id="validationDefault01" placeholder="First name" required>
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault02">Last name</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Last name"  required>
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault02">Contact Name</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Contact name"  required>
+				</div>
+
+			</div>
+
+
+			<div class="form-row">
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefaultUsername">Email Address</label>
+					<div class="input-group">
+						 <div class="input-group-prepend">
+					 		<span class="input-group-text" id="inputGroupPrepend2">@</span>
+					 	</div>
+					 		<input type="text" class="form-control" id="validationDefaultUsername" placeholder="Email Address" aria-describedby="inputGroupPrepend2" required>
+					</div>
+
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault02">Phone Number</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Phone Number"  required>
+				</div>
+
+			</div>
+
+
+				<div class="form-row">
+					<div class="col-md-6 mb-3" id="text">
+						<label for="validationDefault03">Address</label>
+						<input type="text" class="form-control" id="validationDefault03" placeholder="Address" required>
+					</div>
+
+					<div class="col-md-3 mb-3" id="text">
+						<label for="validationDefault04">City</label>
+						<input type="text" class="form-control" id="validationDefault04" placeholder="City" required>
+					</div>
+					
+
+					<div class="col-md-3 mb-3" id="text">
+						<label for="validationDefault05">Postal Code</label>
+						<input type="text" class="form-control" id="validationDefault05" placeholder="Postal Code" required>
+					</div>
+				</div>
+
+
+				<div class="form-row" id="text">
+					<div class="col-md-4 mb-3">
+						<label for="validationDefault01">Monetary Amount: </label>
+						<input type="text" class="form-control" id="validationDefault01" placeholder="$$" required>
+					</div>
+				</div>
+
+
+				<div class="form-row">
+					<div class="col-md-4 mb-3" id="text">
+						<label for="validationDefault01">Estimated Non-Monetary Amount: </label>
+						<input type="text" class="form-control" id="validationDefault01" placeholder="$$"  required>
+					</div>
+
+					<div class="col-md-4 mb-3" id="text">
+						<label for="validationDefault01">Non-Monetary Item: </label>
+						<input type="text" class="form-control" id="validationDefault01" placeholder="Item"  required>
+					</div>
+
+				</div>
+
+
+				<div class="custom-control custom-checkbox" id="text">
+					<input type="checkbox" class="custom-control-input" id="givenRecipt">
+					<label class="custom-control-label" for="givenRecipt">Check if given a recipt</label>
+				</div>
+
+
+				<div class="custom-control custom-checkbox" id="text">
+					<input type="checkbox" class="custom-control-input" id="givenCard">
+					<label class="custom-control-label" for="givenCard">Check if given a thank you card</label>
+				</div>
+
+		</form>
+
+		<div class="button">
+			<button type="button" class="btn btn-primary btn-lg">Print Recipt</button>
+		</div>
+
+		<div class="button">
+			<button type="button" class="btn btn-primary btn-lg">Print Thank you card</button>
+		</div>
+
+		<div class="button">
+			<button type="button" class="btn btn-primary btn-lg">Submit</button>
+		</div>
+
+		<div class="container-fluid">
+			<label>Thank you</label>
+		</div>
+
+
 	</div>
 
 
 
-
-
-	<!-- 
-	Required Javascript scripts for using Bootstrap and jQuery to build faster and more appealing applications
-	-->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-	<h1>Login</h1>
-
-	<button>Volunteer</button>
-	
 </body>
 </html>
