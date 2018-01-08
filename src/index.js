@@ -74,10 +74,12 @@ app.on('activate', () => {
 }) //app.on
 
 exports.openWindow = (filename) => {
-  let win = new BrowserWindow({width:400, height:400});
+  let win = new BrowserWindow({show: false});
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'appHomePage.html'),
+    pathname: path.join(__dirname, 'donorForm.html'), //next page
     protocol: 'file:',
     slashes: true
   }))
+  win.maximize();
+  win.show();
 }

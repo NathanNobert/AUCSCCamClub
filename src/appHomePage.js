@@ -34,10 +34,11 @@ This listens for the submit button of the login page to be clicked
 signInSubmit.addEventListener('click', () => {
   if(confirmLogin() == true){
     var window = remote.getCurrentWindow();
-    main.openWindow('appHomePage');
+    main.openWindow('donorForm'); //appHomePage
     window.close();
   }
 }, false)
+
 
 
 // const {app, BrowserWindow} = require('electron')
