@@ -10,11 +10,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+<<<<<<< HEAD
+    "electron": "^1.7.10"
+=======
     "electron": "1.7.10"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta.3",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.9"
+>>>>>>> 45e30384170aac0bd7a6cb634bb20d77a4c38830
   }
 }

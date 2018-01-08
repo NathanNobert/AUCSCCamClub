@@ -76,7 +76,7 @@ app.on('activate', () => {
 exports.openWindow = (filename) => {
   let win = new BrowserWindow({show: false});
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'donorForm.html'), //next page
+    pathname: path.join(__dirname, 'selectPersonType.html'), //next page
     protocol: 'file:',
     slashes: true
   }))
