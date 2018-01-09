@@ -3,20 +3,31 @@ const path = require ('path')
 const url = require ('url')
 
 function infoStorage() {
-			document.getElementById("test").innerHTML = document.getElementById("firstName").value;
-			document.getElementById("test1").innerHTML = document.getElementById("lastName").value;
-			document.getElementById("test2").innerHTML = document.getElementById("contactName").value;
-			document.getElementById("test3").innerHTML = document.getElementById("emailAddress").value;
-			document.getElementById("test4").innerHTML = document.getElementById("phoneNumber").value;
-			document.getElementById("test5").innerHTML = document.getElementById("firstName").value;
-			document.getElementById("test6").innerHTML = document.getElementById("address").value;
-			document.getElementById("test7").innerHTML = document.getElementById("city").value;
-			document.getElementById("test8").innerHTML = document.getElementById("postalCode").value;
-			document.getElementById("test9").innerHTML = document.getElementById("monetaryAmount").value;
-			document.getElementById("test10").innerHTML = document.getElementById("nonMonetaryAmount").value;
-			document.getElementById("test11").innerHTML = document.getElementById("nonMonetaryItem").value;
+			var first = document.getElementById("firstName").value;
+			var last = document.getElementById("lastName").value;
+			var contact = document.getElementById("contactName").value;
+			var email = document.getElementById("emailAddress").value;
+			var phone = document.getElementById("phoneNumber").value;
+			var addressInfo = document.getElementById("address").value;
+			var cityInfo = document.getElementById("city").value;
+			var postal = document.getElementById("postalCode").value;
+			var monetary = document.getElementById("monetaryAmount").value;
+			var nonMonetary = document.getElementById("nonMonetaryAmount").value;
+			var item = document.getElementById("nonMonetaryItem").value;
+			var comment = document.getElementById("commentBox").value;
 
-			document.getElementById("test12").innerHTML = document.getElementById("givenRecipt").value;
-			document.getElementById("test13").innerHTML = document.getElementById("givenCard").value;
+
+			var fs = require('fs');
+			var stream = fs.createWriteStream(last + "," + first + ".txt");
+			stream.once('open', function(fd) {
+			stream.write("Full Name: " + first + " " + last + " Contact Name: " + contact + "\r\n");
+			stream.write("Email Address: " + email + " Phone Number: " + phone + "\r\n");
+			stream.write("Address: " + addressInfo + " , " + cityInfo + " , " + postal + "\r\n");
+			stream.write("Monetary amount donated: $" + monetary + "\n");
+			stream.write("Non-Monetary estimated value: $" + nonMonetary + " The item donated: " + item + "\r\n" + "\r\n");
+			stream.write("Comments: " + comment);
+			stream.end();
+			});
 
 		}
+
