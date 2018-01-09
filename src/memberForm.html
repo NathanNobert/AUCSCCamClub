@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+This is our volunteerForm .html file for the window to fill out the form with volunteer information.
+-->
+<html>
+<head>
+	<title>AUCSC320 Cam Club Project</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+	<!-- This allows us to add custom css on top of the Bootstrap built in css -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/donorForm.css">
+
+</head>
+<body>
+
+	<div class="container-fluid">
+		<form>
+
+
+			<div class="form-row">
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault01">First name</label>
+					<input type="text" class="form-control" id="validationDefault01" placeholder="First name" required>
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault02">Last name</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Last name"  required>
+				</div>
+				<div class="col-md-1 mb-1" id="text">
+					<label for="validationDefault02">Age</label>
+					<input type="Number" class="form-control" id="validationDefault02" placeholder=""  required>
+				</div> 
+				<div class="form-check form-check-inline" id="text">
+					<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+				    <label for="validationDefault02">
+				    Male
+				  	</label>
+				</div>
+				<div class="form-check form-check-inline" id="text">
+				  	<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				 	<label class="form-check-label" for="validationDefault02">
+				    Female
+				  </label>
+				</div>
+				<div class="form-check form-check-inline" id="text">
+				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+				  <label class="form-check-label" for="validationDefault02">
+				    Other
+				  </label>
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefaultUsername">Email Address</label>
+					<div class="input-group">
+						 <div class="input-group-prepend">
+					 		<span class="input-group-text" id="inputGroupPrepend2">@</span>
+					 	</div>
+					 		<input type="text" class="form-control" id="validationDefaultUsername" placeholder="Email Address" aria-describedby="inputGroupPrepend2" required>
+					</div>
+
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault02">Phone Number</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Phone Number"  required>
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault03">Address</label>
+					<input type="text" class="form-control" id="validationDefault03" placeholder="Address" required>
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault04">City</label>
+					<input type="text" class="form-control" id="validationDefault04" placeholder="City" required>
+				</div>
+			</div>	
+			<div class="form-row">
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault05">Postal Code</label>
+					<input type="text" class="form-control" id="validationDefault05" placeholder="Postal Code" required>
+				</div>
+			</div>
+
+		</form>
+
+		<div class="button">
+			<button type="button" class="btn btn-primary btn-lg">Submit</button>
+		</div>
+
+		<div class="container-fluid">
+			<label>Thank you</label>
+		</div>
+
+
+	</div>
+
+	<!-- 
+	Required Javascript scripts for using Bootstrap and jQuery to build faster and more appealing applications
+	-->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+</body>
+</html>
