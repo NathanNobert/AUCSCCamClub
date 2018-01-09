@@ -27,23 +27,36 @@ This is our memberForm .html file for the window to fill out the form with volun
 					<label for="validationDefault02">Last name</label>
 					<input type="text" class="form-control" id="validationDefault02" placeholder="Last name"  required>
 				</div>
+				<!--
 				<div class="col-md-1 mb-1" id="text">
 					<label for="validationDefault02">Age</label>
 					<input type="Number" class="form-control" id="validationDefault02" placeholder=""  required>
-				</div> 
-				<div class="form-check form-check-inline" id="text">
-					<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+				</div> -->
+				<div class="form-group" id="text">
+    				<label for="exampleFormControlSelect1">Age Group</label>
+    				<select class="form-control" padding="1cm">
+      					<option>1 - 5</option>
+      					<option>6 - 10</option>
+      					<option>10 - 15</option>
+      					<option>16 - 20</option>
+      					<option>21 - 25</option>
+      					<option>26 - 65</option>
+   					 </select>
+  				</div>
+
+				<div class="form-check form-check-inline selectOneOption" id="text">
+					<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
 				    <label for="validationDefault02">
 				    Male
 				  	</label>
 				</div>
-				<div class="form-check form-check-inline" id="text">
+				<div class="form-check form-check-inline selectOneOption" id="text">
 				  	<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
 				 	<label class="form-check-label" for="validationDefault02">
 				    Female
 				  </label>
 				</div>
-				<div class="form-check form-check-inline" id="text">
+				<div class="form-check form-check-inline selectOneOption" id="text">
 				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
 				  <label class="form-check-label" for="validationDefault02">
 				    Other
@@ -93,7 +106,6 @@ This is our memberForm .html file for the window to fill out the form with volun
 		<div class="container-fluid">
 			<label>Thank you</label>
 		</div>
-
 
 	</div>
 
