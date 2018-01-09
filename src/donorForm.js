@@ -1,4 +1,6 @@
-
+/*
+This file contains all the javascript used for the donorForm page.
+*/
 
 /*
 This function sends the user back to the login screen

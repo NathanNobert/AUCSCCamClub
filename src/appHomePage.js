@@ -1,10 +1,17 @@
+/*
+This is an extra javascript file that is used ontop of index.html and the selectPersonType.html
+
+The reason for this is that there is a window switch between those two html files and a confirmation
+of the log in page. 
+The main functionality of this file is to check the users login info, change screen to change password info.
+*/
 const remote = require('electron').remote
 const main = remote.require('./index.js')
-
 
 var attempts = 3; 
 var userNameOfClient = "";
 var passwordOfClient = "";
+
 /*
 This function checks to make sure the correct login information was used before sending the
 user to page 2.
@@ -14,7 +21,6 @@ function confirmLogin(){
   var password = document.getElementById("signInPassword").value;
 
   //hard coding in the usernames and password
-
   if (username == userNameOfClient && password == passwordOfClient){
     return true;
   }else{
@@ -49,7 +55,6 @@ This will not work without a server to store the password or a database
 function submitChangePassword(){
   if(document.getElementById("oldPassword").value == passwordOfClient){
     passwordOfClient = document.getElementById("newPassword").value;;
-  }
+  }//if
   alert("Password Changed!");
-
-}
+}//submitChangePassword
