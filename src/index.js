@@ -30,9 +30,15 @@ let win
 This function starts the first window for the user to see the interface
 */
 function createWindow () {
+  //this disables the standard menu bar
+  app.on('browser-window-created',function(e,window) {
+      window.setMenu(null);
+  });
+
   // Create the browser window.
   win = new BrowserWindow({show: false, width: 800, height: 600});
 
+  
   //sets the window to be maximized based on the screen size
   //win.maximize();
 
@@ -45,6 +51,7 @@ function createWindow () {
 
   //waiting to show the screen until now allows the screen and elements to load.
   win.show();
+
 
   // Open the DevTools.
  // win.webContents.openDevTools()
@@ -73,6 +80,10 @@ app.on('activate', () => {
   }
 }) //app.on
 
+
+/*
+This opens the new window after log in information is submitted correctly within the appHomePage.js file
+*/
 exports.openWindow = (filename) => {
   let win = new BrowserWindow({show: false});
   win.loadURL(url.format({
