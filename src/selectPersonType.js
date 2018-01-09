@@ -1,3 +1,8 @@
+
+/**openNextPage()
+This function is called when the buttons Volunteer, Donor and Member are clicked.
+It changes the window to the corresponding window to fill out the forms.
+**/
 function openNextPage(idOfButton) {
 	if(idOfButton === 'Donors'){
     	document.getElementById(Donors).innerHTML = window.location.replace("donorForm.html");
