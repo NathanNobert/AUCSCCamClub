@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!--
-This is our main .html file for the front/main page of our application. 
-This will be the sign on screen
+This is the html file for the donorForm
 -->
 <html>
 <head>
@@ -15,10 +14,10 @@ This will be the sign on screen
 </head>
 <body>
 	<button class="btn btn-secondary" onclick="gotoMainMenu()">Go Back</button>
+
+	<!-- This div contains all the entries for the form -->
 	<div class="container-fluid">
 		<form id="formOne">
-
-
 			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
 					<label for="firstName">First name</label>
@@ -36,7 +35,6 @@ This will be the sign on screen
 				</div>
 
 			</div>
-
 
 			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
@@ -110,7 +108,7 @@ This will be the sign on screen
 					<label class="custom-control-label" for="givenCard">Check if given a thank you card</label>
 				</div>
 
-		</form>
+		</form> <!-- All entries for form -->
 
 		<div class="form-group" id="text">
 			<label for="commentBox">Comment Box:</label>
