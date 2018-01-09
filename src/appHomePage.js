@@ -56,5 +56,5 @@ function submitChangePassword(){
   if(document.getElementById("oldPassword").value == passwordOfClient){
     passwordOfClient = document.getElementById("newPassword").value;;
   }//if
-  alert("Password Changed!");
+  alert("Password Changed!", "Password Change Request");
 }//submitChangePassword

@@ -22,7 +22,7 @@ function infoStorage() {
 
 
 			var fs = require('fs');
-			var stream = fs.createWriteStream(last + "," + first + ".txt");
+			var stream = fs.createWriteStream(last + ", " + first + ".txt");
 			stream.once('open', function(fd) {
 			stream.write("Full Name: " + first + " " + last + " Contact Name: " + contact + "\r\n");
 			stream.write("Email Address: " + email + " Phone Number: " + phone + "\r\n");
@@ -32,6 +32,8 @@ function infoStorage() {
 			stream.write("Comments: " + comment);
 			stream.end();
 			});
+			alert("Your information has been submitted, Thank you.", "Donor Form Submission");
+			gotoMainMenu();
 
 	}
 
