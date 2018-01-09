@@ -31,6 +31,22 @@ function infoStorage() {
 
 		}
 
+		function validatingPhoneNum() {
+			var num , phoneAlert;
+
+			//Gets the value inputed in the phone number input box
+			num = document.getElementById("phoneNumber").value;
+
+			//If num is not a number or length greater than 11 numbers
+			if (isNan(num) || num.length < 10 || num.length > 10) {
+				phoneAlert = "Please try again";
+			}
+			else{
+				phoneAlert = "Input Okay";
+			}
+			document.getElementById().innerHTML = phoneAlert
+		}
+
 /*
 This function sends the user back to the login screen
 */
