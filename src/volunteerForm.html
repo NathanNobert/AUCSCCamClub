@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-This is our volunteerForm .html file for the window to fill out the form with volunteer information.
+This is our volunteer form .html file for the window to fill out the form with volunteer information.
 -->
 <html>
 <head>
@@ -70,7 +70,12 @@ This is our volunteerForm .html file for the window to fill out the form with vo
 					<input type="Date" class="form-control" id="validationDefault01" placeholder="mm/dd/year" required>
 				</div>
 			</div>
-
+			<div class="form-row">
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault01">Position</label>
+					<input type="text" class="form-control" id="validationDefault05" placeholder="Position" required>
+				</div>
+			</div>
 
 			<div class="custom-control custom-checkbox" id="text">
 				<input type="checkbox" class="custom-control-input" id="givenCard">
@@ -78,6 +83,11 @@ This is our volunteerForm .html file for the window to fill out the form with vo
 			</div>
 
 		</form>
+
+		<div class="form-group" id="text">
+			<label for="commentBox">Comment Box:</label>
+			<textarea class="form-control" id="commentBox" rows="3"></textarea>
+		</div>
 
 		<div class="button">
 			<button type="button" class="btn btn-primary btn-lg">Print Thank you card</button>
