@@ -27,6 +27,12 @@ body {
 	align-content: center;
 	background-color: rgb(51,51,51);
 }
+.selectOneOption{
+	padding-bottom: 1cm;
+	padding-top: 0.5cm;
+	padding-right: 0.5cm;
+	align-content: center
+}
 
 #background {
 	background: #66CC00 none no-repeat scroll 0 0;
