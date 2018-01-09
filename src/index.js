@@ -83,3 +83,17 @@ exports.openWindow = (filename) => {
   win.maximize();
   win.show();
 }
+
+/*
+This function sends the user to the screen that allows them to change the password
+*/
+function changePassword() {
+  document.getElementById(gotoChangePassword).innerHTML = window.location.replace("changePassword.html");
+}
+
+/*
+This function sends the user back to the login screen
+*/
+function gotoSignInPage() {
+  document.getElementById(gotoSignInPage).innerHTML = window.location.replace("index.html");
+}
