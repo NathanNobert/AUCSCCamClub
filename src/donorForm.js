@@ -25,8 +25,9 @@ function infoStorage() {
 		}
 	];
 
+
 	var fs = require('fs');
-	var stream = fs.createWriteStream(donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
+	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
 	stream.once('open', function(fd) {
 	stream.write("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last + " Contact Name: " + donorFormInfo[0].contact + "\r\n");
 	stream.write("Email Address: " + donorFormInfo[0].email + " Phone Number: " + donorFormInfo[0].phone + "\r\n");
