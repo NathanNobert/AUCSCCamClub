@@ -14,25 +14,25 @@ This will be the sign on screen
 
 </head>
 <body>
-	<button class="btn btn-secondary" onclick="gotoMainMenu()">Go Back</button>
+
 	<div class="container-fluid">
-		<form id="formOne">
+		<form>
 
 
 			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
-					<label for="firstName">First name</label>
-					<input type="text" class="form-control" id="firstName"  placeholder="First name" required>
+					<label for="validationDefault01">First name</label>
+					<input type="text" class="form-control" id="validationDefault01" placeholder="First name" required>
 				</div>
 
 				<div class="col-md-4 mb-3" id="text">
-					<label for="lastName">Last name</label>
-					<input type="text" class="form-control" id="lastName" placeholder="Last name"  required>
+					<label for="validationDefault02">Last name</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Last name"  required>
 				</div>
 
 				<div class="col-md-4 mb-3" id="text">
-					<label for="contactName">Contact Name</label>
-					<input type="text" class="form-control" id="contactName" placeholder="Contact name"  required>
+					<label for="validationDefault02">Contact Name</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Contact name"  required>
 				</div>
 
 			</div>
@@ -40,19 +40,19 @@ This will be the sign on screen
 
 			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
-					<label for="emailAddress">Email Address</label>
+					<label for="validationDefaultUsername">Email Address</label>
 					<div class="input-group">
 						 <div class="input-group-prepend">
 					 		<span class="input-group-text" id="inputGroupPrepend2">@</span>
 					 	</div>
-					 		<input type="text" class="form-control" id="emailAddress" placeholder="Email Address" aria-describedby="inputGroupPrepend2" required>
+					 		<input type="text" class="form-control" id="validationDefaultUsername" placeholder="Email Address" aria-describedby="inputGroupPrepend2" required>
 					</div>
 
 				</div>
 
 				<div class="col-md-4 mb-3" id="text">
-					<label for="phoneNumber">Phone Number</label>
-					<input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number"  required>
+					<label for="validationDefault02">Phone Number</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Phone Number"  required>
 				</div>
 
 			</div>
@@ -60,65 +60,60 @@ This will be the sign on screen
 
 				<div class="form-row">
 					<div class="col-md-6 mb-3" id="text">
-						<label for="address">Address</label>
-						<input type="text" class="form-control" id="address" placeholder="Address" required>
+						<label for="validationDefault03">Address</label>
+						<input type="text" class="form-control" id="validationDefault03" placeholder="Address" required>
 					</div>
 
 					<div class="col-md-3 mb-3" id="text">
-						<label for="city">City</label>
-						<input type="text" class="form-control" id="city" placeholder="City" required>
+						<label for="validationDefault04">City</label>
+						<input type="text" class="form-control" id="validationDefault04" placeholder="City" required>
 					</div>
 					
 
 					<div class="col-md-3 mb-3" id="text">
-						<label for="postalCode">Postal Code</label>
-						<input type="text" class="form-control" id="postalCode" placeholder="Postal Code" required>
+						<label for="validationDefault05">Postal Code</label>
+						<input type="text" class="form-control" id="validationDefault05" placeholder="Postal Code" required>
 					</div>
 				</div>
 
 
 				<div class="form-row" id="text">
 					<div class="col-md-4 mb-3">
-						<label for="monetaryAmount">Monetary Amount: </label>
-						<input type="text" class="form-control" id="monetaryAmount" placeholder="$$" required>
+						<label for="validationDefault01">Monetary Amount: </label>
+						<input type="text" class="form-control" id="validationDefault01" placeholder="$$" required>
 					</div>
 				</div>
 
 
 				<div class="form-row">
 					<div class="col-md-4 mb-3" id="text">
-						<label for="nonMonetaryAmount">Estimated Non-Monetary Amount: </label>
-						<input type="text" class="form-control" id="nonMonetaryAmount" placeholder="$$"  required>
+						<label for="validationDefault01">Estimated Non-Monetary Amount: </label>
+						<input type="text" class="form-control" id="validationDefault01" placeholder="$$"  required>
 					</div>
 
 					<div class="col-md-4 mb-3" id="text">
-						<label for="nonMonetaryItem">Non-Monetary Item: </label>
-						<input type="text" class="form-control" id="nonMonetaryItem" placeholder="Item"  required>
+						<label for="validationDefault01">Non-Monetary Item: </label>
+						<input type="text" class="form-control" id="validationDefault01" placeholder="Item"  required>
 					</div>
 
 				</div>
 
 
 				<div class="custom-control custom-checkbox" id="text">
-					<input type="checkbox" class="custom-control-input" id="givenRecipt" value="Was given a Recipt">
+					<input type="checkbox" class="custom-control-input" id="givenRecipt">
 					<label class="custom-control-label" for="givenRecipt">Check if given a recipt</label>
 				</div>
 
 
 				<div class="custom-control custom-checkbox" id="text">
-					<input type="checkbox" class="custom-control-input" id="givenCard"  value="Was given a card">
+					<input type="checkbox" class="custom-control-input" id="givenCard">
 					<label class="custom-control-label" for="givenCard">Check if given a thank you card</label>
 				</div>
 
 		</form>
 
-		<div class="form-group" id="text">
-			<label for="commentBox">Comment Box:</label>
-			<textarea class="form-control" id="commentBox" rows="3"></textarea>
-		</div>
-
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg">Print Receipt</button>
+			<button type="button" class="btn btn-primary btn-lg">Print Recipt</button>
 		</div>
 
 		<div class="button">
@@ -126,7 +121,7 @@ This will be the sign on screen
 		</div>
 
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage()" value="Submit">Submit</button>
+			<button type="button" class="btn btn-primary btn-lg">Submit</button>
 		</div>
 
 		<div class="container-fluid">
@@ -134,12 +129,8 @@ This will be the sign on screen
 		</div>
 
 
-		<p id="test"></p>
-
-
 	</div>
-  
-	<script type="text/javascript" src="donorForm.js"></script>
+
 	<!-- 
 	Required Javascript scripts for using Bootstrap and jQuery to build faster and more appealing applications
 	-->

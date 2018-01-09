@@ -30,15 +30,9 @@ let win
 This function starts the first window for the user to see the interface
 */
 function createWindow () {
-  //this disables the standard menu bar
-  app.on('browser-window-created',function(e,window) {
-      window.setMenu(null);
-  });
-
   // Create the browser window.
   win = new BrowserWindow({show: false, width: 800, height: 600});
 
-  
   //sets the window to be maximized based on the screen size
   //win.maximize();
 
@@ -51,7 +45,6 @@ function createWindow () {
 
   //waiting to show the screen until now allows the screen and elements to load.
   win.show();
-
 
   // Open the DevTools.
  // win.webContents.openDevTools()
@@ -66,7 +59,7 @@ function createWindow () {
 }//createWindow
 
 
-app.on('ready', createWindow)
+ app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -80,10 +73,6 @@ app.on('activate', () => {
   }
 }) //app.on
 
-
-/*
-This opens the new window after log in information is submitted correctly within the appHomePage.js file
-*/
 exports.openWindow = (filename) => {
   let win = new BrowserWindow({show: false});
   win.loadURL(url.format({
@@ -93,18 +82,4 @@ exports.openWindow = (filename) => {
   }))
   win.maximize();
   win.show();
-}
-
-/*
-This function sends the user to the screen that allows them to change the password
-*/
-function changePassword() {
-  document.getElementById(gotoChangePassword).innerHTML = window.location.replace("changePassword.html");
-}
-
-/*
-This function sends the user back to the login screen
-*/
-function gotoSignInPage() {
-  document.getElementById(gotoSignInPage).innerHTML = window.location.replace("index.html");
 }
