@@ -14,7 +14,6 @@ function confirmLogin(){
   var password = document.getElementById("signInPassword").value;
 
   //hard coding in the usernames and password
-
   if (username == userNameOfClient && password == passwordOfClient){
     return true;
   }else{
