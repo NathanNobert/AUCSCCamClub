@@ -71,8 +71,8 @@ This is the html file for the donorForm
 
 				<!-- This div creates the textbox and label for Date of Donation -->
 				<div class="col-md-4 mb-3" id="text">
-					<label for="validationDefault01">Date of Donation</label>
-					<input type="Date" class="form-control" id="validationDefault01" placeholder="mm/dd/year" required>
+					<label for="donationDate">Date of Donation</label>
+					<input type="Date" class="form-control" id="donationDate" placeholder="mm/dd/year" required>
 				</div>
 
 			</div><!-- All entries for second row -->
@@ -106,7 +106,12 @@ This is the html file for the donorForm
 				<!-- This div creates the textbox and label for Monetary Amount -->
 				<div class="col-md-4 mb-3" id="text">
 					<label for="monetaryAmount">Monetary Amount: </label>
-					<input type="text" class="form-control" id="monetaryAmount" placeholder="$$" required>
+					<div class="input-group">
+						 <div class="input-group-prepend">
+					 		<span class="input-group-text" id="inputGroupPrepend2">$</span>
+					 	</div>
+					 		<input type="number" class="form-control" id="monetaryAmount" placeholder="$$" aria-describedby="inputGroupPrepend2" required>
+					</div>
 				</div>
 
 				<!-- This div creates the textbox and label for Non-Monetary Item -->
@@ -118,7 +123,12 @@ This is the html file for the donorForm
 				<!-- This div creates the textbox and label for Non-Monetary Amount -->
 				<div class="col-md-4 mb-3" id="text">
 					<label for="nonMonetaryAmount">Estimated Non-Monetary Amount: </label>
-					<input type="text" class="form-control" id="nonMonetaryAmount" placeholder="$$"  required>
+					<div class="input-group">
+						 <div class="input-group-prepend">
+					 		<span class="input-group-text" id="inputGroupPrepend2">$</span>
+					 	</div>
+					 		<input type="number" class="form-control" id="nonMonetaryAmount" placeholder="$$" aria-describedby="inputGroupPrepend2" required>
+					</div>
 				</div>
 
 			</div><!-- All entries for fourth row -->
