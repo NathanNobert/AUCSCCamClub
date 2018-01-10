@@ -23,18 +23,36 @@ body {
 	word-spacing: 2px;
 	color: #66CC00;
 }
+#ageGroupDropDown{
+	font-family: "Arial Black",Gadget,sans-serif;
+	font-size: 18px;
+	letter-spacing: -0.6px;
+	word-spacing: 2px;
+	color: #66CC00;
+	padding-right: 0.25cm;
+	padding-left: 0.25cm;
+}
+.titleOfForm{
+	font-family: "Arial Black",Gadget,sans-serif;
+	font-size: 35px;
+	letter-spacing: -0.2px;
+	word-spacing: 2.5px;
+	color: #66CC00;
+	float: left;
+	padding-bottom: 0.5cm;
+	padding-top: 1cm;
+}
+
 .button{
 	padding-bottom: 1cm;
 	padding-top: 0.5cm;
-
 	align-content: center;
 	background-color: rgb(51,51,51);
 }
 .selectOneOption{
 	padding-bottom: 1cm;
-	padding-top: 0.5cm;
-	padding-right: 0.5cm;
-	align-content: center
+	padding-top: 1cm;
+	padding-left: 0.5cm;
 }
 
 #background {
