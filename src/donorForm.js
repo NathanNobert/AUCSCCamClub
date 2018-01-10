@@ -6,10 +6,16 @@ const{app, BrowserWindow} = require('electron')
 const path = require ('path')
 const url = require ('url')
 
+//const {dialog} = require('electron').remote;
+
+
 /*
 This function reads the information from the donorForm.html file and creates a report/text document
 */
 function infoStorage() {
+
+	//var fileName = askWhereToSave();
+
 
 	var donorFormInfo = [
 		{
@@ -28,6 +34,13 @@ function infoStorage() {
 		}
 	];
 
+	// fs.writeFile(fileName, content, (err) => {
+ //        if(err){
+ //            alert("An error ocurred creating the file "+ err.message)
+ //        }
+                    
+ //        alert("The file has been succesfully saved");
+ //    });
 
 	var fs = require('fs');
 	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
@@ -46,6 +59,20 @@ function infoStorage() {
 	gotoMainMenu();
 
 }
+
+/*
+Will use this function if we decide to give the user the option to choose where they want to save
+their donor form files.
+*/
+function askWhereToSave(){
+	dialog.showSaveDialog((fileName) => {
+		if (fileName === undefined){
+		    console.log("You didn't save the file");
+		    return;
+		}
+	});
+}
+
 
 /*
 This function sends the user back to the login screen
