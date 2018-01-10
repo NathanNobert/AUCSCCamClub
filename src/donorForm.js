@@ -1,3 +1,7 @@
+/*
+This file contains all the javascript used for the donorForm page.
+*/
+
 const{app, BrowserWindow} = require('electron')
 const path = require ('path')
 const url = require ('url')
@@ -29,7 +33,7 @@ function infoStorage() {
 			stream.end();
 			});
 
-		}
+	}
 
 /*
 This function sends the user back to the login screen
