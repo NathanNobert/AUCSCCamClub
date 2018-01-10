@@ -5,8 +5,13 @@ This file contains all the javascript used for the donorForm page.
 const{app, BrowserWindow} = require('electron')
 const path = require ('path')
 const url = require ('url')
-
+//const {dialog} = require('electron').remote;
+/*
+This function reads the information from the donorForm.html file and creates a report/text document
+*/
 function infoStorage(inputtxt) {
+	//var fileName = askWhereToSave();
+
 
 	var donorFormInfo = [
 		{
@@ -24,6 +29,7 @@ function infoStorage(inputtxt) {
 			comment: document.getElementById("commentBox").value
 		}
 	];
+
 
 	var donorForm = /^\d{10}$/;
 	if(inputtxt.value.match(donorForm)){
@@ -44,14 +50,27 @@ function infoStorage(inputtxt) {
 		gotoMainMenu();
 		return true;
 
-	}
+	}//if
 	else{
 		alert("Not a valid Phone Number");
 		return false;
 	}
 
+}//infoStorage
 
+/*
+Will use this function if we decide to give the user the option to choose where they want to save
+their donor form files.
+*/
+function askWhereToSave(){
+	dialog.showSaveDialog((fileName) => {
+		if (fileName === undefined){
+		    console.log("You didn't save the file");
+		    return;
+		}
+	});
 }
+
 
 /*
 This function sends the user back to the login screen

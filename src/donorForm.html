@@ -20,6 +20,12 @@ This is the html file for the donorForm
 	<!-- This div contains all the entries for the form -->
 	<div class="container-fluid">
 		<form id="formOne" name="frm">
+			<div class="container-fluid">
+				<div class="form-row">
+					<h1 class="titleOfForm">Donor Form</h1>
+				</div>
+			</div>
+      
 			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
 					<label for="firstName">First name</label>
@@ -53,62 +59,63 @@ This is the html file for the donorForm
 				<div class="col-md-4 mb-3" id="text">
 					<label for="phoneNumber">Phone Number</label>
 					<input type="text" max="11" class="form-control" id="phoneNumber" placeholder="Phone Number"  name="phnum" )' required>
+
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="validationDefault01">Date of Donation</label>
+					<input type="Date" class="form-control" id="validationDefault01" placeholder="mm/dd/year" required>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="col-md-4 mb-3" id="text">
+					<label for="address">Address</label>
+					<input type="text" class="form-control" id="address" placeholder="Address" required>
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="city">City</label>
+					<input type="text" class="form-control" id="city" placeholder="City" required>
+				</div>
+					
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="postalCode">Postal Code</label>
+					<input type="text" class="form-control" id="postalCode" placeholder="Postal Code" required>
+				</div>
+			</div>
+
+
+			<div class="form-row">
+				<div class="col-md-4 mb-3" id="text">
+					<label for="monetaryAmount">Monetary Amount: </label>
+					<input type="text" class="form-control" id="monetaryAmount" placeholder="$$" required>
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="nonMonetaryItem">Non-Monetary Item: </label>
+					<input type="text" class="form-control" id="nonMonetaryItem" placeholder="Item"  required>
+				</div>
+
+				<div class="col-md-4 mb-3" id="text">
+					<label for="nonMonetaryAmount">Estimated Non-Monetary Amount: </label>
+					<input type="text" class="form-control" id="nonMonetaryAmount" placeholder="$$"  required>
 				</div>
 
 			</div>
 
 
-				<div class="form-row">
-					<div class="col-md-6 mb-3" id="text">
-						<label for="address">Address</label>
-						<input type="text" class="form-control" id="address" placeholder="Address" required>
-					</div>
-
-					<div class="col-md-3 mb-3" id="text">
-						<label for="city">City</label>
-						<input type="text" class="form-control" id="city" placeholder="City" required>
-					</div>
-					
-
-					<div class="col-md-3 mb-3" id="text">
-						<label for="postalCode">Postal Code</label>
-						<input type="text" class="form-control" id="postalCode" placeholder="Postal Code" required>
-					</div>
-				</div>
+			<div class="custom-control custom-checkbox" id="text">
+				<input type="checkbox" class="custom-control-input" id="givenRecipt" value="Was given a Recipt">
+				<label class="custom-control-label" for="givenRecipt">Check if given a receipt</label>
+			</div>
 
 
-				<div class="form-row" id="text">
-					<div class="col-md-4 mb-3">
-						<label for="monetaryAmount">Monetary Amount: </label>
-						<input type="text" class="form-control" id="monetaryAmount" placeholder="$$" required>
-					</div>
-				</div>
-
-
-				<div class="form-row">
-					<div class="col-md-4 mb-3" id="text">
-						<label for="nonMonetaryAmount">Estimated Non-Monetary Amount: </label>
-						<input type="text" class="form-control" id="nonMonetaryAmount" placeholder="$$"  required>
-					</div>
-
-					<div class="col-md-4 mb-3" id="text">
-						<label for="nonMonetaryItem">Non-Monetary Item: </label>
-						<input type="text" class="form-control" id="nonMonetaryItem" placeholder="Item"  required>
-					</div>
-
-				</div>
-
-
-				<div class="custom-control custom-checkbox" id="text">
-					<input type="checkbox" class="custom-control-input" id="givenRecipt" value="Was given a Recipt">
-					<label class="custom-control-label" for="givenRecipt">Check if given a recipt</label>
-				</div>
-
-
-				<div class="custom-control custom-checkbox" id="text">
-					<input type="checkbox" class="custom-control-input" id="givenCard"  value="Was given a card">
-					<label class="custom-control-label" for="givenCard">Check if given a thank you card</label>
-				</div>
+			<div class="custom-control custom-checkbox" id="text">
+				<input type="checkbox" class="custom-control-input" id="givenCard"  value="Was given a card">
+				<label class="custom-control-label" for="givenCard">Check if given a thank you card</label>
+			</div>
 
 		</form> <!-- All entries for form -->
 
@@ -128,14 +135,6 @@ This is the html file for the donorForm
 		<div class="button">
 			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage(document.frm.phnum)" value="Submit">Submit</button>
 		</div>
-
-		<div class="container-fluid">
-			<label>Thank you</label>
-		</div>
-
-
-		<p id="test"></p>
-
 
 	</div>
   
