@@ -7,7 +7,7 @@ const path = require ('path')
 const url = require ('url')
 
 /*
-
+This function reads the information from the donorForm.html file and creates a report/text document
 */
 function infoStorage() {
 
