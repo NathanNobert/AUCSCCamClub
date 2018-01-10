@@ -12,11 +12,11 @@ It changes the window to the corresponding window to fill out the forms.
 **/
 function openNextPage(idOfButton) {
 	if(idOfButton === 'Donors'){
-    	document.getElementById(Donors).innerHTML = window.location.replace("donorForm.html");
+    	document.getElementById(Donors).innerHTML = window.location.replace("existingOrNewDonor.html");
 	}else if(idOfButton === 'volunteer'){
-		document.getElementById(volunteer).innerHTML = window.location.replace("volunteerForm.html");
+		document.getElementById(volunteer).innerHTML = window.location.replace("existingOrNewVolunteer.html");
 	}else if(idOfButton === 'member'){
-		document.getElementById(member).innterHTML = window.location.replace("memberForm.html");
+		document.getElementById(member).innterHTML = window.location.replace("existingOrNewMember.html");
 	}
 }//openNextPage
 
