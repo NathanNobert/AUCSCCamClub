@@ -28,7 +28,7 @@ function infoStorage(inputtxt) {
 			item: document.getElementById("nonMonetaryItem").value,
 			comment: document.getElementById("commentBox").value
 		}
-	];
+	];//donorFormInfo
 
 
 	var donorForm = /^\d{10}$/;
@@ -54,7 +54,7 @@ function infoStorage(inputtxt) {
 	else{
 		alert("Not a valid Phone Number");
 		return false;
-	}
+	}//else
 
 }//infoStorage
 
@@ -69,7 +69,7 @@ function askWhereToSave(){
 		    return;
 		}
 	});
-}
+}//askWhereToSave
 
 
 /*
@@ -77,4 +77,4 @@ This function sends the user back to the login screen
 */
 function gotoMainMenu() {
   document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
-}
+}//gotoMainMenu
