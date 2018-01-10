@@ -15,9 +15,11 @@ This is the html file for the donorForm
 <body>
 	<button class="btn btn-secondary" onclick="gotoMainMenu()">Go Back</button>
 
+	<label id="title">Donor Form:</label>
+
 	<!-- This div contains all the entries for the form -->
 	<div class="container-fluid">
-		<form id="formOne">
+		<form id="formOne" name="frm">
 			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
 					<label for="firstName">First name</label>
@@ -50,7 +52,7 @@ This is the html file for the donorForm
 
 				<div class="col-md-4 mb-3" id="text">
 					<label for="phoneNumber">Phone Number</label>
-					<input type="text" max="11" class="form-control" id="phoneNumber" placeholder="Phone Number" onkeypress="validatingPhoneNum()" required>
+					<input type="text" max="11" class="form-control" id="phoneNumber" placeholder="Phone Number"  name="phnum" )' required>
 				</div>
 
 			</div>
@@ -124,7 +126,7 @@ This is the html file for the donorForm
 		</div>
 
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage()" value="Submit">Submit</button>
+			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage(document.frm.phnum)" value="Submit">Submit</button>
 		</div>
 
 		<div class="container-fluid">
