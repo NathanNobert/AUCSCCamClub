@@ -1,4 +1,11 @@
+/*
+This css file is used to add any custome css for the donorForm.html file
+*/
 .container-fluid{
+	background-color: rgb(51,51,51);
+}
+
+body {
 	background-color: rgb(51,51,51);
 }
 
@@ -6,7 +13,7 @@
 	background-color: rgb(102,204,0);
 }
 #validationDefaultUsername{
-	
+
 }
 
 #text{
@@ -19,10 +26,21 @@
 .button{
 	padding-bottom: 1cm;
 	padding-top: 0.5cm;
+
 	align-content: center;
 	background-color: rgb(51,51,51);
+}
+.selectOneOption{
+	padding-bottom: 1cm;
+	padding-top: 0.5cm;
+	padding-right: 0.5cm;
+	align-content: center
 }
 
 #background {
 	background: #66CC00 none no-repeat scroll 0 0;
+}
+
+.btn-secondary {
+	float: right;
 }
