@@ -16,6 +16,7 @@ function moveToDonorForm() {
 }
 
 function moveToExisistingForm() {
-	var searchedFile = "../donorFormEntries/Fudd, Elmer.txt"
+	var testThing = "Fudd, Elmer.txt"
+	var searchedFile = "../donorFormEntries/" + testThing
 	document.getElementById(search).innerHTML = window.location.replace(searchedFile);
 }
