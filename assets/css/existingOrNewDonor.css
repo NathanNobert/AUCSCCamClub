@@ -25,8 +25,7 @@ body {
 
 .btn-secondary{
 	background-color: rgb(0, 153, 204);
-	margin-left: 350px;
-	
+	align-self: center;
 }
 #background {
 background: #66CC00 none no-repeat scroll 0 0;
