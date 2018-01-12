@@ -4,7 +4,6 @@ This file contains all the javascript used for the donorForm page.
 const{app, BrowserWindow} = require('electron')
 const path = require ('path')
 const url = require ('url')
-const BrowserWindow = electron.remote.BrowserWindow
 //const {dialog} = require('electron').remote;
 /*
 This function reads the information from the donorForm.html file and creates a report/text document
@@ -49,9 +48,6 @@ function infoStorage(inputtxt) {
 
 		alert("Your information has been submitted, Thank you.", "Donor Form Submission");
 		gotoMainMenu();
-
-
-
 		return true;
 
 	}//if
@@ -74,7 +70,6 @@ function askWhereToSave(){
 		}
 	});
 }//askWhereToSave
-
 
 /*
 This function sends the user back to the login screen

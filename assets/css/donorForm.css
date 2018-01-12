@@ -23,6 +23,16 @@ body {
 	word-spacing: 2px;
 	color: #66CC00;
 }
+
+#title{
+	font-family: "Arial Black",Gadget,sans-serif;
+	font-size: 30px;
+	letter-spacing: -0.6px;
+	word-spacing: 2px;
+	color: #66CC00;
+	padding-left: 12cm;
+}
+
 #ageGroupDropDown{
 	font-family: "Arial Black",Gadget,sans-serif;
 	font-size: 18px;
