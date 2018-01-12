@@ -1,7 +1,6 @@
 /*
 This file contains all the javascript used for the donorForm page.
 */
-
 const{app, BrowserWindow} = require('electron')
 const path = require ('path')
 const url = require ('url')
@@ -28,11 +27,11 @@ function infoStorage(inputtxt) {
 			item: document.getElementById("nonMonetaryItem").value,
 			comment: document.getElementById("commentBox").value
 		}
-	];
-
+	];//donorFormInfo
 
 	var donorForm = /^\d{10}$/;
 	if(inputtxt.value.match(donorForm)){
+		
 		var fs = require('fs');
 		var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
 		stream.once('open', function(fd) {
@@ -46,15 +45,19 @@ function infoStorage(inputtxt) {
 		stream.write("Comments: " + donorFormInfo[0].comment);
 		stream.end();
 		});
+
 		alert("Your information has been submitted, Thank you.", "Donor Form Submission");
 		gotoMainMenu();
+
+
+
 		return true;
 
 	}//if
 	else{
 		alert("Not a valid Phone Number");
 		return false;
-	}
+	}//else
 
 }//infoStorage
 
@@ -69,12 +72,11 @@ function askWhereToSave(){
 		    return;
 		}
 	});
-}
-
+}//askWhereToSave
 
 /*
 This function sends the user back to the login screen
 */
 function gotoMainMenu() {
   document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
-}
+}//gotoMainMenu
