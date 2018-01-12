@@ -33,8 +33,8 @@ function infoStorage(inputtxt) {
 	if(inputtxt.value.match(donorForm)){
 		
 		var fs = require('fs');
-		var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
-		stream.once('open', function(fd) {
+		var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt" , {'flags':'a'});
+		/*stream.once('open', function(fd) {*/
 		stream.write("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
 		stream.write("Contact Name: " + donorFormInfo[0].contact + "\r\n");
 		stream.write("Email Address: " + donorFormInfo[0].email + "\r\n");
@@ -44,7 +44,7 @@ function infoStorage(inputtxt) {
 		stream.write("Non-Monetary estimated value: $" + donorFormInfo[0].nonMonetary + " The item donated: " + donorFormInfo[0].item + "\r\n" + "\r\n");
 		stream.write("Comments: " + donorFormInfo[0].comment);
 		stream.end();
-		});
+		//});
 
 		alert("Your information has been submitted, Thank you.", "Donor Form Submission");
 		gotoMainMenu();
