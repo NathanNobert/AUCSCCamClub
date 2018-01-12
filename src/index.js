@@ -97,3 +97,10 @@ This function sends the user back to the login screen
 function gotoSignInPage() {
   document.getElementById(gotoSignInPage).innerHTML = window.location.replace("index.html");
 }//gotoSignInPage
+
+/*
+This functions sends the user to the options page
+*/
+function gotoOptionsPage() {
+  document.getElementById(gotoSignInPage).innerHTML = window.location.replace("optionsPage.html");
+}

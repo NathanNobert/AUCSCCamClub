@@ -81,6 +81,5 @@ function gotoMainMenu() {
 	if(confirm("Are you sure?", "Go Back To Main Menu")){
 		document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
 	}
- 	
-  
-}//gotoMainMenu
+ }//gotoMainMenu
+
