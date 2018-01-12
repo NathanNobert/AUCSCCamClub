@@ -1,7 +1,6 @@
 /*
 This file contains all the javascript used for the donorForm page.
 */
-
 const{app, BrowserWindow} = require('electron')
 const path = require ('path')
 const url = require ('url')
@@ -30,9 +29,9 @@ function infoStorage(inputtxt) {
 		}
 	];//donorFormInfo
 
-
 	var donorForm = /^\d{10}$/;
 	if(inputtxt.value.match(donorForm)){
+		
 		var fs = require('fs');
 		var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
 		stream.once('open', function(fd) {
@@ -46,8 +45,12 @@ function infoStorage(inputtxt) {
 		stream.write("Comments: " + donorFormInfo[0].comment);
 		stream.end();
 		});
+
 		alert("Your information has been submitted, Thank you.", "Donor Form Submission");
 		gotoMainMenu();
+
+
+
 		return true;
 
 	}//if
@@ -70,7 +73,6 @@ function askWhereToSave(){
 		}
 	});
 }//askWhereToSave
-
 
 /*
 This function sends the user back to the login screen
