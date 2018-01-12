@@ -16,7 +16,9 @@ function moveToDonorForm() {
 }
 
 function moveToExisistingForm() {
-	var testThing = "Fudd, Elmer.txt"
-	var searchedFile = "../donorFormEntries/" + testThing
+	var searchedFirstName = document.getElementById("firstname").value;
+	var searchedLastName = document.getElementById("lastname").value;
+	var fileToSearch = searchedLastName + ", " + searchedFirstName + ".txt";
+	var searchedFile = "../donorFormEntries/" + fileToSearch
 	document.getElementById(search).innerHTML = window.location.replace(searchedFile);
 }
