@@ -5,6 +5,7 @@ This file contains all the javascript used for the donorForm page.
 const{app, BrowserWindow} = require('electron')
 const path = require ('path')
 const url = require ('url')
+const BrowserWindow = electron.remote.BrowserWindow
 
 //const {dialog} = require('electron').remote;
 
@@ -73,6 +74,15 @@ function askWhereToSave(){
 	});
 }
 
+var backBtn = document.getElementById("backButton");
+
+backBtn.addEventListener('click', () => {
+	alert("Testing");
+	document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html")
+});
+function confirmMessage(){
+	gotoMainMenu()
+}
 
 /*
 This function sends the user back to the login screen
