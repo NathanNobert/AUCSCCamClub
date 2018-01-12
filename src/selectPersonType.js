@@ -1,3 +1,8 @@
+/*
+This file contains all of the javascript for the selectPersonType.html file
+This directs where the user goes and which form they can choose, will send the user to that form.
+*/
+
 const remote = require('electron').remote
 const main = remote.require('./index.js')
 
@@ -13,7 +18,7 @@ function openNextPage(idOfButton) {
 	}else if(idOfButton === 'member'){
 		document.getElementById(member).innterHTML = window.location.replace("memberForm.html");
 	}
-}
+}//openNextPage
 
 /*
 This function is called when the user clicks the quit button, this closes the application
@@ -21,5 +26,5 @@ This function is called when the user clicks the quit button, this closes the ap
 window = remote.getCurrentWindow();
 function quitApp(){
   window.close();
-}
+}//quitApp
 
