@@ -75,11 +75,19 @@ function askWhereToSave(){
 }//askWhereToSave
 
 /*
-	This function asks the user if they want to go back to main menu, then goes to main menu.
+This function just sends the user back to the main menu without confirmation
+This is intentional because after submitting a form, just send the user back
 */
 function gotoMainMenu() {
+	document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+ }//gotoMainMenu
+
+/*
+This function gets called when the user clicks the go back button, confirming if they want to go back
+to the main menu.
+*/
+function goBackToMainMenu(){
 	if(confirm("Are you sure?", "Go Back To Main Menu")){
 		document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
 	}
- }//gotoMainMenu
-
+}
