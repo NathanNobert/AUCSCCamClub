@@ -46,6 +46,8 @@ function infoStorage(inputtxt) {
 		stream.end();
 		});
 
+
+
 		alert("Your information has been submitted, Thank you.", "Donor Form Submission");
 		gotoMainMenu();
 
@@ -91,3 +93,30 @@ function goBackToMainMenu(){
 		document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
 	}
 }
+
+
+	var pdfDoc = new jsPDF();
+function makePDF(){
+	alert("making a pdf");
+
+	pdfDoc.text('Hello world!', 10, 10);
+	pdfDoc.save('sample.pdf');
+}
+
+
+var doc = new jsPDF();
+
+
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+$('#cmd').click(function () {   
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    alert("pdf?");
+    doc.save('sample-file.pdf');
+});
