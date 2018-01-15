@@ -10,13 +10,7 @@ const path = require ('path')
 
 const url = require ('url')
 const fs = require('fs')
-const electron = require('electron')
-const Menu = electron.Menu
-const Tray = electron.Tray
-const ipc = electron.ipcMain
-const shell = electron.shell
-
-let mainWindow
+const PDFDocument = require('pdfkit')
 
 
 function thankYouClick() {
@@ -24,14 +18,11 @@ function thankYouClick() {
 	dialog("HI");
 } 
 
-//const {dialog} = require('electron').remote;
-
 /*
 
 This function reads the information from the donorForm.html file and creates a report/text document
 
 */
-
 function infoStorage() {
 
 	//var fileName = askWhereToSave();
@@ -42,33 +33,19 @@ function infoStorage() {
 		{
 
 			first: document.getElementById("firstName").value,
-
 			last: document.getElementById("lastName").value,
-
 			contact: document.getElementById("contactName").value,
-
 			email: document.getElementById("emailAddress").value,
-
 			phone: document.getElementById("phoneNumber").value,
-
 			addressInfo: document.getElementById("address").value,
-
 			cityInfo: document.getElementById("city").value,
-
 			postal: document.getElementById("postalCode").value,
-
 			monetary: document.getElementById("monetaryAmount").value,
-
 			nonMonetary: document.getElementById("nonMonetaryAmount").value,
-
 			item: document.getElementById("nonMonetaryItem").value,
-
 			receiptCheckBox: document.getElementById("givenRecipt").value,
-
 			thankYouCheckBox: document.getElementById("givenCard").value,
-
 			comment: document.getElementById("commentBox").value
-
 		}
 
 	];//donorFormInfo
@@ -76,49 +53,32 @@ function infoStorage() {
 
 
 	var fs = require('fs');
-
 	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
-
 	stream.once('open', function(fd) {
-
 	stream.write("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
-
 	stream.write("Contact Name: " + donorFormInfo[0].contact + "\r\n");
-
 	stream.write("Email Address: " + donorFormInfo[0].email + "\r\n");
-
 	stream.write("Phone Number: " + donorFormInfo[0].phone + "\r\n");
-
 	stream.write("Address: " + donorFormInfo[0].addressInfo + " , " + donorFormInfo[0].cityInfo + " , " + donorFormInfo[0].postal + "\r\n");
-
 	stream.write("Monetary amount donated: $" + donorFormInfo[0].monetary + "\r\n");
-
 	stream.write("Non-Monetary estimated value: $" + donorFormInfo[0].nonMonetary + " The item donated: " + donorFormInfo[0].item + "\r\n");
-
 	stream.write(donorFormInfo[0].receiptCheckBox + "  " + donorFormInfo[0].thankYouCheckBox + "\r\n" + "\r\n");
-
 	stream.write("Comments: " + donorFormInfo[0].comment);
-
 	stream.end();
-
 	});
 
 
 	alert("Your information has been submitted, Thank you.", "Donor Form Submission");
-	gotoMainMenu();
+	//gotoMainMenu();
 	
 
 }//infoStorage
 
 
 /*
-
 Will use this function if we decide to give the user the option to choose where they want to save
-
 their donor form files.
-
 */
-
 function askWhereToSave(){
 
 	dialog.showSaveDialog((fileName) => {
@@ -179,55 +139,19 @@ function goBackToMainMenu(){
 
 
 
-// Trying print to pdf stuff
-
+/*
+This function gets called when the user clicks the generate-pdf button,
+This creates a pdf report 
+*/
 function makePDF(){
-	// var shell = WScript.CreateObject("WScript.Shell");
-	// shell.Run("electron-pdf donorFormV2.html ~/Desktop/sample.pdf");
-	alert("pdf?");
-	fs.writeFileSync("10111.pdf", body,'binary');
-	/*
-	alert("making a pdf");
-	var pdfDoc = new jsPDF();
+	// # Create a document
+	doc = new PDFDocument
 
-	pdfDoc.text('Hello world!', 10, 10);
-	pdfDoc.output('save', 'sample.pdf');
-	*/
+	// # Pipe its output somewhere, like to a file or HTTP response
+	// # See below for browser usage
+	doc.pipe(fs.createWriteStream('sample.pdf'));
+
+	// # Finalize PDF file
+	doc.end()
 }
 
-
-// var doc = new jsPDF();
-
-
-// var specialElementHandlers = {
-//     '#editor': function (element, renderer) {
-//         return true;
-//     }
-// };
-// $('#cmd').click(function () {   
-//     doc.fromHTML($('#content').html(), 15, 15, {
-//         'width': 170,
-//             'elementHandlers': specialElementHandlers
-//     });
-//     alert("pdf?");
-//     doc.save('sample-file.pdf');
-// });
-
-
-// ipc.on('print-to-pdf', function(event) {
-// 	alert("did print-to-pdf work?");
-// 	const pdfPath = path.join(__dirname, '/print.pdf'); //os.tmpdir(), 
-// 	const window = BrowserWindow.fromWebContents(event.sender);
-
-// 	window.webContents.printToPDF({}, function(error, data) {
-// 		if(error) return console.log(error.message);
-
-// 		fs.writeFile(pdfPath, data, function(err) {
-// 			if(err) return console.log(err.message);
-
-// 			alert("did it work?");
-// 			shell.openExternal('file://' + pdfPath);
-// 			event.sender.send('wrote-pdf', pdfPath);
-// 		});
-// 	})
-// })
