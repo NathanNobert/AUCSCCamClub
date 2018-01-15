@@ -54,7 +54,14 @@ This will not work without a server to store the password or a database
 */
 function submitChangePassword(){
   if(document.getElementById("oldPassword").value == passwordOfClient){
-    passwordOfClient = document.getElementById("newPassword").value;;
-  }//if
-  alert("Password Changed!", "Password Change Request");
+    if(document.getElementById("newPassword").value == document.getElementById("confirmNewPassword").value){
+      passwordOfClient = document.getElementById("newPassword").value;
+      alert("Password Changed!", "Password Change Request");
+    }else{
+      alert("Your two new passwords do not match. Please try again.", "Password Change Request");
+    }
+  }else{
+    alert("Your old password was not entered correctly.", "Password Change Request");
+  }
+  
 }//submitChangePassword
