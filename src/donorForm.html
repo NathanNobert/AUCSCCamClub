@@ -15,7 +15,6 @@ This is the html file for the donorForm
 <body>
 	<button class="btn btn-secondary" onclick="goBackToMainMenu()">Go Back</button>
 
-
 	<!-- This div contains full page -->
 	<div class="container-fluid">
 
@@ -156,12 +155,12 @@ This is the html file for the donorForm
 
 		<!-- This div creates the button for Printing Receipt -->
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg">Print Receipt</button>
+			<button type="button" class="btn btn-primary btn-lg" id="receipt" onclick="printReceipt()">Print Receipt</button>
 		</div>
 
 		<!-- This div creates the button for Printing Thank you card -->
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg">Print Thank you card</button>
+			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="createThankYouCard()">Print Thank you card</button>
 		</div>
 
 		<!-- This div creates the button for submitting file -->
