@@ -22,7 +22,8 @@ This is the html file for the donorForm
 		</div>
 
 	<button class="btn btn-secondary" onclick="goBackToMainMenu()">Go Back</button>
-	
+	<!-- <button class="btn btn-secondary" onclick="makePDF()">Generate a pdf</button> -->
+
 	<!-- This div contains full page -->
 	<div class="container-fluid">
 
@@ -137,7 +138,7 @@ This is the html file for the donorForm
 
 			<!-- This div creates the checkbox and label for receipt -->
 			<div class="custom-control custom-checkbox" id="text">
-				<input type="checkbox" class="custom-control-input" id="givenRecipt" value="Was given a Recipt">
+				<input type="checkbox" class="custom-control-input" id="givenReceipt" value="Was given a Recipt">
 				<label class="custom-control-label" for="givenRecipt">Check if given a receipt</label>
 			</div>
 
@@ -172,16 +173,12 @@ This is the html file for the donorForm
 
 	</div><!-- All entries page-->
 
-
-
-	<link rel="stylesheet" href="node_modules/smalltalk/dist/smalltalk.min.css">
-
-
   	<!-- 
 	Required Javascript for handling the form information
   	 -->
+  	 <!-- <script type="text/javascript" src="renderer.js"></script> -->
 	<script type="text/javascript" src="donorForm.js"></script>
-	<script type="text/javascript" src="renderer.js"></script>
+
 
 	<!--Required Javascript scripts for using Bootstrap and jQuery to build faster and more appealing applications
 	-->

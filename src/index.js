@@ -66,6 +66,8 @@ function createWindow () {
       window.setMenu(null);
   });
 
+
+
   // Create the browser window.
   win = new BrowserWindow({show: false, width: 800, height: 600});
 
@@ -78,6 +80,8 @@ function createWindow () {
 
   //waiting to show the screen until now allows the screen and elements to load.
   win.show();
+
+
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -136,3 +140,8 @@ This functions sends the user to the options page
 function gotoOptionsPage() {
   document.getElementById(gotoSignInPage).innerHTML = window.location.replace("optionsPage.html");
 }
+
+
+ const fs = require('fs');
+
+
