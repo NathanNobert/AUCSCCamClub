@@ -4,7 +4,7 @@ const url = require('url')
 
 function moveToDonorForm() {
 
-	document.getElementById(newdonor).innerHTML = window.location.replace("donorForm.html");
+	document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
 }
 
 function moveToExisistingForm() {
@@ -28,7 +28,7 @@ function moveToExisistingForm() {
 }
 
 	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
-}
+
 
 var input = document.getElementById("predictiveList");
 new Awesomplete(input, {

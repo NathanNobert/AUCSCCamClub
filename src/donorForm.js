@@ -173,12 +173,12 @@ function goBackToMainMenu(){
 
 // Trying print to pdf stuff
 
-	var pdfDoc = new jsPDF();
 function makePDF(){
 	alert("making a pdf");
+	var pdfDoc = new jsPDF();
 
 	pdfDoc.text('Hello world!', 10, 10);
-	pdfDoc.save('sample.pdf');
+	pdfDoc.output('save', 'sample.pdf');
 }
 
 
