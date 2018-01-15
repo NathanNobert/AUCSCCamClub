@@ -11,10 +11,7 @@ const path = require ('path')
 const url = require ('url')
 
 
-function thankYouClick() {
-	alert("HELLO");
-	dialog("HI");
-} 
+
 
 //const {dialog} = require('electron').remote;
 
@@ -28,6 +25,8 @@ function infoStorage() {
 
 	//var fileName = askWhereToSave();
 
+
+	
 
 	var donorFormInfo = [
 
@@ -150,11 +149,6 @@ function printReceipt() {
 	//Open a new Window
 }//printReceipt
 
-function createThankYouCard(){
-	alert("createThankYouCard called");
-
-}//createThankYouCard
-
 
 /*
 This function gets called when the user clicks the go back button, confirming if they want to go back
@@ -165,52 +159,3 @@ function goBackToMainMenu(){
 		document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
 	}
 }
-
-
-
-
-
-
-// Trying print to pdf stuff
-
-	var pdfDoc = new jsPDF();
-function makePDF(){
-	alert("making a pdf");
-
-	pdfDoc.text('Hello world!', 10, 10);
-	pdfDoc.save('sample.pdf');
-}
-
-
-var doc = new jsPDF();
-
-
-var specialElementHandlers = {
-    '#editor': function (element, renderer) {
-        return true;
-    }
-};
-$('#cmd').click(function () {   
-    doc.fromHTML($('#content').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    alert("pdf?");
-    doc.save('sample-file.pdf');
-});
-
-
-ipc.on('print-to-pdf', function(event) {
-	const pdfPath = path.join('/print.pdf'); //os.tmpdir(), 
-	const win = BrowserWindow.fromWebContents(event.sender);
-
-	win.webContents.printToPDF({}, function(error, data) {
-		if(error) return console.log(error.message);
-
-		fs.writeFile(pdfPath, data, function(err) {
-			if(err) return console.log(err.message);
-			shell.openExternal('file://' + pdfPath);
-			event.sender.send('wrote-pdf', pdfPath);
-		});
-	})
-})
