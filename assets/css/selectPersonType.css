@@ -4,3 +4,31 @@ This css files adds custom css for the selectPersonType.html file
 .btn-secondary {
 	float: right;
 }
+
+.fixed{
+	padding-right: 5cm;
+	padding-top: 1cm;	
+}
+
+
+.jumbotron{
+	padding-left: 0.5cm;
+	height: 6cm;
+	width: 7cm;
+}
+
+#member{
+	width: 6cm;
+	height:5cm;
+	font-size: 35px;
+}
+#volunteer{
+	width: 6cm;
+	height:5cm ;
+	font-size: 35px;	
+}
+#Donors{
+	width: 6cm;
+	height:5cm ;
+	font-size: 35px;
+}
