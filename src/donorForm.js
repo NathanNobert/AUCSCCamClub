@@ -66,6 +66,7 @@ function infoStorage() {
 	];//donorFormInfo
 
 
+
 	var fs = require('fs');
 
 	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
@@ -97,7 +98,7 @@ function infoStorage() {
 
 	alert("Your information has been submitted, Thank you.", "Donor Form Submission");
 	gotoMainMenu();
-
+	
 
 }//infoStorage
 
@@ -135,9 +136,25 @@ This is intentional because after submitting a form, just send the user back
 */
 
 function gotoMainMenu() {
+  document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+}//gotoMainMenu
 
-	document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
- }//gotoMainMenu
+function printReceipt() {
+	//Save the variables in the form that you need to print the receipt. 
+	let clientName = document.getElementById("firstName").value +" "+ document.getElementById("lastName").value;
+	let amountOfReceipt = document.getElementById("monetaryAmount").value + document.getElementById("nonMonetaryAmount").value;
+	let dateOfDonation = document.getElementById("donationDate").value;
+	alert("Name of client " + clientName +" Amount donated: "+amountOfReceipt+ " Date donated: "+dateOfDonation);
+
+	document.getElementById(receipt).innerHTML = window.location.replace("printDonationReceipt.html");
+	//Open a new Window
+}//printReceipt
+
+function createThankYouCard(){
+	alert("createThankYouCard called");
+
+}//createThankYouCard
+
 
 /*
 This function gets called when the user clicks the go back button, confirming if they want to go back
