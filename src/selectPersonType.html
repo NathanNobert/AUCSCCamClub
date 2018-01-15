@@ -22,13 +22,35 @@ This is the main menu for our application, this is where the user selects what f
 	<button type="submit" class="btn btn-secondary location-left"  id="logOut" onclick="gotoOptionsPage()">Options</button>
 
 	<img src="../assets/images/logoWithTextUnder.png" id="logoWithTextUnder">
-	<div class = "fixed">
-		<div class="jumbotron">
-			<button type="button" class="btn btn-primary btn-lg btn-block" id="member" onclick="openNextPage('member')">Member</button>
-			<button type="button" class="btn btn-primary btn-lg btn-block" id="volunteer" onclick="openNextPage('volunteer')">Volunteer</button>
-			<button type="button" class="btn btn-primary btn-lg btn-block" id="Donors" onclick="openNextPage('Donors')">Donors</button>
-		</div>
+	<div class = "fixed">		
+		<!-- This div is where the first row input is organized -->
+		<div class="form-row">
+			<!-- This div creates the textbox and label for first name -->
+			<div class="col-md-4 mb-3" id="text">
+				<div class="jumbotron">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="member" onclick="openNextPage('member')">Member</button>
+				</div>
+			</div>
+
+			<!-- This div creates the textbox and label for last name -->
+			<div class="col-md-4 mb-3" id="text">
+				<div class="jumbotron">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="volunteer" onclick="openNextPage('volunteer')">Volunteer</button>
+				</div>
+			</div>
+
+			<!-- This div creates the textbox and label for contact name -->
+			<div class="col-md-4 mb-3" id="text">
+				<div class="jumbotron">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="Donors" onclick="openNextPage('Donors')">Donors</button>
+				</div>
+			</div>
+
+		</div><!-- All entries for first row -->
+		
 	</div>
+
+
 	<script type="text/javascript" src="selectPersonType.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
