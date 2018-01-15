@@ -19,11 +19,11 @@
     "fs-exists-sync": "^0.1.0",
     "gulp-open": "^2.1.0",
     "jquery": "^3.2.1",
+    "jspdf": "^1.3.5",
     "open": "0.0.5",
     "opn": "^5.1.0",
+    "pdfkit": "^0.8.3",
     "popper.js": "^1.12.9",
-    "window-popup": "^1.1.0",
-    "jspdf": "^1.3.5"
-
+    "window-popup": "^1.1.0"
   }
 }

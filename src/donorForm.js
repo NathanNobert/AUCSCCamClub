@@ -9,6 +9,14 @@ const{app, BrowserWindow} = require('electron')
 const path = require ('path')
 
 const url = require ('url')
+const fs = require('fs')
+const electron = require('electron')
+const Menu = electron.Menu
+const Tray = electron.Tray
+const ipc = electron.ipcMain
+const shell = electron.shell
+
+let mainWindow
 
 
 function thankYouClick() {
@@ -174,43 +182,52 @@ function goBackToMainMenu(){
 // Trying print to pdf stuff
 
 function makePDF(){
+	// var shell = WScript.CreateObject("WScript.Shell");
+	// shell.Run("electron-pdf donorFormV2.html ~/Desktop/sample.pdf");
+	alert("pdf?");
+	fs.writeFileSync("10111.pdf", body,'binary');
+	/*
 	alert("making a pdf");
 	var pdfDoc = new jsPDF();
 
 	pdfDoc.text('Hello world!', 10, 10);
 	pdfDoc.output('save', 'sample.pdf');
+	*/
 }
 
 
-var doc = new jsPDF();
+// var doc = new jsPDF();
 
 
-var specialElementHandlers = {
-    '#editor': function (element, renderer) {
-        return true;
-    }
-};
-$('#cmd').click(function () {   
-    doc.fromHTML($('#content').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    alert("pdf?");
-    doc.save('sample-file.pdf');
-});
+// var specialElementHandlers = {
+//     '#editor': function (element, renderer) {
+//         return true;
+//     }
+// };
+// $('#cmd').click(function () {   
+//     doc.fromHTML($('#content').html(), 15, 15, {
+//         'width': 170,
+//             'elementHandlers': specialElementHandlers
+//     });
+//     alert("pdf?");
+//     doc.save('sample-file.pdf');
+// });
 
 
-ipc.on('print-to-pdf', function(event) {
-	const pdfPath = path.join('/print.pdf'); //os.tmpdir(), 
-	const win = BrowserWindow.fromWebContents(event.sender);
+// ipc.on('print-to-pdf', function(event) {
+// 	alert("did print-to-pdf work?");
+// 	const pdfPath = path.join(__dirname, '/print.pdf'); //os.tmpdir(), 
+// 	const window = BrowserWindow.fromWebContents(event.sender);
 
-	win.webContents.printToPDF({}, function(error, data) {
-		if(error) return console.log(error.message);
+// 	window.webContents.printToPDF({}, function(error, data) {
+// 		if(error) return console.log(error.message);
 
-		fs.writeFile(pdfPath, data, function(err) {
-			if(err) return console.log(err.message);
-			shell.openExternal('file://' + pdfPath);
-			event.sender.send('wrote-pdf', pdfPath);
-		});
-	})
-})
+// 		fs.writeFile(pdfPath, data, function(err) {
+// 			if(err) return console.log(err.message);
+
+// 			alert("did it work?");
+// 			shell.openExternal('file://' + pdfPath);
+// 			event.sender.send('wrote-pdf', pdfPath);
+// 		});
+// 	})
+// })
