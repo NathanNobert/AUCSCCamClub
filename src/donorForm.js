@@ -77,3 +77,19 @@ This function sends the user back to the login screen
 function gotoMainMenu() {
   document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
 }//gotoMainMenu
+
+function printReceipt() {
+	//Save the variables in the form that you need to print the receipt. 
+	let clientName = document.getElementById("firstName").value +" "+ document.getElementById("lastName").value;
+	let amountOfReceipt = document.getElementById("monetaryAmount").value + document.getElementById("nonMonetaryAmount").value;
+	let dateOfDonation = document.getElementById("donationDate").value;
+	alert("Name of client " + clientName +" Amount donated: "+amountOfReceipt+ " Date donated: "+dateOfDonation);
+
+	document.getElementById(receipt).innerHTML = window.location.replace("printDonationReceipt.html");
+	//Open a new Window
+}//printReceipt
+
+function createThankYouCard(){
+	alert("createThankYouCard called");
+
+}//createThankYouCard
