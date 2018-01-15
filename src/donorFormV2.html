@@ -16,25 +16,15 @@ This is the html file for the donorForm
 
 </head>
 <body>
-	<!-- This div creates the Title-->
-		<div class="">
-			<h1 class="titleOfForm">Donor Form</h1>
-		</div>
 
 	<button class="btn btn-secondary" onclick="goBackToMainMenu()">Go Back</button>
-	<button class="btn btn-secondary" onclick="makePDF()">Generate a pdf</button>
 
-	<label id="pdf-path"></label>
-	<button id='print-pdf'>Print</button>
+	<!-- This div creates the Title-->
+	<div class="container-fluid">
+		<h1 class="titleOfForm">Donor Form</h1>
+	</div>
 
-<div id="content">
-    <h3>Sample h3 tag</h3>
-    <p>Sample pararaph</p>
-</div>
-<div id="editor"></div>
-<button id="cmd">Generate PDF</button>
 
-	<!-- This div contains full page -->
 	<div class="container-fluid">
 
 	
@@ -148,13 +138,13 @@ This is the html file for the donorForm
 
 			<!-- This div creates the checkbox and label for receipt -->
 			<div class="custom-control custom-checkbox" id="text">
-				<input type="checkbox" class="custom-control-input" id="givenRecipt" value="Was given a Recipt">
+				<input type="checkbox" id="receiptCheck" disabled="disabled" class="custom-control-input" value="Was given a receipt">
 				<label class="custom-control-label" for="givenRecipt">Check if given a receipt</label>
 			</div>
 
 			<!-- This div creates the checkbox and label for thank you card -->
 			<div class="custom-control custom-checkbox" id="text">
-				<input type="checkbox" class="custom-control-input" id="givenCard"  value="Was given a card">
+				<input type="checkbox" class="custom-control-input" disabled="disabled" id="givenCard"  value="Was given a card">
 				<label class="custom-control-label" for="givenCard">Check if given a thank you card</label>
 			</div>
 
@@ -168,12 +158,12 @@ This is the html file for the donorForm
 
 		<!-- This div creates the button for Printing Receipt -->
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg">Print Receipt</button>
+			<button type="button" class="btn btn-primary btn-lg" id="receipt" onclick="printReceipt()">Print Receipt</button>
 		</div>
 
 		<!-- This div creates the button for Printing Thank you card -->
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg">Print Thank you card</button>
+			<button type="button" class="btn btn-primary btn-lg" onclick="createThankYouCard()">Print Thank you card</button>
 		</div>
 
 		<!-- This div creates the button for submitting file -->
