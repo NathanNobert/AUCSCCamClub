@@ -25,9 +25,6 @@ function infoStorage() {
 
 	//var fileName = askWhereToSave();
 
-
-	
-
 	var donorFormInfo = [
 
 		{
