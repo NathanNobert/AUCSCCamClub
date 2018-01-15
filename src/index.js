@@ -22,9 +22,40 @@ Known Bugs:
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
-
+const swal = require('sweetalert2')
 
 let win
+
+
+
+swal({
+  title: 'Submit email to run ajax request',
+  input: 'email',
+  showCancelButton: true,
+  confirmButtonText: 'Submit',
+  showLoaderOnConfirm: true,
+  preConfirm: (email) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (email === 'taken@example.com') {
+          swal.showValidationError(
+            'This email is already taken.'
+          )
+        }
+        resolve()
+      }, 2000)
+    })
+  },
+  allowOutsideClick: () => !swal.isLoading()
+}).then((result) => {
+  if (result.value) {
+    swal({
+      type: 'success',
+      title: 'Ajax request finished!',
+      html: 'Submitted email: ' + result.value
+    })
+  }
+})
 
 /*
 This function starts the first window for the user to see the interface
@@ -92,6 +123,7 @@ exports.openWindow = (filename) => {
 This function sends the user to the screen that allows them to change the password
 */
 function changePassword() {
+
   document.getElementById(gotoChangePassword).innerHTML = window.location.replace("changePassword.html");
 }//changePassword
 

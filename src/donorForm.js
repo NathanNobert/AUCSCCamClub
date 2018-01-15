@@ -13,10 +13,7 @@ const fs = require('fs')
 const PDFDocument = require('pdfkit')
 
 
-function thankYouClick() {
-	alert("HELLO");
-	dialog("HI");
-} 
+
 
 
 /*
@@ -112,11 +109,6 @@ function printReceipt() {
 	//Open a new Window
 }//printReceipt
 
-function createThankYouCard(){
-	alert("createThankYouCard called");
-
-}//createThankYouCard
-
 
 /*
 This function gets called when the user clicks the go back button, confirming if they want to go back
@@ -127,11 +119,6 @@ function goBackToMainMenu(){
 		document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
 	}
 }
-
-
-
-
-
 
 /*
 This function gets called when the user clicks the generate-pdf button,
@@ -161,4 +148,3 @@ function makePDF(donorFormInfo){
 	// # Finalize PDF file
 	doc.end()
 }
-
