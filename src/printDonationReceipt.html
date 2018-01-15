@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AUCSCCamClub</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+		<!-- This allows us to add custom css on top of the Bootstrap built in css -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/customBootstrap.css">
+		<!-- <link rel="stylesheet" type="text/css" href="../assets/css/existingOrNewDonor.css"> -->
+	 <link rel="stylesheet" href="printDonationReceipt.css" />
+
+	<script src="printDonationReceipt.js" async></script>
+	 
+
+	</head>
+	<body>
+		<div class="container-fluid">
+			<form id="receipt" name="frm">
+				<div class="form-row">
+					<div class="col-md-6 mb-3 containImage">
+						<img src="../assets/images/logoWithTextUnder.png" id="logoWithTextUnder" height="50px">
+					</div>
+					<div class="col-md-6 mb-3 receiptFormat">
+						<p id="addressOfBusiness">4516 54 St, Camrose, AB T4V 4W7</p>
+						<p id="craNumber">CRA # </p>
+						<p id="titleOfReceipt">Receipt for a Donation</p>
+						<p id="receiptNumber">Receipt Number: </p>
+						<textarea id="receiptContent"></textarea>
+					</div>
+				</div>
+			</form>
+			<button id="printToPDF">Save Receipt</button>
+		</div>
+
+	<!-- 			==================================     			-->
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+	</body>
+</html>
