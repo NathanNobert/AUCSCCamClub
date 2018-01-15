@@ -12,7 +12,7 @@ It changes the window to the corresponding window to fill out the forms.
 **/
 function openNextPage(idOfButton) {
 	if(idOfButton === 'Donors'){
-    	document.getElementById(Donors).innerHTML = window.location.replace("existingOrNewDonor.html");
+    	document.getElementById(Donors).innerHTML = window.location.replace("personOrBuisness.html");
 	}else if(idOfButton === 'volunteer'){
 		document.getElementById(volunteer).innerHTML = window.location.replace("existingOrNewVolunteer.html");
 	}else if(idOfButton === 'member'){

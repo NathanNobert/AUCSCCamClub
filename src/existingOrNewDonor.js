@@ -2,11 +2,6 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 
-var searchedFirstName = document.getElementById("firstname").value;
-var searchedLastName = document.getElementById("lastname").value;
-var fileToSearch = searchedLastName + ", " + searchedFirstName + ".txt";
-var searchedFile = "../donorFormEntries/" + fileToSearch
-
 function moveToDonorForm() {
 	document.getElementById(newdonor).innerHTML = window.location.replace("donorForm.html");
 }
@@ -17,8 +12,9 @@ function moveToExisistingForm() {
 	var searchedFirstName = document.getElementById("firstname").value;
 	var searchedLastName = document.getElementById("lastname").value;
 	var fileToSearch = searchedLastName + ", " + searchedFirstName + ".txt";
-	var searchedFile = "../donorFormEntries/" + fileToSearch
-	var win = new BrowserWindow({ show: false, width: 800, height: 600 });
+	var searchedFile = "../donorFormEntries/" + fileToSearch;
+
+	var win = new BrowserWindow({ show: false, width: 500, height: 400 });
 	win.loadURL(url.format({
     pathname: path.join(__dirname, searchedFile),
     protocol: 'file:',
