@@ -1,11 +1,16 @@
 /*
 This file contains all the javascript used for the donorForm page.
 */
-
 const{app, BrowserWindow} = require('electron')
 const path = require ('path')
 const url = require ('url')
 //const {dialog} = require('electron').remote;
+
+const fs = require('fs');
+const os = require('os');
+const ipc = electron.ipcMain;
+const shell = electron.shell;
+
 /*
 This function reads the information from the donorForm.html file and creates a report/text document
 */
@@ -28,12 +33,12 @@ function infoStorage(inputtxt) {
 			item: document.getElementById("nonMonetaryItem").value,
 			comment: document.getElementById("commentBox").value
 		}
-	];
-
+	];//donorFormInfo
 
 	var donorForm = /^\d{10}$/;
 	if(inputtxt.value.match(donorForm)){
-		var fs = require('fs');
+		
+		//var fs = require('fs');
 		var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
 		stream.once('open', function(fd) {
 		stream.write("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
@@ -46,15 +51,21 @@ function infoStorage(inputtxt) {
 		stream.write("Comments: " + donorFormInfo[0].comment);
 		stream.end();
 		});
+
+
+
 		alert("Your information has been submitted, Thank you.", "Donor Form Submission");
 		gotoMainMenu();
+
+
+
 		return true;
 
 	}//if
 	else{
 		alert("Not a valid Phone Number");
 		return false;
-	}
+	}//else
 
 }//infoStorage
 
@@ -69,12 +80,73 @@ function askWhereToSave(){
 		    return;
 		}
 	});
-}
-
+}//askWhereToSave
 
 /*
-This function sends the user back to the login screen
+This function just sends the user back to the main menu without confirmation
+This is intentional because after submitting a form, just send the user back
 */
 function gotoMainMenu() {
-  document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+	document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+ }//gotoMainMenu
+
+/*
+This function gets called when the user clicks the go back button, confirming if they want to go back
+to the main menu.
+*/
+function goBackToMainMenu(){
+	if(confirm("Are you sure?", "Go Back To Main Menu")){
+		document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+	}
 }
+
+
+
+
+
+
+
+// ========================================================
+// Trying print to pdf stuff
+
+	var pdfDoc = new jsPDF();
+function makePDF(){
+	alert("making a pdf");
+
+	pdfDoc.text('Hello world!', 10, 10);
+	pdfDoc.save('sample.pdf');
+}
+
+
+var doc = new jsPDF();
+
+
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+$('#cmd').click(function () {   
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    alert("pdf?");
+    doc.save('sample-file.pdf');
+});
+
+
+ipc.on('print-to-pdf', function(event) {
+	const pdfPath = path.join('/print.pdf'); //os.tmpdir(), 
+	const win = BrowserWindow.fromWebContents(event.sender);
+
+	win.webContents.printToPDF({}, function(error, data) {
+		if(error) return console.log(error.message);
+
+		fs.writeFile(pdfPath, data, function(err) {
+			if(err) return console.log(err.message);
+			shell.openExternal('file://' + pdfPath);
+			event.sender.send('wrote-pdf', pdfPath);
+		});
+	})
+})

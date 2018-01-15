@@ -7,7 +7,12 @@
 
 	<!-- This allows us to add custom css on top of the Bootstrap built in css -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/customBootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/existingOrNewDonor.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../assets/css/existingOrNewDonor.css"> -->
+ <link rel="stylesheet" href="awesomplete.css" />
+
+<script src="awesomplete.js" async></script>
+ 
+
 </head>
 
 <script type="text/javascript">
@@ -22,6 +27,7 @@ function poponload()
 	<div class = "jumbotron">
 		<p></p><!--creates space between the top of the jumbotron and the search bar-->
 		<p></p><!--creates space between the top of the jumbotron and the search bar-->
+
 		<div class="input-group">
   			<input type="text" class="form-control" id = "firstname" placeholder="Please Enter First Name">
   			<input type="text" class="form-control" id = "lastname" placeholder="Please Enter Last Name">
@@ -33,12 +39,30 @@ function poponload()
 <p></p><!--creates space between the top of the jumbotron and the Add New button-->
 <p></p><!--creates space between the top of the jumbotron and the Add New Button-->
 <button class="btn btn-secondary" type="button" id = "newdonor" onclick="moveToDonorForm()">Add New Donor</button>
+  <!--
+		<div class="input-group mb-3">
+	 	 <input id="predictiveList" class="" placeholder="Search for Donor">
+	<div class="">
+	    <button class="btn btn-primary" type="button">Search</button>
+    </div>
+	</div>
+	<hr class = "hr-text" data-content="Or">
+	<p></p><!--creates space between the top of the jumbotron and the Add New button-->
+	<p></p><!--creates space between the top of the jumbotron and the Add New Button-->
+	<div class="centerButton">
+		<button class="btn btn-secondary" type="button" id = "newdonor" onclick="moveToDonorForm()">Add New Donor</button>
+	</div>
+</div>
+-->
 
+<!-- 			==================================     			-->
+
+	
 <script type="text/javascript" src="existingOrNewDonor.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-</div>
+
 </body>
 </html>

@@ -28,3 +28,11 @@ function quitApp(){
   window.close();
 }//quitApp
 
+
+
+/*
+	This function asks the user if they want to go back to main menu, then goes to main menu.
+*/
+function gotoMainMenu() {
+	document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+ }//gotoMainMenu
