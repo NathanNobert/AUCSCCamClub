@@ -18,6 +18,7 @@ function thankYouClick() {
 	dialog("HI");
 } 
 
+
 /*
 
 This function reads the information from the donorForm.html file and creates a report/text document
@@ -27,30 +28,22 @@ function infoStorage() {
 
 	//var fileName = askWhereToSave();
 
-
-	var donorFormInfo = [
-
-		{
-
-			first: document.getElementById("firstName").value,
-			last: document.getElementById("lastName").value,
-			contact: document.getElementById("contactName").value,
-			email: document.getElementById("emailAddress").value,
-			phone: document.getElementById("phoneNumber").value,
-			addressInfo: document.getElementById("address").value,
-			cityInfo: document.getElementById("city").value,
-			postal: document.getElementById("postalCode").value,
-			monetary: document.getElementById("monetaryAmount").value,
-			nonMonetary: document.getElementById("nonMonetaryAmount").value,
-			item: document.getElementById("nonMonetaryItem").value,
-			receiptCheckBox: document.getElementById("givenRecipt").value,
-			thankYouCheckBox: document.getElementById("givenCard").value,
-			comment: document.getElementById("commentBox").value
-		}
-
-	];//donorFormInfo
-
-
+	var donorFormInfo = [{
+		first: document.getElementById("firstName").value,
+		last: document.getElementById("lastName").value,
+		contact: document.getElementById("contactName").value,
+		email: document.getElementById("emailAddress").value,
+		phone: document.getElementById("phoneNumber").value,
+		addressInfo: document.getElementById("address").value,
+		cityInfo: document.getElementById("city").value,
+		postal: document.getElementById("postalCode").value,
+		monetary: document.getElementById("monetaryAmount").value,
+		nonMonetary: document.getElementById("nonMonetaryAmount").value,
+		item: document.getElementById("nonMonetaryItem").value,
+		receiptCheckBox: document.getElementById("givenReceipt").value,
+		thankYouCheckBox: document.getElementById("givenCard").value,
+		comment: document.getElementById("commentBox").value
+	}];//donorFormInfo
 
 	var fs = require('fs');
 	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
@@ -69,6 +62,7 @@ function infoStorage() {
 
 
 	alert("Your information has been submitted, Thank you.", "Donor Form Submission");
+	makePDF(donorFormInfo);
 	//gotoMainMenu();
 	
 
@@ -143,13 +137,26 @@ function goBackToMainMenu(){
 This function gets called when the user clicks the generate-pdf button,
 This creates a pdf report 
 */
-function makePDF(){
+function makePDF(donorFormInfo){
 	// # Create a document
 	doc = new PDFDocument
 
+	doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
+
+	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
+	doc.text("Contact Name: " + donorFormInfo[0].contact);
+	doc.text("Email Address: " + donorFormInfo[0].email);
+	doc.text("Phone Number: " + donorFormInfo[0].phone);
+	doc.text("Address: " + donorFormInfo[0].addressInfo + " , " + donorFormInfo[0].cityInfo + " , " + donorFormInfo[0].postal);
+	doc.text("Monetary amount donated: $" + donorFormInfo[0].monetary);
+	doc.text("Non-Monetary estimated value: $" + donorFormInfo[0].nonMonetary + " The item donated: " + donorFormInfo[0].item);
+	doc.text(donorFormInfo[0].receiptCheckBox + "  " + donorFormInfo[0].thankYouCheckBox);
+	doc.text("Comments: " + donorFormInfo[0].comment);
+
+	//doc.rect(doc.x, 0, 600, doc.y).stroke();
 	// # Pipe its output somewhere, like to a file or HTTP response
 	// # See below for browser usage
-	doc.pipe(fs.createWriteStream('sample.pdf'));
+	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
 
 	// # Finalize PDF file
 	doc.end()
