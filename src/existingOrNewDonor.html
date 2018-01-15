@@ -14,10 +14,32 @@
  
 
 </head>
+
+<script type="text/javascript">
+function poponload()
+{
+    testwindow = window.open("", "mywindow",);
+    testwindow.moveTo(0, 0);
+}
+</script>
+
 <body>
 	<div class = "jumbotron">
 		<p></p><!--creates space between the top of the jumbotron and the search bar-->
 		<p></p><!--creates space between the top of the jumbotron and the search bar-->
+
+		<div class="input-group">
+  			<input type="text" class="form-control" id = "firstname" placeholder="Please Enter First Name">
+  			<input type="text" class="form-control" id = "lastname" placeholder="Please Enter Last Name">
+  			<div class="input-group-append">
+    			<button class="btn btn-primary" type="button" id = "search" onclick="moveToExisistingForm()">Search</button>
+  			</div>
+		</div>
+<hr class = "hr-text" data-content="Or">
+<p></p><!--creates space between the top of the jumbotron and the Add New button-->
+<p></p><!--creates space between the top of the jumbotron and the Add New Button-->
+<button class="btn btn-secondary" type="button" id = "newdonor" onclick="moveToDonorForm()">Add New Donor</button>
+  <!--
 		<div class="input-group mb-3">
 	 	 <input id="predictiveList" class="" placeholder="Search for Donor">
 	<div class="">
@@ -31,6 +53,7 @@
 		<button class="btn btn-secondary" type="button" id = "newdonor" onclick="moveToDonorForm()">Add New Donor</button>
 	</div>
 </div>
+-->
 
 <!-- 			==================================     			-->
 
