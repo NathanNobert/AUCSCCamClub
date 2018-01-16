@@ -156,7 +156,7 @@ function goBackToMainMenu(){
 }
 
 /*
-This function gets called when the user clicks the generate-pdf button,
+This function gets called when the user clicks the submit form button,
 This creates a pdf report 
 */
 function makePDF(donorFormInfo){
@@ -164,7 +164,6 @@ function makePDF(donorFormInfo){
 	doc = new PDFDocument
 
 	//doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
-
 
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
 	doc.text("Contact Name: " + donorFormInfo[0].contact);
