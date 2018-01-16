@@ -22,24 +22,23 @@ function moveToExisistingForm() {
 		var http = new XMLHttpRequest();
 		http.open('HEAD', url, false);
 		http.send();
-		return http.status!=404;
+		return http.status==200;
 	}
 	if(urlExists(searchedFile)) {
-		alert("File Exists")
+		var win = new BrowserWindow({ show: false, width: 500, height: 400});
+		win.loadURL(url.format({
+    	pathname: path.join(__dirname, searchedFile),
+    	protocol: 'file:',
+    	slashes: true
+  	}));
+
+  //waiting to show the screen until now allows the screen and elements to load.
+  	win.show();
 	}
 	else{
 		alert("File does not exist");
 	}
-
-	//var win = new BrowserWindow({ show: false, width: 500, height: 400});
-	//win.loadURL(url.format({
-    //pathname: path.join(__dirname, searchedFile),
-    //protocol: 'file:',
-    //slashes: true
-  };
-
-  //waiting to show the screen until now allows the screen and elements to load.
-  //win.show();
+}
 
 	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
 
