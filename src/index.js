@@ -23,8 +23,8 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 
-
 let win
+
 
 /*
 This function starts the first window for the user to see the interface
@@ -92,6 +92,7 @@ exports.openWindow = (filename) => {
 This function sends the user to the screen that allows them to change the password
 */
 function changePassword() {
+
   document.getElementById(gotoChangePassword).innerHTML = window.location.replace("changePassword.html");
 }//changePassword
 
