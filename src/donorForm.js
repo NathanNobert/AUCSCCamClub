@@ -12,11 +12,7 @@ const url = require ('url')
 const fs = require('fs')
 const PDFDocument = require('pdfkit')
 
-
-function thankYouClick() {
-	alert("HELLO");
-	dialog("HI");
-} 
+const swal = require('sweetalert2')
 
 
 /*
@@ -37,6 +33,7 @@ function infoStorage() {
 		addressInfo: document.getElementById("address").value,
 		cityInfo: document.getElementById("city").value,
 		postal: document.getElementById("postalCode").value,
+		donationDate: document.getElementById("donationDate").value,
 		monetary: document.getElementById("monetaryAmount").value,
 		nonMonetary: document.getElementById("nonMonetaryAmount").value,
 		item: document.getElementById("nonMonetaryItem").value,
@@ -60,8 +57,12 @@ function infoStorage() {
 	stream.end();
 	});
 
+	swal(
+		'Thank you for your submission',
+		'Your PDF is generated and saved',
+		'success'
+	)
 
-	alert("Your information has been submitted, Thank you.", "Donor Form Submission");
 	makePDF(donorFormInfo);
 	//gotoMainMenu();
 	
@@ -112,26 +113,47 @@ function printReceipt() {
 	//Open a new Window
 }//printReceipt
 
-function createThankYouCard(){
-	alert("createThankYouCard called");
-
-}//createThankYouCard
-
 
 /*
 This function gets called when the user clicks the go back button, confirming if they want to go back
 to the main menu.
 */
 function goBackToMainMenu(){
-	if(confirm("Are you sure?", "Go Back To Main Menu")){
-		document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
-	}
+
+
+	swal({
+  title: 'Are you sure you want to go back?',
+  text: "You won't be able to save this!",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'go back!',
+  cancelButtonText: 'cancel!',
+  confirmButtonClass: 'btn btn-success',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: false,
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    swal(
+      'Going back!',
+      'Nothing is saved.',
+      'success'
+    ) 
+    document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+  // result.dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  } else if (result.dismiss === 'cancel') {
+    swal(
+      'Cancelled',
+      ' ',
+      'error'
+    )
+  }
+})
+
 }
-
-
-
-
-
 
 /*
 This function gets called when the user clicks the submit form button,
@@ -162,3 +184,99 @@ function makePDF(donorFormInfo){
 	doc.end()
 }
 
+/*
+This function gets called when the user clicks the Generates a Thank you card button,
+This creates a pdf card
+*/
+function thankYouClick(donorFormInfo) {
+
+	var donorFormInfo = [{
+		first: document.getElementById("firstName").value,
+		last: document.getElementById("lastName").value,
+		donationDate: document.getElementById("donationDate").value,
+
+	}];//donorFormInfo
+
+	doc = new PDFDocument
+
+	//This creates dialogs with text are and confirmation 
+	swal({
+		title: 'Add you personal message here:',
+		input: 'textarea',
+		showCancelButton: true,
+		confirmButtonText: 'Submit',
+		showLoaderOnConfirm: true,
+		preConfirm: (textarea) => {
+			return new Promise((resolve) => {
+				setTimeout(() => {
+					if (textarea === 'taken@example.com') {
+						swal.showValidationError(
+							'This email is already taken.'
+							)
+					}
+					resolve()
+				}, 2000)
+			})//Promise(resolve)
+		},//preConfirm: (textarea)
+		allowOutsideClick: () => !swal.isLoading()
+	}).then((result) => {
+		if (result.value) {
+			swal({
+				type: 'success',
+				title: 'You Card Has Been Created',
+				html: 'your personal message was: ' + result.value
+			})
+		}//if
+		doc = new PDFDocument
+
+		//This adds the image
+		doc.image('assets/images/logo B&G long.jpg', {
+			fit: [500, 300],
+			align: 'center',
+			valign: 'center'
+		});//doc.image
+
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text("Dear" + donorFormInfo[0].first + ", " + donorFormInfo[0].last + "");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your genrous donation on " + donorFormInfo[0].donationDate);
+		doc.text(" ");
+		doc.text("Camrose Boy And Girls Club relies on the genrousity of donors such as yourself and is grateful for your support");
+		doc.text(" ");
+		doc.text(result.value);
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text("Thank you once again");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text(" ");
+		doc.text("Sincerely, Camrose Boys And Girls Club \n");
+
+		//doc.rect(doc.x, 0, 600, doc.y).stroke();
+		// # Pipe its output somewhere, like to a file or HTTP response
+		// # See below for browser usage
+		doc.pipe(fs.createWriteStream("thankYouCardsEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
+
+		// # Finalize PDF file
+		doc.end()
+	})
+}

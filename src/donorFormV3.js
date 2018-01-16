@@ -13,7 +13,13 @@ const url = require ('url')
 
 function thankYouClick() {
 	alert("HELLO");
-	dialog("HI");
+	smalltalk
+    .prompt('Question', 'How old are you?', '10')
+    .then((value) => {
+        console.log(value);
+    .catch(() => {
+        console.log('cancel');
+    });
 } 
 
 //const {dialog} = require('electron').remote;
