@@ -102,8 +102,8 @@ function gotoMainMenu() {
 }//gotoMainMenu
 
 function printReceipt() {
-	document.getElementById("receiptCheck").checked = true;
-	//createReceipt();
+	document.getElementById("givenReceipt").checked = true;
+	createReceipt();
 
 }//printReceipt
 
@@ -118,10 +118,7 @@ function createReceipt(){
 		postal: document.getElementById("postalCode").value,
 		monetary: document.getElementById("monetaryAmount").value,
 		nonMonetary: document.getElementById("nonMonetaryAmount").value,
-		item: document.getElementById("nonMonetaryItem").value,
-		receiptCheckBox: document.getElementById("givenReceipt").value,
-		thankYouCheckBox: document.getElementById("givenCard").value,
-		comment: document.getElementById("commentBox").value
+		item: document.getElementById("nonMonetaryItem").value
 	}];//donorFormInfo
 	// # Create a document
 	doc = new PDFDocument
@@ -132,7 +129,7 @@ function createReceipt(){
 	doc.text("Canada Revenue Agency");
 	doc.text("www.cra-arc-gc.ca/charities");
 	doc.text("Reg # 118915669 RR 0001");
-	doc.text("Date Received: " + donorForm[0].donationDate);
+	doc.text("Date Received: " + donorForm[0].dateOfDonation);
 	doc.text("Location: Camrose");
 	doc.text("Cheque");
 	doc.text("Cash");
@@ -144,14 +141,14 @@ function createReceipt(){
 	doc.text("Prov. :" );
 	doc.text("Postal Code: " + donorFormInfo[0].postal);
 	doc.text("Phone: " + donorFormInfo[0].phone);
-	doc.text("/Dollars");
+	doc.text("Dollars");
 	doc.text("OFFICIAL RECEIPT FOR INCOME TAX PURPOSES");
 	doc.text("A Duplicate Receipt Cannot Be Issued");
 	doc.text("By:");
 
 	// # Pipe its output somewhere, like to a file or HTTP response
 	// # See below for browser usage
-	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorForm[0].donationDate+ ".pdf"));
+	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorForm[0].dateOfDonation + ".pdf"));
 
 	// # Finalize PDF file
 	doc.end()
@@ -160,7 +157,6 @@ function createReceipt(){
 
 function createThankYouCard(){
 	document.getElementById("givenCard").checked = true;
-	//alert("createThankYouCard called");
 }//createThankYouCard
 
 
