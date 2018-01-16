@@ -164,6 +164,11 @@ function makePDF(donorFormInfo){
 	doc = new PDFDocument
 
 	//doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
+	doc.image('assets/images/logo B&G long.jpg', {
+			fit: [500, 300],
+			align: 'center',
+			valign: 'top'
+		});//doc.image
 
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
 	doc.text("Contact Name: " + donorFormInfo[0].contact);
