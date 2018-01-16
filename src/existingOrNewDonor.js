@@ -31,12 +31,15 @@ function moveToExisistingForm() {
 	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
 
 
+/*
+These are 2 predictive search boxes that are used for first and last names
+*/
 var input = document.getElementById("predictiveFirstNameList");
 new Awesomplete(input, {
-  list: ["Ada", "Java", "JavaScript", "Brainfuck", "LOLCODE", "Node.js", "Ruby on Rails"]
+  list: ["Ada", "Java", "JavaScript", "LOLCODE", "Node.js", "Ruby on Rails"]
 });
 
 var input = document.getElementById("predictiveLastNameList");
 new Awesomplete(input, {
-  list: ["Ada", "Java", "JavaScript", "Brainfuck", "LOLCODE", "Node.js", "Ruby on Rails"]
+  list: ["Ada", "Java", "JavaScript", "LOLCODE", "Node.js", "Ruby on Rails"]
 });
