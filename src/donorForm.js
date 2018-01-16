@@ -201,7 +201,7 @@ function goBackToMainMenu(){
 }
 
 /*
-This function gets called when the user clicks the generate-pdf button,
+This function gets called when the user clicks the submit form button,
 This creates a pdf report 
 */
 function makePDF(donorFormInfo){
