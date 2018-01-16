@@ -1,6 +1,7 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
+var fs = require('fs');
 
 function moveToDonorForm() {
 
@@ -30,8 +31,12 @@ function moveToExisistingForm() {
 	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
 
 
-var input = document.getElementById("predictiveList");
+var input = document.getElementById("predictiveFirstNameList");
 new Awesomplete(input, {
   list: ["Ada", "Java", "JavaScript", "Brainfuck", "LOLCODE", "Node.js", "Ruby on Rails"]
 });
 
+var input = document.getElementById("predictiveLastNameList");
+new Awesomplete(input, {
+  list: ["Ada", "Java", "JavaScript", "Brainfuck", "LOLCODE", "Node.js", "Ruby on Rails"]
+});
