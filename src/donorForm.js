@@ -46,8 +46,9 @@ function infoStorage() {
 	}];//donorFormInfo
 
 	var fs = require('fs');
-	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt", {'flags':'a'});
-	/*stream.once('open', function(fd) {*/
+	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt"/*, {'flags':'a'}*/);
+
+	stream.once('open', function(fd) {
 
 	stream.write("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
 	stream.write("Contact Name: " + donorFormInfo[0].contact + "\r\n");
@@ -59,7 +60,7 @@ function infoStorage() {
 	stream.write(donorFormInfo[0].receiptCheckBox + "  " + donorFormInfo[0].thankYouCheckBox + "\r\n" + "\r\n");
 	stream.write("Comments: " + donorFormInfo[0].comment);
 	stream.end();
-	//});
+	});
 
 
 	alert("Your information has been submitted, Thank you.", "Donor Form Submission");
@@ -101,22 +102,61 @@ function gotoMainMenu() {
 }//gotoMainMenu
 
 function printReceipt() {
-	//Save the variables in the form that you need to print the receipt. 
-	let clientName = document.getElementById("firstName").value +" "+ document.getElementById("lastName").value;
-	let amountOfReceipt = document.getElementById("monetaryAmount").value + document.getElementById("nonMonetaryAmount").value;
-	let dateOfDonation = document.getElementById("donationDate").value;
 	document.getElementById("receiptCheck").checked = true;
-	if(document.getElementById("receiptCheck").checked === true){
-		createAlert();
-	};
+	//createReceipt();
 
-	//document.getElementById(receipt).innerHTML = window.location.replace("printDonationReceipt.html");
-	//Open a new Window
 }//printReceipt
 
-function createAlert(){
-	alert("Name of client " + clientName +" Amount donated: "+amountOfReceipt+ " Date donated: "+dateOfDonation);
+function createReceipt(){
+	var donorFormInfo = [{
+		first: document.getElementById("firstName").value,
+		last: document.getElementById("lastName").value,
+		phone: document.getElementById("phoneNumber").value,
+		addressInfo: document.getElementById("address").value,
+		dateOfDonation: document.getElementById("donationDate").value,
+		cityInfo: document.getElementById("city").value,
+		postal: document.getElementById("postalCode").value,
+		monetary: document.getElementById("monetaryAmount").value,
+		nonMonetary: document.getElementById("nonMonetaryAmount").value,
+		item: document.getElementById("nonMonetaryItem").value,
+		receiptCheckBox: document.getElementById("givenReceipt").value,
+		thankYouCheckBox: document.getElementById("givenCard").value,
+		comment: document.getElementById("commentBox").value
+	}];//donorFormInfo
+	// # Create a document
+	doc = new PDFDocument
+
+	doc.text("Camrose & District Boys and Girls Club");
+	doc.text("4516 54 Street, Camrose, AB T4V 4W7");
+	doc.text("camroseboysandgirlsclub.ca");
+	doc.text("Canada Revenue Agency");
+	doc.text("www.cra-arc-gc.ca/charities");
+	doc.text("Reg # 118915669 RR 0001");
+	doc.text("Date Received: " + donorForm[0].donationDate);
+	doc.text("Location: Camrose");
+	doc.text("Cheque");
+	doc.text("Cash");
+	doc.text("Property")
+	doc.text("Date of Issue: " + donorForm[0].dateOfDonation);
+	doc.text("Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
+	doc.text("Address: " + donorFormInfo[0].addressInfo);
+	doc.text("City: " + donorFormInfo[0].cityInfo);
+	doc.text("Prov. :" );
+	doc.text("Postal Code: " + donorFormInfo[0].postal);
+	doc.text("Phone: " + donorFormInfo[0].phone);
+	doc.text("/Dollars");
+	doc.text("OFFICIAL RECEIPT FOR INCOME TAX PURPOSES");
+	doc.text("A Duplicate Receipt Cannot Be Issued");
+	doc.text("By:");
+
+	// # Pipe its output somewhere, like to a file or HTTP response
+	// # See below for browser usage
+	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorForm[0].donationDate+ ".pdf"));
+
+	// # Finalize PDF file
+	doc.end()
 }
+
 
 function createThankYouCard(){
 	document.getElementById("givenCard").checked = true;
@@ -143,7 +183,7 @@ function makePDF(donorFormInfo){
 	// # Create a document
 	doc = new PDFDocument
 
-	doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
+	//doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
 
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
 	doc.text("Contact Name: " + donorFormInfo[0].contact);
