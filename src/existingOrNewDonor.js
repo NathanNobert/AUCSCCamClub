@@ -4,22 +4,34 @@ const url = require('url')
 const fs = require('fs');
 
 /*
-Currently we cannot read in a file to update the array of predictive search
+This function reads a .txt file and currently stores all of the data into one array element.
 */
+file = "donorNames.txt";
+let namesArray = [];
+readTextFile(file);
+function readTextFile(file){
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                namesArray += allText;
+                for(var i in namesArray){
+                	namesArray[i] += allText.split("\n");
+                	alert(namesArray[i]);
+                }
+                
+                alert(allText.toString());
+            }
+        }
+    }
+    rawFile.send(null);
+}
 
-
-
-// var txtFile = "./donorNames.txt"
-// var file = new File(txtFile);
-
-// file.open("r"); // open file with read access
-// var str = "";
-// while (!file.eof) {
-// 	// read each line of text
-// 	str += file.readln() + "\n";
-// }
-// file.close();
-// alert(str);
 
 function moveToDonorForm() {
 
@@ -54,10 +66,12 @@ These are 2 predictive search boxes that are used for first and last names
 */
 var input = document.getElementById("predictiveFirstNameList");
 new Awesomplete(input, {
-  list: ["Elmer Fudd", "John Doe", "Nathan Nobert", "Jeff Jefferson", "Ruby Diamond"]
+  list: [namesArray]
 });
 
 var input = document.getElementById("predictiveLastNameList");
 new Awesomplete(input, {
   list: ["Elmer Fudd", "John Doe", "Nathan Nobert", "Jeff Jefferson", "Ruby Diamond"]
 });
+
+//"Elmer Fudd", "John Doe", "Nathan Nobert", "Jeff Jefferson", "Ruby Diamond"
