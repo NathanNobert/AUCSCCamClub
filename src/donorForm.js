@@ -1,24 +1,16 @@
 /*
-
 This file contains all the javascript used for the donorForm page.
-
 */
-
 const{app, BrowserWindow} = require('electron')
-
 const path = require ('path')
-
 const url = require ('url')
 const fs = require('fs')
 const PDFDocument = require('pdfkit')
-
 const swal = require('sweetalert2')
 
 
 /*
-
 This function reads the information from the donorForm.html file and creates a report/text document
-
 */
 function infoStorage() {
 
@@ -79,15 +71,10 @@ their donor form files.
 function askWhereToSave(){
 
 	dialog.showSaveDialog((fileName) => {
-
 		if (fileName === undefined){
-
 		    console.log("You didn't save the file");
-
 		    return;
-
 		}
-
 	});
 
 }//askWhereToSave
@@ -95,12 +82,11 @@ function askWhereToSave(){
 /*
 This function just sends the user back to the main menu without confirmation
 This is intentional because after submitting a form, just send the user back
-
 */
-
 function gotoMainMenu() {
   document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
 }//gotoMainMenu
+
 
 /*
 This function checkmarks the "check if given a receipt" checkbox when the "Print Receipt" button is pressed.
@@ -207,6 +193,8 @@ This function gets called when the user clicks the go back button, confirming if
 to the main menu.
 */
 function goBackToMainMenu(){
+
+	//dialog box
 	swal({
   title: 'Are you sure you want to go back?',
   text: "You won't be able to save this!",
@@ -239,17 +227,21 @@ function goBackToMainMenu(){
   }
 })
 
-}
+}//goBackToMainMenu()
 
 /*
 This function gets called when the user clicks the submit form button,
 This creates a pdf report 
 */
 function makePDF(donorFormInfo){
-	// # Create a document
+	//Create a document
 	doc = new PDFDocument
 
-	//doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
+	doc.image('assets/images/logo B&G long.jpg', {
+			fit: [500, 300],
+			align: 'center',
+			valign: 'top'
+		});//doc.image
 
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
 	doc.text("Contact Name: " + donorFormInfo[0].contact);
@@ -261,12 +253,9 @@ function makePDF(donorFormInfo){
 	doc.text(donorFormInfo[0].receiptCheckBox + "  " + donorFormInfo[0].thankYouCheckBox);
 	doc.text("Comments: " + donorFormInfo[0].comment);
 
-	//doc.rect(doc.x, 0, 600, doc.y).stroke();
-	// # Pipe its output somewhere, like to a file or HTTP response
-	// # See below for browser usage
 	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
 
-	// # Finalize PDF file
+	//Finalize PDF file
 	doc.end()
 }
 
@@ -357,12 +346,10 @@ function thankYouClick(donorFormInfo) {
 		doc.text(" ");
 		doc.text("Sincerely, Camrose Boys And Girls Club \n");
 
-		//doc.rect(doc.x, 0, 600, doc.y).stroke();
-		// # Pipe its output somewhere, like to a file or HTTP response
-		// # See below for browser usage
 		doc.pipe(fs.createWriteStream("thankYouCardsEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
 
-		// # Finalize PDF file
+		//Finalize PDF file
 		doc.end()
 	})
-}
+}//thankYouClick()
+
