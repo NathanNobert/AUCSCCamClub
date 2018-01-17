@@ -19,43 +19,35 @@ This is the html file for the donorForm
 
 	<button class="btn btn-secondary" onclick="goBackToMainMenu()">Go Back</button>
 
-	<!-- This div creates the Title-->
 	<div class="container-fluid">
-		<h1 class="titleOfForm">Donor Form</h1>
-	</div>
-
-	<div class="container-fluid">
-
-	
 
 		<!-- This input entries for the form -->
 		<form id="formOne" name="frm">
-			<!-- This div is where the first row input is organized -->
 			<div class="col-md-4 mb-3">
-				<!-- This div creates the textbox and label for first name -->
-				<div class="" id="text">
+				<!-- This div creates the Title-->
+				<div class="form-row">
+					<h1 class="titleOfForm">Donor Form</h1>
+				</div>
+				<!-- This div is where the first row input is organized -->
+				<div class="form-row" id="text">
 					<label for="firstName">First name</label>
 					<input type="text" class="form-control" id="firstName"  placeholder="First name" required>
 				</div>
 
 				<!-- This div creates the textbox and label for last name -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="lastName">Last name</label>
 					<input type="text" class="form-control" id="lastName" placeholder="Last name"  required>
 				</div>
 
 				<!-- This div creates the textbox and label for contact name -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="contactName">Contact Name</label>
 					<input type="text" class="form-control" id="contactName" placeholder="Contact name"  required>
 				</div>
-
-			</div><!-- All entries for first row -->
-			<!-- This div is where the second row input is organized -->
-			<div class="col-md-4 mb-3">
-
+				
 				<!-- This div creates the textbox and label for email address -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="emailAddress">Email Address</label>
 					<div class="input-group">
 						 <div class="input-group-prepend">
@@ -66,47 +58,53 @@ This is the html file for the donorForm
 				</div>
 
 				<!-- This div creates the textbox and label for phone number -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="phoneNumber">Phone Number</label>
-					<input type="text" max="11" class="form-control" id="phoneNumber" placeholder="Phone Number"  name="phnum" )' required>
+				</div>
+
+				<div class="form-row" id="text">
+					<input type="text" max="11" class="form-control" id="phoneNumber" placeholder="Phone Number"  name="phnum"required>
 
 				</div>
 
 				<!-- This div creates the textbox and label for Date of Donation -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="donationDate">Date of Donation</label>
+				</div>
+				<div class="form-row" id="text">
 					<input type="Date" class="form-control" id="donationDate" placeholder="mm/dd/year" required>
 				</div>
 
-			</div><!-- All entries for second row -->
-
-			<!-- This div is where the third row input is organized -->
-			<div class="col-md-4 mb-3 for-col">
-
 				<!-- This div creates the textbox and label for address -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="address">Address</label>
 					<input type="text" class="form-control" id="address" placeholder="Address" required>
 				</div>
 
 				<!-- This div creates the textbox and label for city -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="city">City</label>
+				</div>
+
+				<div class="form-row" id="text">
 					<input type="text" class="form-control" id="city" placeholder="City" required>
 				</div>
-					
+
+				<div class="form-row" id="text">
+					<label for="address">Province</label>
+					<input type="text" class="form-control" id="province" placeholder="Province" required>
+				</div>
+						
 				<!-- This div creates the textbox and label for Postal Code -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="postalCode">Postal Code</label>
+				</div>
+				<div class="form-row" id="text">
 					<input type="text" class="form-control" id="postalCode" placeholder="Postal Code" required>
 				</div>
 
-			</div><!-- All entries for third row -->
-			<!-- This div is where the fourth row input is organized  -->
-			<div class="col-md-4 mb-3">
-
 				<!-- This div creates the textbox and label for Monetary Amount -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="monetaryAmount">Monetary Amount: </label>
 					<div class="input-group">
 						 <div class="input-group-prepend">
@@ -115,15 +113,29 @@ This is the html file for the donorForm
 					 		<input type="number" class="form-control" id="monetaryAmount" placeholder="$$" aria-describedby="inputGroupPrepend2" required>
 					</div>
 				</div>
+				<div class="form-row" id="text">
+					<div class="form-check form-check-inline selectOneOption" id="text">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="cheque" value="option1">
+				    	<label class="form-check-label" for="validationDefault02">
+				    		Cheque	
+				  		</label>
+					</div>
+					<div class="form-check form-check-inline selectOneOption" id="text">
+				  		<input class="form-check-input" type="radio" name="exampleRadios" id="cash" value="option2">
+				 		<label class="form-check-label" for="validationDefault02">
+				    		Cash
+				  		</label>
+					</div>
+				</div>
 
 				<!-- This div creates the textbox and label for Non-Monetary Item -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="nonMonetaryItem">Non-Monetary Item: </label>
 					<input type="text" class="form-control" id="nonMonetaryItem" placeholder="Item"  required>
 				</div>
 
 				<!-- This div creates the textbox and label for Non-Monetary Amount -->
-				<div class="" id="text">
+				<div class="form-row" id="text">
 					<label for="nonMonetaryAmount">Estimated Non-Monetary Amount: </label>
 					<div class="input-group">
 						 <div class="input-group-prepend">
@@ -133,18 +145,17 @@ This is the html file for the donorForm
 					</div>
 				</div>
 
-			</div><!-- All entries for fourth row -->
+				<!-- This div creates the checkbox and label for receipt -->
+				<div class="custom-control custom-checkbox" >
+					<input type="checkbox" id="givenReceipt" disabled="disabled" class="custom-control-input" value="Was given a receipt">
+					<label class="custom-control-label" for="givenReceipt" id="text">Check if given a receipt</label>
+				</div>
 
-			<!-- This div creates the checkbox and label for receipt -->
-			<div class="custom-control custom-checkbox" >
-				<input type="checkbox" id="givenReceipt" disabled="disabled" class="custom-control-input" value="Was given a receipt">
-				<label class="custom-control-label" for="givenReceipt" id="text">Check if given a receipt</label>
-			</div>
-
-			<!-- This div creates the checkbox and label for thank you card -->
-			<div class="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" disabled="disabled" id="givenCard"  value="Was given a card">
-				<label class="custom-control-label" for="givenCard"  id="text">Check if given a thank you card</label>
+				<!-- This div creates the checkbox and label for thank you card -->
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" disabled="disabled" id="givenCard"  value="Was given a card">
+					<label class="custom-control-label" for="givenCard"  id="text">Check if given a thank you card</label>
+				</div>
 			</div>
 
 		</form> <!-- All entries for form -->

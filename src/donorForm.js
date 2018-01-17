@@ -102,58 +102,94 @@ function gotoMainMenu() {
   document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
 }//gotoMainMenu
 
+/*
+This function checkmarks the "check if given a receipt" checkbox when the "Print Receipt" button is pressed.
+Then it calls function createReceipt() which will create the pdf with the receipt for the donation.
+*/
 function printReceipt() {
 	document.getElementById("givenReceipt").checked = true;
 	createReceipt();
 
 }//printReceipt
 
+/*
+This function takes the information from the fields in the form that is needed to create the receipt. Then
+creates a new pdf and writes the information for the receipt in a logical organization in the pdf. So, in 
+the end you have a nice looking receipt.
+*/
 function createReceipt(){
+	//Saving the information needed for the receipt.
 	var donorFormInfo = [{
+		receiptNumber: 1;
 		first: document.getElementById("firstName").value,
 		last: document.getElementById("lastName").value,
 		phone: document.getElementById("phoneNumber").value,
 		addressInfo: document.getElementById("address").value,
 		dateOfDonation: document.getElementById("donationDate").value,
 		cityInfo: document.getElementById("city").value,
+		provinceInfo: document.getElementById("province").value,
 		postal: document.getElementById("postalCode").value,
 		monetary: document.getElementById("monetaryAmount").value,
 		nonMonetary: document.getElementById("nonMonetaryAmount").value,
+		chequeInfo: document.getElementById("cheque").value,
+		cashInfo: document.getElementById("cash").value,
 		item: document.getElementById("nonMonetaryItem").value
 	}];//donorFormInfo
-	// # Create a document
+
+	//Create a document
 	doc = new PDFDocument
 
-	doc.text("Camrose & District Boys and Girls Club");
-	doc.text("4516 54 Street, Camrose, AB T4V 4W7");
-	doc.text("camroseboysandgirlsclub.ca");
-	doc.text("Canada Revenue Agency");
-	doc.text("www.cra-arc-gc.ca/charities");
-	doc.text("Reg # 118915669 RR 0001");
-	doc.text("Date Received: " + donorForm[0].dateOfDonation);
-	doc.text("Location: Camrose");
-	doc.text("Cheque");
-	doc.text("Cash");
-	doc.text("Property")
-	doc.text("Date of Issue: " + donorForm[0].dateOfDonation);
-	doc.text("Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
-	doc.text("Address: " + donorFormInfo[0].addressInfo);
-	doc.text("City: " + donorFormInfo[0].cityInfo);
-	doc.text("Prov. :" );
-	doc.text("Postal Code: " + donorFormInfo[0].postal);
-	doc.text("Phone: " + donorFormInfo[0].phone);
-	doc.text("Dollars");
-	doc.text("OFFICIAL RECEIPT FOR INCOME TAX PURPOSES");
-	doc.text("A Duplicate Receipt Cannot Be Issued");
-	doc.text("By:");
+	//This adds in the basic template of the receipt.
+	doc.image('assets/images/receiptTemplate.png', {
+		fit: [500, 300],
+	});
 
-	// # Pipe its output somewhere, like to a file or HTTP response
-	// # See below for browser usage
-	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorForm[0].dateOfDonation + ".pdf"));
+	//This writes the information that changes in the receipt to the pdf at exact locations.
+	doc.fontSize(12)
+	doc.text(donorFormInfo[0].dateOfDonation, 180, 150);
+	doc.text(donorFormInfo[0].dateOfDonation, 390, 150);
+	doc.text(donorFormInfo[0].first + " " + donorFormInfo[0].last, 370, 166);
+	doc.text(donorFormInfo[0].addressInfo, 375, 185);
+	doc.text(donorFormInfo[0].cityInfo, 355, 200);
+	doc.text(donorFormInfo[0].provinceInfo, 460, 200);
+	doc.text(donorFormInfo[0].postal, 385, 220);
+	doc.text(donorFormInfo[0].phone, 460, 220);
+	doc.text(donorFormInfo[0].monetary, 200, 185);
+	doc.text(donorFormInfo[0].nonMonetary, 200, 200);
 
-	// # Finalize PDF file
+
+	if(document.getElementById("monetaryAmount").value != "" && document.getElementById("monetaryAmount").value != null){
+		if(document.getElementById("cheque").checked){
+			//CheckMark for if it is paid in cheque
+			doc.moveTo(150, 185)                         
+			doc.lineTo(155, 190)                            
+			doc.lineTo(160, 180)                            
+			doc.stroke() 
+		}
+
+		if(document.getElementById("cash").checked){
+			//CheckMark for it it is paid in cash.
+			doc.moveTo(150, 195)                         
+			doc.lineTo(155, 200)                            
+			doc.lineTo(160, 190)                            
+			doc.stroke() 
+		}
+	}
+
+	if(document.getElementById("nonMonetaryAmount").value != "" && document.getElementById("nonMonetaryAmount").value != null){
+		//CheckMark for it the donation was an item.
+		doc.moveTo(150, 210)                         
+		doc.lineTo(155, 215)                            
+		doc.lineTo(160, 205)                            
+		doc.stroke() 
+	}
+
+	//This is where the pdf is saved and how it is named.
+	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorFormInfo[0].dateOfDonation + ".pdf"));
+
+	//Finalize PDF file
 	doc.end()
-}
+}//createReceipt()
 
 
 function createThankYouCard(){
@@ -298,7 +334,7 @@ function thankYouClick(donorFormInfo) {
 		doc.text(" ");
 		doc.text(" ");
 		doc.text(" ");
-		doc.text("Dear" + donorFormInfo[0].first + ", " + donorFormInfo[0].last + "");
+		doc.text("Dear " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "");
 		doc.text(" ");
 		doc.text(" ");
 		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your genrous donation on " + donorFormInfo[0].donationDate);
