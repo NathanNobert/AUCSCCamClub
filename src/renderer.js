@@ -2,6 +2,11 @@
 // const printPDFButton = document.getElementById('print-pdf');
 
 
+<<<<<<< HEAD
+ipc.on('wrote-pdf', function(event, path) {
+	console.log("Wrote the pdf.");
+})
+=======
 
 
 // printPDFButton.addEventListener('click', function(event) {
@@ -33,3 +38,4 @@
 // 		});
 // 	})
 // })
+>>>>>>> 3d86b3fcbed2bad29b05b840beafe259fdca17e5
