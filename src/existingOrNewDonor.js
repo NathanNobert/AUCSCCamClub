@@ -23,7 +23,8 @@ Currently we cannot read in a file to update the array of predictive search
 
 function moveToDonorForm() {
 
-	document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
+	document.getElementById(newdonor).innerHTML = window.location.replace("donorLinearFormIndividual.html");
+
 }
 
 function moveToExisistingForm() {

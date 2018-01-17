@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AUCSCCamClub</title>
+	<title> AUCSC320 Cam Club Project</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
-	<!-- This allows us to add custom css on top of the Bootstrap built in css -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/customBootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/personOrBuisness.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/selectPersonType.css">
+
+	<style>
+		<div class="w-100 p-3" style="background-color: #eee;">Width 100%</div>
+	</style>
 </head>
 <body>
-		<div class = "jumbotron">
-			<button class="btn btn-primary" type="button" id = "Buisness" onclick="eitherBuisnessOrPerson('Buisness')">Business</button>
+  
 
+	<!-- This is where the logo inseted -->
+	<img src="../assets/images/logoWithTextUnder.png" id="logoWithTextUnder">
 
-			 <button class="btn btn-secondary" type="button" id = "Person" onclick="eitherBuisnessOrPerson('Person')">Individual</button>
+	<div class="fixed" id="buisnessOrPersonFixed">	
+		<!-- This div is where the first row input is organized -->
+		<div class="form-row" id="personOrBuisnessSpacing">
+			<!-- This div creates the textbox and label for first name -->
+			<div class="col-md-4 mb-3" id="text">
+				<div class = "jumbotron">
+					<button class="btn btn-primary btn-lg btn-block" type="button" id = "Buisness" onclick="eitherBuisnessOrPerson('Buisness')">Business</button> 
+				</div>
+			</div>
+
+			<!-- This div creates the textbox and label for last name -->
+			<div class="col-md-4 mb-3" id="text">
+				<div class="jumbotron">
+					<button class="btn btn-primary btn-lg btn-block" type="button" id = "Person" onclick="eitherBuisnessOrPerson('Person')">Individual</button>
+				</div>
+			</div>
+
 		</div>
-	<script type="text/javascript" src="personOrBuisness.js"></script>
+	</div><!-- All entries for first row -->
+				
 
+	<script type="text/javascript" src="personOrBuisness.js"></script>
+	<script type="text/javascript" src="index.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
