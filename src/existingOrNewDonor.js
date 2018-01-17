@@ -49,7 +49,7 @@ function moveToExisistingForm() {
 
 function filledForm() {
 	var arrayExample = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
-	document.getElementById(firstName).value = "a";
+	document.getElementById('firstName').defaultValue = "a";
 	document.getElementById(lastName).value = arrayExample[1];
 	document.getElementById(contactName).value = arrayExample[2];
 	document.getElementById(emailAddress).value = arrayExample[3];
