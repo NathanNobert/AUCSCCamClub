@@ -13,7 +13,6 @@ body {
 .col-md-4 mb-3{
 	background-color: rgb(102,204,0);
 }
-#validationDefaultUsername{}
 
 #text{
 	font-family: "Arial Black",Gadget,sans-serif;
@@ -65,9 +64,6 @@ body {
 	padding-left: 0.5cm;
 }
 
-#background {
-	background: #66CC00 none no-repeat scroll 0 0;
-}
 
 .btn-secondary {
 	float: right;
