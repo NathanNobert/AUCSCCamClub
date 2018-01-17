@@ -119,8 +119,9 @@ the end you have a nice looking receipt.
 */
 function createReceipt(){
 	//Saving the information needed for the receipt.
+	var receiptNumber = 1;
+
 	var donorFormInfo = [{
-		receiptNumber: 1;
 		first: document.getElementById("firstName").value,
 		last: document.getElementById("lastName").value,
 		phone: document.getElementById("phoneNumber").value,
@@ -146,6 +147,7 @@ function createReceipt(){
 
 	//This writes the information that changes in the receipt to the pdf at exact locations.
 	doc.fontSize(12)
+	doc.text(receiptNumber, 480, 130);
 	doc.text(donorFormInfo[0].dateOfDonation, 180, 150);
 	doc.text(donorFormInfo[0].dateOfDonation, 390, 150);
 	doc.text(donorFormInfo[0].first + " " + donorFormInfo[0].last, 370, 166);
@@ -157,7 +159,10 @@ function createReceipt(){
 	doc.text(donorFormInfo[0].monetary, 200, 185);
 	doc.text(donorFormInfo[0].nonMonetary, 200, 200);
 
+	//Updates the receipt number
+	receiptNumber = receiptNumber + 1;
 
+	//Puts in the checkmark in the appropriate place in the receipt for the type of donation that was given.
 	if(document.getElementById("monetaryAmount").value != "" && document.getElementById("monetaryAmount").value != null){
 		if(document.getElementById("cheque").checked){
 			//CheckMark for if it is paid in cheque
