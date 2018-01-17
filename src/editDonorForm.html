@@ -12,8 +12,21 @@ This is the html file for the donorForm
 	<link rel="stylesheet" type="text/css" href="../assets/css/donorForm.css">
 
 	<script type="text/javascript">
-window.onload=function(){document.getElementById('firstName').value='Notice me?';}
-</script>
+		var fName = 'Moop';
+		window.onload=function(){
+		document.getElementById('firstName').value=fName;
+		document.getElementById('lastName').value='Last Name';
+		document.getElementById('contactName').value='Firsty';
+		document.getElementById('emailAddress').value='M@gmail.R';
+		document.getElementById('phoneNumber').value='1234567890';
+		document.getElementById('donationDate').value='1990-09-09';
+		document.getElementById('address').value='123 Fake Street';
+		document.getElementById('city').value='Fake City';
+		document.getElementById('postalCode').value='FFF FFF';
+		document.getElementById('monetaryAmount').value='2000';
+		document.getElementById('nonMonetaryItem').value='Bench';
+		document.getElementById('nonMonetaryAmount').value='200';}
+	</script>
 
 </head>
 <body>

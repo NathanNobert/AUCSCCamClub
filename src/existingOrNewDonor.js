@@ -2,10 +2,7 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 const fileExists = require('file-exists');
-
-$('document').ready(function() {
-  $('input').val('value')
-})
+var fName = 'Moop';
 
 
 function moveToDonorForm() {
@@ -49,18 +46,6 @@ function moveToExisistingForm() {
 
 function filledForm() {
 	var arrayExample = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
-	document.getElementById('firstName').defaultValue = "a";
-	document.getElementById(lastName).value = arrayExample[1];
-	document.getElementById(contactName).value = arrayExample[2];
-	document.getElementById(emailAddress).value = arrayExample[3];
-	document.getElementById(phoneNumber).value = arrayExample[4];
-	document.getElementById(donationDate).value = arrayExample[5];
-	document.getElementById(address).value = arrayExample[6];
-	document.getElementById(city).value = arrayExample[7];
-	document.getElementById(postalCode).value = arrayExample[8];
-	document.getElementById(monetaryAmount).value = arrayExample[9];
-	document.getElementById(nonMonetaryItem).value = arrayExample[10];
-	document.getElementById(nonMonetaryAmount).value = arrayExample[11];
 }
 
 	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
