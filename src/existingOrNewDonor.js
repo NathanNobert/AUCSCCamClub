@@ -3,29 +3,23 @@ const path = require('path')
 const url = require('url')
 const fs = require('fs');
 
-/*
-This function reads a .txt file and currently stores all of the data into one array element.
-*/
-file = "donorNames.txt";
+
+file = "../donorNames.txt";
 let namesArray = [];
 readTextFile(file);
+
+/*
+This function reads a .txt file and stores each line into an array to be predictively searched.
+*/
 function readTextFile(file){
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
+    rawFile.onreadystatechange = function (){
+        if(rawFile.readyState === 4){
+            if(rawFile.status === 200 || rawFile.status == 0){
+            	//saves each line of the file into an element of the array
+                var allText = rawFile.responseText.split("\n");
                 namesArray += allText;
-                for(var i in namesArray){
-                	namesArray[i] += allText.split("\n");
-                	alert(namesArray[i]);
-                }
-                
-                alert(allText.toString());
             }
         }
     }
@@ -66,7 +60,7 @@ These are 2 predictive search boxes that are used for first and last names
 */
 var input = document.getElementById("predictiveFirstNameList");
 new Awesomplete(input, {
-  list: [namesArray]
+  list: namesArray
 });
 
 var input = document.getElementById("predictiveLastNameList");
