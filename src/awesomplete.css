@@ -10,7 +10,7 @@
 .awesomplete {
     display: inline-block;
     position: relative;
-    width:50%;
+    width:100%;
     z-index: 10;
 }
 

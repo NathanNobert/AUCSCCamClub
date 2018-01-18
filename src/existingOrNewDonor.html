@@ -15,14 +15,14 @@
 
 </head>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function poponload()
 {
     testwindow = window.open("", "mywindow",);
     testwindow.moveTo(0, 0);
 }
 </script>
-
+ -->
 <body>
 	
 
@@ -31,12 +31,11 @@ function poponload()
 		<p></p><!--creates space between the top of the jumbotron and the search bar-->
 
 		<div class="input-group">
-  			<input type="text" class="form-control" id = "firstname" placeholder="Please Enter Name">
-      <!--
+  			<input type="text" class="awesomplete" id="firstName" placeholder="Please Enter Name">
+      
 
-  			<input type="text" class="" id="predictiveFirstNameList" placeholder="Please Enter First Name">
-  			<input type="text" class="" id="predictiveLastNameList" placeholder="Please Enter Last Name">
--->
+  			<!-- <input type="text" class="" id="predictiveList" placeholder="Please Enter First Name"> -->
+
   			<div class="input-group-append">
     			<button class="btn btn-primary" type="button" id = "search" onclick="moveToExisistingForm()">Search</button>
   			</div>
@@ -53,7 +52,6 @@ function poponload()
 </div>
 
 <!-- 			==================================     			-->
-
 
 
 <script type="text/javascript" src="existingOrNewDonor.js"></script>

@@ -14,7 +14,6 @@ const PDFDocument = require('pdfkit')
 
 const swal = require('sweetalert2')
 
-
 /*
 
 This function reads the information from the donorForm.html file and creates a report/text document

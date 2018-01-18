@@ -3,6 +3,7 @@ const path = require('path')
 const url = require('url')
 const fileExists = require('file-exists');
 
+
 function moveToDonorForm() {
 
 	document.getElementById(addnewbusiness).innerHTML = window.location.replace("donorForm.html");
@@ -36,7 +37,7 @@ function moveToExisistingForm() {
     //pathname: path.join(__dirname, searchedFile),
     //protocol: 'file:',
     //slashes: true
-  };
+  }
 
   //waiting to show the screen until now allows the screen and elements to load.
   //win.show();
