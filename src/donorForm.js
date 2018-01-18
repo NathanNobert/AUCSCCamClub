@@ -15,7 +15,6 @@ This function reads the information from the donorForm.html file and creates a r
 function infoStorage() {
 
 	//var fileName = askWhereToSave();
-	alert("saving info");
 	var donorFormInfo = [{
 		first: document.getElementById("firstName").value,
 		last: document.getElementById("lastName").value,
@@ -34,7 +33,6 @@ function infoStorage() {
 		comment: document.getElementById("commentBox").value
 	}];//donorFormInfo
 
-	alert("writing info");
 	var fs = require('fs');
 	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt"/*, {'flags':'a'}*/);
 
@@ -69,10 +67,9 @@ function infoStorage() {
 This function updates the list of names to add any new names submitted.
 */
 function updateNamesArray(){
-	alert("updating names array");
-		var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
-		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
-		stream.end();
+	var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
+	stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
+	stream.end();
 }
 
 

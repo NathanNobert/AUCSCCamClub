@@ -65,7 +65,5 @@ new Awesomplete(input, {
 
 var input = document.getElementById("predictiveLastNameList");
 new Awesomplete(input, {
-  list: ["Elmer Fudd", "John Doe", "Nathan Nobert", "Jeff Jefferson", "Ruby Diamond"]
+  list: namesArray
 });
-
-//"Elmer Fudd", "John Doe", "Nathan Nobert", "Jeff Jefferson", "Ruby Diamond"
