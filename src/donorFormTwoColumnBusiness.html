@@ -32,15 +32,21 @@ This is the html file for the donorForm
 				<!--column 1 -->
 				<div class="col-md-4 mb-3">
 					<!-- This div is where the first row input is organized -->
+
+					<div class="form-row" id="text">
+						<label for="businessName">Business Name</label>
+						<input type="text" class="form-control" id="businessName"  placeholder="Business name" required>
+					</div>
+
 					<div class="form-row" id="text">
 						<label for="firstName">First name</label>
-						<input type="text" class="form-control" id="firstName"  placeholder="First name" required>
+						<input type="text" class="form-control" id="firstName"  placeholder="Contact first name" required>
 					</div>
 
 					<!-- This div creates the textbox and label for last name -->
 					<div class="form-row" id="text">
 						<label for="lastName">Last name</label>
-						<input type="text" class="form-control" id="lastName" placeholder="Last name"  required>
+						<input type="text" class="form-control" id="lastName" placeholder="Contact last name"  required>
 					</div>
 					
 					<!-- This div creates the textbox and label for email address -->
@@ -80,6 +86,9 @@ This is the html file for the donorForm
 
 					<div class="form-row" id="text">
 						<label for="address">Province</label>
+					</div>
+
+					<div class="form-row" id="text">
 						<input type="text" class="form-control" id="province" placeholder="Province" required>
 					</div>
 							
@@ -92,19 +101,19 @@ This is the html file for the donorForm
 					</div>
 				</div>
 				<!-- column 2 -->
-				<div class="col-md-4 mb-3" id="column2">
+				<div class="col-md-4 mb-3 jumbotron" id="column2">
 
 					<!-- This div creates the textbox and label for Date of Donation -->
-					<div class="form-row" id="text">
+					<div class="form-row" id="">
 						<label for="donationDate">Date of Donation</label>
 					</div>
 
-					<div class="form-row" id="text">
+					<div class="form-row" id="">
 						<input type="Date" class="form-control" id="donationDate" placeholder="mm/dd/year" required>
 					</div>
 
 					<!-- This div creates the textbox and label for Monetary Amount -->
-					<div class="form-row" id="text">
+					<div class="form-row" id="">
 						<label for="monetaryAmount">Monetary Amount: </label>
 						<div class="input-group">
 							 <div class="input-group-prepend">
@@ -113,14 +122,14 @@ This is the html file for the donorForm
 						 		<input type="number" class="form-control" id="monetaryAmount" placeholder="$$" aria-describedby="inputGroupPrepend2" required>
 						</div>
 					</div>
-					<div class="form-row" id="text">
-						<div class="form-check form-check-inline selectOneOption" id="text">
+					<div class="form-row" id="">
+						<div class="form-check form-check-inline selectOneOption" id="">
 							<input class="form-check-input" type="radio" name="exampleRadios" id="cheque" value="option1">
 					    	<label class="form-check-label" for="validationDefault02">
 					    		Cheque	
 					  		</label>
 						</div>
-						<div class="form-check form-check-inline selectOneOption" id="text">
+						<div class="form-check form-check-inline selectOneOption" id="">
 					  		<input class="form-check-input" type="radio" name="exampleRadios" id="cash" value="option2">
 					 		<label class="form-check-label" for="validationDefault02">
 					    		Cash
@@ -129,13 +138,13 @@ This is the html file for the donorForm
 					</div>
 
 					<!-- This div creates the textbox and label for Non-Monetary Item -->
-					<div class="form-row" id="text">
+					<div class="form-row" id="">
 						<label for="nonMonetaryItem">Non-Monetary Item: </label>
 						<input type="text" class="form-control" id="nonMonetaryItem" placeholder="Item"  required>
 					</div>
 
 					<!-- This div creates the textbox and label for Non-Monetary Amount -->
-					<div class="form-row" id="text">
+					<div class="form-row" id="">
 						<label for="nonMonetaryAmount">Estimated Non-Monetary Amount: </label>
 						<div class="input-group">
 							 <div class="input-group-prepend">
@@ -188,7 +197,7 @@ This is the html file for the donorForm
 	Required Javascript for handling the form information
   	 -->
   	 <!-- <script type="text/javascript" src="renderer.js"></script> -->
-	<script type="text/javascript" src="donorForm.js"></script>
+	<script type="text/javascript" src="donorFormBusiness.js"></script>
 
 
 	<!--Required Javascript scripts for using Bootstrap and jQuery to build faster and more appealing applications

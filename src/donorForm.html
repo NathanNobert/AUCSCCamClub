@@ -16,7 +16,7 @@ This is the html file for the donorForm
 	<button class="btn btn-secondary" onclick="goBackToMainMenu()">Go Back</button>
 
 	<!-- This div contains full page -->
-	<div cwelass="container-fluid" id="content">
+	<div class="container-fluid" id="content">
 
 		<!-- This input entries for the form -->
 		<form id="formOne" name="frm">
@@ -65,7 +65,7 @@ This is the html file for the donorForm
 				<!-- This div creates the textbox and label for phone number -->
 				<div class="col-md-4 mb-3" id="text">
 					<label for="phoneNumber">Phone Number</label>
-					<input type="text" max="11" class="form-control" id="phoneNumber" placeholder="Phone Number"  name="phnum" required>
+					<input type="text" max="11" class="form-control" id="phoneNumber" placeholder="Phone Number"  name="phnum" )' required>
 
 				</div>
 
@@ -134,13 +134,15 @@ This is the html file for the donorForm
 			</div><!-- All entries for fourth row -->
 
 			<!-- This div creates the checkbox and label for receipt -->
-			<div class="custom-control custom-checkbox" id="text">
-				<input type="checkbox" class="custom-control-input" id="givenReceipt" value="Was given a Receipt">
+			 
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="givenReceipt" value="Was given a receipt">
 				<label class="custom-control-label" for="givenReceipt">Check if given a receipt</label>
 			</div>
 
 			<!-- This div creates the checkbox and label for thank you card -->
-			<div class="custom-control custom-checkbox" id="text">
+			 
+			<div class="custom-control custom-checkbox">
 				<input type="checkbox" class="custom-control-input" id="givenCard"  value="Was given a card">
 				<label class="custom-control-label" for="givenCard">Check if given a thank you card</label>
 			</div>
@@ -148,10 +150,11 @@ This is the html file for the donorForm
 		</form> <!-- All entries for form -->
 
 		<!-- This div creates the checkbox and label for comment box -->
-		<div class="form-group" id="text">
+		<div class="form-group">
 			<label for="commentBox">Comment Box:</label>
-			<textarea name="comments" class="form-control" id="commentBox" rows="3"></textarea>
+			<textarea class="form-control" id="commentBox" rows="3"></textarea>
 		</div>
+		
 
 		<!-- This div creates the button for Printing Receipt -->
 		<div class="button">
@@ -161,14 +164,14 @@ This is the html file for the donorForm
 		<!-- This div creates the button for Printing Thank you card -->
 		<div class="button">
 
-			<button type="button" class="btn btn-primary btn-lg" id="thankYou" onclick="thankYouClick()">Print Thank you card</button>
+			<button type="button" id="thankYou" class="btn btn-primary btn-lg" onclick="thankYouClick()">Print Thank you card</button>
 		</div>
+
 
 		<!-- This div creates the button for submitting file -->
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage()" value="Submit">Submit</button>
+			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage()" value="Submit" >Submit</button>
 		</div>
-
 
 	</div><!-- All entries page-->
 

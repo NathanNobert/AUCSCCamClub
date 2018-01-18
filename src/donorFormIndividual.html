@@ -10,26 +10,22 @@ This is the html file for the donorForm
 
 	<!-- This allows us to add custom css on top of the Bootstrap built in css -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/donorForm.css">
-	<script type="text/javascript" src="existingOrNewDonor.js"></script>
-	<script language="javascript">
-   		filledForm();
-	</script>
 
 </head>
 <body>
+
 	<button class="btn btn-secondary" onclick="goBackToMainMenu()">Go Back</button>
+	<!-- This div creates the Title-->
+	<div class="form-row">
+		<h1 class="titleOfForm">Donor Form</h1>
+	</div>
+
 
 	<!-- This div contains full page -->
 	<div class="container-fluid" id="content">
 
 		<!-- This input entries for the form -->
 		<form id="formOne" name="frm">
-				
-			<!-- This div creates the Title-->
-			<div class="form-row">
-				<h1 class="titleOfForm">Donor Form</h1>
-			</div>
-
 			<!-- This div is where the first row input is organized -->
 			<div class="form-row">
 				<!-- This div creates the textbox and label for first name -->
@@ -42,12 +38,6 @@ This is the html file for the donorForm
 				<div class="col-md-4 mb-3" id="text">
 					<label for="lastName">Last name</label>
 					<input type="text" class="form-control" id="lastName" placeholder="Last name"  required>
-				</div>
-
-				<!-- This div creates the textbox and label for contact name -->
-				<div class="col-md-4 mb-3" id="text">
-					<label for="contactName">Contact Name</label>
-					<input type="text" class="form-control" id="contactName" placeholder="Contact name"  required>
 				</div>
 
 			</div><!-- All entries for first row -->
@@ -69,7 +59,7 @@ This is the html file for the donorForm
 				<!-- This div creates the textbox and label for phone number -->
 				<div class="col-md-4 mb-3" id="text">
 					<label for="phoneNumber">Phone Number</label>
-					<input type="text" max="11" class="form-control" id="phoneNumber" placeholder="Phone Number"  name="phnum" )' required>
+					<input type="text" max="11" class="form-control" id="phoneNumber" placeholder="Phone Number"  name="phnum"  required>
 
 				</div>
 
@@ -91,9 +81,14 @@ This is the html file for the donorForm
 				</div>
 
 				<!-- This div creates the textbox and label for city -->
-				<div class="col-md-4 mb-3" id="text">
+				<div class="col-md-2 mb-3" id="text">
 					<label for="city">City</label>
 					<input type="text" class="form-control" id="city" placeholder="City" required>
+				</div>
+
+				<div class="col-md-2 mb-3" id="text">
+					<label for="province">Province</label>
+					<input type="text" class="form-control" id="province" placeholder="Province" required>
 				</div>
 					
 				<!-- This div creates the textbox and label for Postal Code -->
@@ -128,37 +123,50 @@ This is the html file for the donorForm
 				<div class="col-md-4 mb-3" id="text">
 					<label for="nonMonetaryAmount">Estimated Non-Monetary Amount: </label>
 					<div class="input-group">
-						 <div class="input-group-prepend">
+						<div class="input-group-prepend">
 					 		<span class="input-group-text" id="inputGroupPrepend2">$</span>
 					 	</div>
-					 		<input type="number" class="form-control" id="nonMonetaryAmount" placeholder="$$" aria-describedby="inputGroupPrepend2" required>
+
+					 	<input type="number" class="form-control" id="nonMonetaryAmount" placeholder="$$" aria-describedby="inputGroupPrepend2" required>
 					</div>
 				</div>
 
 			</div><!-- All entries for fourth row -->
 
+			<div class="form-row">
+				<div class="form-check form-check-inline selectOneOption" id="text">
+					<input class="form-check-input" type="radio" name="exampleRadios" id="cheque" value="option1">
+				    <label class="form-check-label" for="validationDefault02">
+				    	Cheque	
+				  	</label>
+				</div>
+				<div class="form-check form-check-inline selectOneOption" id="text">
+				 	<input class="form-check-input" type="radio" name="exampleRadios" id="cash" value="option2">
+					<label class="form-check-label" for="validationDefault02">
+			    		Cash
+			  		</label>
+				</div>
+			</div>
+
 			<!-- This div creates the checkbox and label for receipt -->
-			 
 			<div class="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="givenReceipt" value="Was given a receipt">
-				<label class="custom-control-label" for="givenReceipt">Check if given a receipt</label>
+				<input type="checkbox" class="custom-control-input" disabled="disabled" id="givenReceipt" value="Was given a Recipt">
+				<label class="custom-control-label" for="givenReceipt" id="text">Check if given a receipt</label>
 			</div>
 
 			<!-- This div creates the checkbox and label for thank you card -->
-			 
 			<div class="custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="givenCard"  value="Was given a card">
-				<label class="custom-control-label" for="givenCard">Check if given a thank you card</label>
+				<input type="checkbox" class="custom-control-input" disabled="disabled" id="givenCard"  value="Was given a card">
+				<label class="custom-control-label" for="givenCard" id="text">Check if given a thank you card</label>
 			</div>
 
 		</form> <!-- All entries for form -->
 
 		<!-- This div creates the checkbox and label for comment box -->
-		<div class="form-group">
+		<div class="form-group" id="text">
 			<label for="commentBox">Comment Box:</label>
-			<textarea class="form-control" id="commentBox" rows="3"></textarea>
+			<textarea name="comments" class="form-control" id="commentBox" rows="3"></textarea>
 		</div>
-		
 
 		<!-- This div creates the button for Printing Receipt -->
 		<div class="button">
@@ -167,19 +175,13 @@ This is the html file for the donorForm
 
 		<!-- This div creates the button for Printing Thank you card -->
 		<div class="button">
-
-			<button type="button" id="thankYou" class="btn btn-primary btn-lg" onclick="thankYouClick()">Print Thank you card</button>
+			<button type="button" class="btn btn-primary btn-lg" id="thankYou" onclick="thankYouClick()">Print Thank you card</button>
 		</div>
-
 
 		<!-- This div creates the button for submitting file -->
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage()" value="Submit" >Submit</button>
+			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage()" value="Submit" myprint="#content">Submit</button>
 		</div>
-
-
-		<p id="demo"></p>
-
 
 
 	</div><!-- All entries page-->
@@ -196,7 +198,6 @@ This is the html file for the donorForm
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </body>
 </html>

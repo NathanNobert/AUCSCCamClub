@@ -5,10 +5,35 @@ const fileExists = require('file-exists');
 const fs = require('fs');
 
 
+file = "../donorNames.txt";
+let namesArray = [];
+readTextFile(file);
+
+
+/*
+This function reads a .txt file and stores each line into an array to be predictively searched.
+*/
+function readTextFile(file){
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function (){
+        if(rawFile.readyState === 4){
+            if(rawFile.status === 200 || rawFile.status == 0){
+            	//saves each line of the file into an element of the array
+                var allText = rawFile.responseText.split("\n");
+                namesArray += allText;
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
 
 function moveToDonorForm() {
 
 	document.getElementById(newdonor).innerHTML = window.location.replace("donorForm.html");
+
+
 
 }
 
@@ -89,10 +114,10 @@ These are 2 predictive search boxes that are used for first and last names
 var input = document.getElementById("predictiveFirstNameList");
 
 new Awesomplete(input, {
-  list: ["Elmer Fudd", "John Doe", "Nathan Nobert", "Jeff Jefferson", "Ruby Diamond"]
+  list: namesArray
 });
 
 var input = document.getElementById("predictiveLastNameList");
 new Awesomplete(input, {
-  list: ["Elmer Fudd", "John Doe", "Nathan Nobert", "Jeff Jefferson", "Ruby Diamond"]
+  list: namesArray
 });
