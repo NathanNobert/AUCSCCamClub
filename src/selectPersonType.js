@@ -5,6 +5,7 @@ This directs where the user goes and which form they can choose, will send the u
 
 const remote = require('electron').remote
 const main = remote.require('./index.js')
+const swal = require('sweetalert2')
 
 /**openNextPage()
 This function is called when the buttons Volunteer, Donor and Member are clicked.
@@ -25,7 +26,36 @@ This function is called when the user clicks the quit button, this closes the ap
 */
 window = remote.getCurrentWindow();
 function quitApp(){
-  window.close();
+	swal({
+  title: 'Are you sure you want to quit?',
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'go back!',
+  cancelButtonText: 'cancel!',
+  confirmButtonClass: 'btn btn-success',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: false,
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    swal(
+      'The application will be closed',
+      'success'
+    ) 
+    window.close();
+  // result.dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  } else if (result.dismiss === 'cancel') {
+    swal(
+      'Cancelled',
+      ' ',
+      'error'
+    )
+  }
+})
+
 }//quitApp
 
 
