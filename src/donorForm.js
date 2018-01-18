@@ -261,7 +261,8 @@ function makePDF(donorFormInfo){
 	doc.text("Cash: " + donorFormInfo[0].cashInfo);
 	doc.text("Cheque: " + donorFormInfo[0].chequeInfo);
 	doc.text("Non-Monetary estimated value: $" + donorFormInfo[0].nonMonetary + " The item donated: " + donorFormInfo[0].item);
-	doc.text(donorFormInfo[0].receiptCheckBox + "  " + donorFormInfo[0].thankYouCheckBox);
+	doc.text(donorFormInfo[0].receiptCheckBox);
+	doc.text(donorFormInfo[0].thankYouCheckBox);
 	doc.text("Comments: " + donorFormInfo[0].comment);
 
 	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
