@@ -70,12 +70,13 @@ function moveToExisistingForm() {
 	if(urlExists(searchedFile)) {
 		var win = new BrowserWindow({ show: false, width: 500, height: 400});
 		win.loadURL(url.format({
-    	pathname: path.join(__dirname, searchedFile),
+    	pathname: path.join(__dirname, 'editDonorForm.html'),
     	protocol: 'file:',
     	slashes: true
   	}));
     //waiting to show the screen until now allows the screen and elements to load.
   	win.show();
+  	win.maximize();
 	}
 	else{
 		alert("File does not exist");
