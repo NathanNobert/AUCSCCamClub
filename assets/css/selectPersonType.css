@@ -1,3 +1,67 @@
-.btn-secondary {
+/*
+This css files adds custom css for the selectPersonType.html and personOrBuisness.html file
+*/
+.location-right {
 	float: right;
+	height: 60px;
+    width: 120px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.location-left {
+	float: left;
+	height: 60px;
+    width: 120px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+
+.fixed{
+	padding-right: 3cm;
+	padding-top: 1cm;	
+	padding-left: 3cm;
+}
+
+
+.jumbotron{
+	padding-left: 0.5cm;
+	height: 6cm;
+	width: 7cm;
+}
+
+#member{
+	width: 6cm;
+	height:5cm;
+	font-size: 35px;
+}
+#volunteer{
+	width: 6cm;
+	height:5cm ;
+	font-size: 35px;	
+}
+#Donors{
+	width: 6cm;
+	height:5cm ;
+	font-size: 35px;
+}
+
+/*This is where the personOrBusiness.htlm adjustment start*/
+#buisnessOrPersonFixed {
+	padding-right: 1cm;
+	padding-left: 1cm;
+}
+
+#personOrBuisnessSpacing {
+	padding-left: 5cm;
+}
+
+#Buisness {
+	width: 6cm;
+	height:5cm ;
+	font-size: 35px;
+}
+
+#Person {
+	width: 6cm;
+	height:5cm ;
+	font-size: 35px;
 }

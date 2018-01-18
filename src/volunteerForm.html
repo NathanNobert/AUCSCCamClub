@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-This is our volunteerForm .html file for the window to fill out the form with volunteer information.
+This is our volunteer form .html file for the window to fill out the form with volunteer information.
 -->
 <html>
 <head>
@@ -16,7 +16,11 @@ This is our volunteerForm .html file for the window to fill out the form with vo
 	<button class="btn btn-secondary" onclick="gotoMainMenu()">Go Back</button>
 	<div class="container-fluid">
 		<form>
-
+			<div class="container-fluid">
+				<div class="form-row">
+					<h1 class="titleOfForm">Volunteer Form</h1>
+				</div>
+			</div>
 
 			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
@@ -28,7 +32,9 @@ This is our volunteerForm .html file for the window to fill out the form with vo
 					<label for="validationDefault02">Last name</label>
 					<input type="text" class="form-control" id="validationDefault02" placeholder="Last name"  required>
 				</div>
+			</div>
 
+			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
 					<label for="validationDefaultUsername">Email Address</label>
 					<div class="input-group">
@@ -39,13 +45,13 @@ This is our volunteerForm .html file for the window to fill out the form with vo
 					</div>
 
 				</div>
-			</div>
-			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
 					<label for="validationDefault02">Phone Number</label>
-					<input type="text" class="form-control" id="validationDefault02" placeholder="Phone Number"  required>
+					<input type="Number" class="form-control" id="validationDefault02" placeholder="(xxx)xxx-xxxx"  required>
 				</div>
 
+			</div>
+			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
 					<label for="validationDefault03">Address</label>
 					<input type="text" class="form-control" id="validationDefault03" placeholder="Address" required>
@@ -55,22 +61,26 @@ This is our volunteerForm .html file for the window to fill out the form with vo
 					<label for="validationDefault04">City</label>
 					<input type="text" class="form-control" id="validationDefault04" placeholder="City" required>
 				</div>
-			</div>	
-			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
 					<label for="validationDefault05">Postal Code</label>
 					<input type="text" class="form-control" id="validationDefault05" placeholder="Postal Code" required>
 				</div>
-				<div class="col-md-4 mb-3" id="text">
-					<label for="validationDefault01">Hours Volunteered</label>
-					<input type="Number" class="form-control" id="validationDefault01" placeholder="Hours" required>
-				</div>
+			</div>
+
+			<div class="form-row">
 				<div class="col-md-4 mb-3" id="text">
 					<label for="validationDefault01">Date Volunteered</label>
 					<input type="Date" class="form-control" id="validationDefault01" placeholder="mm/dd/year" required>
 				</div>
+				<div class="col-md-2 mb-3" id="text">
+					<label for="validationDefault01">Hours</label>
+					<input type="Number" min="0" class="form-control" id="validationDefault01" placeholder="Hours" required>
+				</div>
+				<div class="col-md-6 mb-3" id="text">
+					<label for="validationDefault01">Position</label>
+					<input type="text" class="form-control" id="validationDefault05" placeholder="Position" required>
+				</div>
 			</div>
-
 
 			<div class="custom-control custom-checkbox" id="text">
 				<input type="checkbox" class="custom-control-input" id="givenCard">
@@ -79,6 +89,11 @@ This is our volunteerForm .html file for the window to fill out the form with vo
 
 		</form>
 
+		<div class="form-group" id="text">
+			<label for="commentBox">Comment Box:</label>
+			<textarea class="form-control" id="commentBox" rows="3"></textarea>
+		</div>
+
 		<div class="button">
 			<button type="button" class="btn btn-primary btn-lg">Print Thank you card</button>
 		</div>
@@ -86,11 +101,6 @@ This is our volunteerForm .html file for the window to fill out the form with vo
 		<div class="button">
 			<button type="button" class="btn btn-primary btn-lg">Submit</button>
 		</div>
-
-		<div class="container-fluid">
-			<label>Thank you</label>
-		</div>
-
 
 	</div>
 
