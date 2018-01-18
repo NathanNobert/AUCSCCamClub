@@ -46,7 +46,7 @@ function infoStorage() {
 	}];//donorFormInfo
 
 	var fs = require('fs');
-	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt"/*, {'flags':'a'}*/);
+	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].business + ".txt"/*, {'flags':'a'}*/);
 
 	stream.once('open', function(fd) {
 
@@ -265,7 +265,7 @@ function makePDF(donorFormInfo){
 	//doc.rect(doc.x, 0, 600, doc.y).stroke();
 	// # Pipe its output somewhere, like to a file or HTTP response
 	// # See below for browser usage
-	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
+	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].business + ".pdf"));
 
 	// # Finalize PDF file
 	doc.end()

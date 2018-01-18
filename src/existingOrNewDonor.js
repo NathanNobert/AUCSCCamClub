@@ -9,7 +9,6 @@ file = "../donorNames.txt";
 let namesArray = [];
 readTextFile(file);
 
-
 /*
 This function reads a .txt file and stores each line into an array to be predictively searched.
 */
@@ -31,7 +30,7 @@ function readTextFile(file){
 
 function moveToDonorForm() {
 
-	document.getElementById(newdonor).innerHTML = window.location.replace("donorForm.html");
+	document.getElementById(newdonor).innerHTML = window.location.replace("donorFormBusiness.html");
 
 
 
@@ -103,21 +102,12 @@ function filledForm() {
 
 	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
 
-var input = document.getElementById("predictiveList");
-
-	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
-
 
 /*
 These are 2 predictive search boxes that are used for first and last names
 */
-var input = document.getElementById("predictiveFirstNameList");
+var input = document.getElementById("firstName");
 
-new Awesomplete(input, {
-  list: namesArray
-});
-
-var input = document.getElementById("predictiveLastNameList");
 new Awesomplete(input, {
   list: namesArray
 });
