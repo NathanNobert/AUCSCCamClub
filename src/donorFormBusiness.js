@@ -25,6 +25,7 @@ function infoStorage() {
 	//var fileName = askWhereToSave();
 
 	var donorFormInfo = [{
+		business: document.getElementById("businessName").value,
 		first: document.getElementById("firstName").value,
 		last: document.getElementById("lastName").value,
 		email: document.getElementById("emailAddress").value,
@@ -49,6 +50,7 @@ function infoStorage() {
 
 	stream.once('open', function(fd) {
 
+	stream.write("Business Name: " + donorFormInfo[0].business);
 	stream.write("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
 	stream.write("Email Address: " + donorFormInfo[0].email + "\r\n");
 	stream.write("Phone Number: " + donorFormInfo[0].phone + "\r\n");
@@ -248,7 +250,7 @@ function makePDF(donorFormInfo){
 	doc = new PDFDocument
 
 	//doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
-
+	doc.text("Business name: " + donorFormInfo[0].business);
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
 	doc.text("Email Address: " + donorFormInfo[0].email);
 	doc.text("Phone Number: " + donorFormInfo[0].phone);

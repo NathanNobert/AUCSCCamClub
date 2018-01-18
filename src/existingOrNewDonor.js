@@ -4,7 +4,7 @@ const url = require('url')
 
 function moveToDonorForm() {
 
-	document.getElementById(newdonor).innerHTML = window.location.replace("donorLinearFormIndividual.html");
+	document.getElementById(newdonor).innerHTML = window.location.replace("donorFormIndividual.html");
 
 }
 
