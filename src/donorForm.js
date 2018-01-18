@@ -183,7 +183,7 @@ function createReceipt(){
 		doc.stroke() 
 	}
 	//This is where the pdf is saved and how it is named.
-	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorFormInfo[0].dateOfDonation + ".pdf"));
+	doc.pipe(fs.createWriteStream("receipt/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorFormInfo[0].dateOfDonation + ".pdf"));
 	//Finalize PDF file
 	doc.end()
 
