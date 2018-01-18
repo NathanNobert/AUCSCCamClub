@@ -30,7 +30,7 @@ function readTextFile(file){
 
 function moveToDonorForm() {
 
-	document.getElementById(newdonor).innerHTML = window.location.replace("donorFormBusiness.html");
+	document.getElementById(newdonor).innerHTML = window.location.replace("donorFormIndividual.html");
 
 
 

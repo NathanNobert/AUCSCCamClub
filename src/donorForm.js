@@ -6,10 +6,7 @@ const path = require('path')
 const url = require('url')
 const fs = require('fs')
 const PDFDocument = require('pdfkit')
-
-const main = remote.require('./index.js')
-
-
+const swal = require('sweetalert2')
 
 
 /*
@@ -72,16 +69,16 @@ function infoStorage() {
 
 }//infoStorage
 
-/*
-This function updates the list of names to add any new names submitted.
-*/
-function updateNamesArray(){
-	var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
-	stream.once('open', function(fd) {
-		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
-		stream.end();
-	}
-}
+// /*
+// This function updates the list of names to add any new names submitted.
+// */
+// function updateNamesArray(){
+// 	var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
+// 	stream.once('open', function(fd) {
+// 		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
+// 		stream.end();
+// 	}
+// }
 
 
 /*
@@ -101,21 +98,32 @@ function askWhereToSave(){
 
 
 
+
+
 /*
 This function checkmarks the "check if given a receipt" checkbox when the "Print Receipt" button is pressed.
 Then it calls function createReceipt() which will create the pdf with the receipt for the donation.
 */
 function printReceipt() {
-	//Save the variables in the form that you need to print the receipt. 
-	let clientName = document.getElementById("firstName").value +" "+ document.getElementById("lastName").value;
-	let amountOfReceipt = document.getElementById("monetaryAmount").value + document.getElementById("nonMonetaryAmount").value;
-	let dateOfDonation = document.getElementById("donationDate").value;
-	alert("Name of client " + clientName +" Amount donated: "+amountOfReceipt+ " Date donated: "+dateOfDonation);
+	document.getElementById("givenReceipt").checked = true;
+	createReceipt();
 
-	document.getElementById(receipt).innerHTML = window.location.replace("printDonationReceipt.html");
-	//Open a new Window
+	swal(
+		'A Receipt has been created',
+		'Thank you',
+		'success'
+	);
 }//printReceipt
 
+/*
+This function takes the information from the fields in the form that is needed to create the receipt. Then
+creates a new pdf and writes the information for the receipt in a logical organization in the pdf. So, in 
+the end you have a nice looking receipt.
+*/
+
+function createReceipt(){
+	//Saving the information needed for the receipt.
+	var receiptNumber = 1;
 
 	var donorFormInfo = [{
 		first: document.getElementById("firstName").value,
@@ -132,15 +140,12 @@ function printReceipt() {
 		cashInfo: document.getElementById("cash").value,
 		item: document.getElementById("nonMonetaryItem").value
 	}];//donorFormInfo
-
 	//Create a document
 	doc = new PDFDocument
-
 	//This adds in the basic template of the receipt.
 	doc.image('assets/images/receiptTemplate.png', {
 		fit: [500, 300],
 	});
-
 	//This writes the information that changes in the receipt to the pdf at exact locations.
 	doc.fontSize(12)
 	doc.text(receiptNumber, 480, 130);
@@ -154,10 +159,8 @@ function printReceipt() {
 	doc.text(donorFormInfo[0].phone, 460, 220);
 	doc.text(donorFormInfo[0].monetary, 200, 185);
 	doc.text(donorFormInfo[0].nonMonetary, 200, 200);
-
 	//Updates the receipt number
 	receiptNumber = receiptNumber + 1;
-
 	//Puts in the checkmark in the appropriate place in the receipt for the type of donation that was given.
 	if(document.getElementById("monetaryAmount").value != "" && document.getElementById("monetaryAmount").value != null){
 		if(document.getElementById("cheque").checked){
@@ -167,7 +170,6 @@ function printReceipt() {
 			doc.lineTo(160, 180)                            
 			doc.stroke() 
 		}
-
 		if(document.getElementById("cash").checked){
 			//CheckMark for it it is paid in cash.
 			doc.moveTo(150, 195)                         
@@ -176,7 +178,6 @@ function printReceipt() {
 			doc.stroke() 
 		}
 	}
-
 	if(document.getElementById("nonMonetaryAmount").value != "" && document.getElementById("nonMonetaryAmount").value != null){
 		//CheckMark for it the donation was an item.
 		doc.moveTo(150, 210)                         
@@ -184,12 +185,13 @@ function printReceipt() {
 		doc.lineTo(160, 205)                            
 		doc.stroke() 
 	}
-
 	//This is where the pdf is saved and how it is named.
 	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorFormInfo[0].dateOfDonation + ".pdf"));
-
 	//Finalize PDF file
 	doc.end()
+
+
+
 }//createReceipt()
 
 
@@ -233,7 +235,7 @@ function goBackToMainMenu(){
   }
 })
 
-}
+}//goBackToMainMenu
 
 
 /*

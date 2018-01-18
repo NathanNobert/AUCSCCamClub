@@ -5,7 +5,7 @@ const fileExists = require('file-exists');
 
 function moveToDonorForm() {
 
-	document.getElementById(addnewbusiness).innerHTML = window.location.replace("donorForm.html");
+	document.getElementById(addnewbusiness).innerHTML = window.location.replace("donorFormBusiness.html");
 }
 
 
