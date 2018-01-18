@@ -1,15 +1,16 @@
 /*
 This file contains all the javascript used for the donorForm page.
 */
+
 const{app, BrowserWindow} = require('electron')
-const path = require('path')
-const url = require('url')
+
+const path = require ('path')
+
+const url = require ('url')
 const fs = require('fs')
 const PDFDocument = require('pdfkit')
 
-const main = remote.require('./index.js')
-
-
+const swal = require('sweetalert2')
 
 
 /*
@@ -39,11 +40,11 @@ function infoStorage() {
 		comment: document.getElementById("commentBox").value
 	}];//donorFormInfo
 
-
-
 	var fs = require('fs');
-	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
+	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt"/*, {'flags':'a'}*/);
+
 	stream.once('open', function(fd) {
+
 	stream.write("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
 	stream.write("Email Address: " + donorFormInfo[0].email + "\r\n");
 	stream.write("Phone Number: " + donorFormInfo[0].phone + "\r\n");
@@ -57,17 +58,15 @@ function infoStorage() {
 	stream.end();
 	});
 
-
-
 	swal(
 		'Thank you for your submission',
 		'Your PDF is generated and saved',
 		'success'
-	);
-	
+	)
+
 	makePDF(donorFormInfo);
 	updateNamesArray();
-	//gotoMainMenu();
+	gotoMainMenu();
 	
 
 }//infoStorage
@@ -80,9 +79,8 @@ function updateNamesArray(){
 	stream.once('open', function(fd) {
 		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
 		stream.end();
-	}
+	});
 }
-
 
 /*
 Will use this function if we decide to give the user the option to choose where they want to save
@@ -91,31 +89,46 @@ their donor form files.
 function askWhereToSave(){
 
 	dialog.showSaveDialog((fileName) => {
+
 		if (fileName === undefined){
+
 		    console.log("You didn't save the file");
+
 		    return;
+
 		}
+
 	});
 
 }//askWhereToSave
 
+/*
+This function just sends the user back to the main menu without confirmation
+This is intentional because after submitting a form, just send the user back
+*/
 
+function gotoMainMenu() {
+  document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+}//gotoMainMenu
 
 /*
 This function checkmarks the "check if given a receipt" checkbox when the "Print Receipt" button is pressed.
 Then it calls function createReceipt() which will create the pdf with the receipt for the donation.
 */
 function printReceipt() {
-	//Save the variables in the form that you need to print the receipt. 
-	let clientName = document.getElementById("firstName").value +" "+ document.getElementById("lastName").value;
-	let amountOfReceipt = document.getElementById("monetaryAmount").value + document.getElementById("nonMonetaryAmount").value;
-	let dateOfDonation = document.getElementById("donationDate").value;
-	alert("Name of client " + clientName +" Amount donated: "+amountOfReceipt+ " Date donated: "+dateOfDonation);
+	document.getElementById("givenReceipt").checked = true;
+	createReceipt();
 
-	document.getElementById(receipt).innerHTML = window.location.replace("printDonationReceipt.html");
-	//Open a new Window
 }//printReceipt
 
+/*
+This function takes the information from the fields in the form that is needed to create the receipt. Then
+creates a new pdf and writes the information for the receipt in a logical organization in the pdf. So, in 
+the end you have a nice looking receipt.
+*/
+function createReceipt(){
+	//Saving the information needed for the receipt.
+	var receiptNumber = 1;
 
 	var donorFormInfo = [{
 		first: document.getElementById("firstName").value,
@@ -193,9 +206,6 @@ function printReceipt() {
 }//createReceipt()
 
 
-
-
-
 /*
 This function gets called when the user clicks the go back button, confirming if they want to go back
 to the main menu.
@@ -235,21 +245,15 @@ function goBackToMainMenu(){
 
 }
 
-
 /*
-This function gets called when the user clicks the generate-pdf button,
+This function gets called when the user clicks the submit form button,
 This creates a pdf report 
 */
 function makePDF(donorFormInfo){
-	//Create a document
+	// # Create a document
 	doc = new PDFDocument
 
-	doc.image('assets/images/logo B&G long.jpg', {
-			fit: [500, 300],
-			align: 'center',
-			valign: 'top'
-		});//doc.image
-
+	//doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
 
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
 	doc.text("Email Address: " + donorFormInfo[0].email);
@@ -262,9 +266,12 @@ function makePDF(donorFormInfo){
 	doc.text(donorFormInfo[0].receiptCheckBox + "  " + donorFormInfo[0].thankYouCheckBox);
 	doc.text("Comments: " + donorFormInfo[0].comment);
 
+	//doc.rect(doc.x, 0, 600, doc.y).stroke();
+	// # Pipe its output somewhere, like to a file or HTTP response
+	// # See below for browser usage
 	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
 
-	//Finalize PDF file
+	// # Finalize PDF file
 	doc.end()
 }
 
@@ -339,7 +346,7 @@ function thankYouClick(donorFormInfo) {
 		doc.text(" ");
 		doc.text(" ");
 		doc.text(" ");
-		doc.text("Dear" + donorFormInfo[0].first + ", " + donorFormInfo[0].last + "");
+		doc.text("Dear " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "");
 		doc.text(" ");
 		doc.text(" ");
 		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your genrous donation on " + donorFormInfo[0].donationDate);
@@ -357,10 +364,12 @@ function thankYouClick(donorFormInfo) {
 		doc.text(" ");
 		doc.text("Sincerely, Camrose Boys And Girls Club \n");
 
+		//doc.rect(doc.x, 0, 600, doc.y).stroke();
+		// # Pipe its output somewhere, like to a file or HTTP response
+		// # See below for browser usage
 		doc.pipe(fs.createWriteStream("thankYouCardsEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
 
-		//Finalize PDF file
+		// # Finalize PDF file
 		doc.end()
 	})
-}//thankYouClick()
-
+}
