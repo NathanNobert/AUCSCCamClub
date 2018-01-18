@@ -40,7 +40,7 @@ function createWindow () {
 
 
   // Create the browser window.
-  win = new BrowserWindow({show: false, width: 800, height: 600});
+  win = new BrowserWindow({show: false, width: 800, height: 600, backgroundColor: '#0099cc'});
 
   //Load the index.html of the app.
   win.loadURL(url.format({
@@ -80,7 +80,7 @@ app.on('activate', () => {
 This opens the new window after log in information is submitted correctly within the appHomePage.js file
 */
 exports.openWindow = (filename) => {
-  let win = new BrowserWindow({show: false});
+  let win = new BrowserWindow({show: false, backgroundColor: '#0099cc'});
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'selectPersonType.html'), //next page
     protocol: 'file:',

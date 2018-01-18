@@ -10,10 +10,14 @@ This is the html file for the donorForm
 
 	<!-- This allows us to add custom css on top of the Bootstrap built in css -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/donorForm.css">
+	<script type="text/javascript" src="existingOrNewDonor.js"></script>
+	<script language="javascript">
+   		filledForm();
+	</script>
 
 </head>
 <body>
-	<button class="btn btn-secondary" onclick="gotoMainMenu()">Go Back</button>
+	<button class="btn btn-secondary" onclick="goBackToMainMenu()">Go Back</button>
 
 	<!-- This div contains full page -->
 	<div class="container-fluid" id="content">
@@ -134,13 +138,15 @@ This is the html file for the donorForm
 			</div><!-- All entries for fourth row -->
 
 			<!-- This div creates the checkbox and label for receipt -->
-			<div class="custom-control custom-checkbox" id="text">
-				<input type="checkbox" class="custom-control-input" id="givenRecipt" value="Was given a Recipt">
-				<label class="custom-control-label" for="givenRecipt">Check if given a receipt</label>
+			 
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="givenReceipt" value="Was given a receipt">
+				<label class="custom-control-label" for="givenReceipt">Check if given a receipt</label>
 			</div>
 
 			<!-- This div creates the checkbox and label for thank you card -->
-			<div class="custom-control custom-checkbox" id="text">
+			 
+			<div class="custom-control custom-checkbox">
 				<input type="checkbox" class="custom-control-input" id="givenCard"  value="Was given a card">
 				<label class="custom-control-label" for="givenCard">Check if given a thank you card</label>
 			</div>
@@ -148,37 +154,41 @@ This is the html file for the donorForm
 		</form> <!-- All entries for form -->
 
 		<!-- This div creates the checkbox and label for comment box -->
-		<div class="form-group" id="text">
+		<div class="form-group">
 			<label for="commentBox">Comment Box:</label>
-			<textarea name="comments" class="form-control" id="commentBox" rows="3"></textarea>
+			<textarea class="form-control" id="commentBox" rows="3"></textarea>
 		</div>
+		
 
 		<!-- This div creates the button for Printing Receipt -->
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg">Print Receipt</button>
+			<button type="button" class="btn btn-primary btn-lg" id="receipt" onclick="printReceipt()">Print Receipt</button>
 		</div>
 
 		<!-- This div creates the button for Printing Thank you card -->
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg" id="thankYou" onclick="thankYouClick()">Print Thank you card</button>
+
+			<button type="button" id="thankYou" class="btn btn-primary btn-lg" onclick="thankYouClick()">Print Thank you card</button>
 		</div>
+
 
 		<!-- This div creates the button for submitting file -->
 		<div class="button">
-			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage()" value="Submit" myprint="#content">Submit</button>
+			<button type="button" class="btn btn-primary btn-lg" id="submit" onclick="infoStorage()" value="Submit" >Submit</button>
 		</div>
-
 
 
 		<p id="demo"></p>
 
 
+
 	</div><!-- All entries page-->
+
 
   	<!-- 
 	Required Javascript for handling the form information
   	 -->
-	<script type="text/javascript" src="donorFormV3.js"></script>
+	<script type="text/javascript" src="donorForm.js"></script>
 
 
 	<!--Required Javascript scripts for using Bootstrap and jQuery to build faster and more appealing applications
@@ -186,6 +196,7 @@ This is the html file for the donorForm
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </body>
 </html>

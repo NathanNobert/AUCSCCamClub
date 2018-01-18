@@ -13,13 +13,7 @@ const url = require ('url')
 
 function thankYouClick() {
 	alert("HELLO");
-	smalltalk
-    .prompt('Question', 'How old are you?', '10')
-    .then((value) => {
-        console.log(value);
-    .catch(() => {
-        console.log('cancel');
-    });
+	dialog("HI");
 } 
 
 //const {dialog} = require('electron').remote;
@@ -73,7 +67,6 @@ function infoStorage() {
 
 
 
-
 	var fs = require('fs');
 
 	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt");
@@ -102,10 +95,9 @@ function infoStorage() {
 
 	});
 
-
 	alert("Your information has been submitted, Thank you.", "Donor Form Submission");
 	gotoMainMenu();
-
+	
 
 }//infoStorage
 
@@ -137,13 +129,87 @@ function askWhereToSave(){
 
 
 /*
-
-This function sends the user back to the login screen
+This function just sends the user back to the main menu without confirmation
+This is intentional because after submitting a form, just send the user back
 
 */
 
 function gotoMainMenu() {
-
   document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
-
 }//gotoMainMenu
+
+function printReceipt() {
+	//Save the variables in the form that you need to print the receipt. 
+	let clientName = document.getElementById("firstName").value +" "+ document.getElementById("lastName").value;
+	let amountOfReceipt = document.getElementById("monetaryAmount").value + document.getElementById("nonMonetaryAmount").value;
+	let dateOfDonation = document.getElementById("donationDate").value;
+	alert("Name of client " + clientName +" Amount donated: "+amountOfReceipt+ " Date donated: "+dateOfDonation);
+
+	document.getElementById(receipt).innerHTML = window.location.replace("printDonationReceipt.html");
+	//Open a new Window
+}//printReceipt
+
+function createThankYouCard(){
+	alert("createThankYouCard called");
+
+}//createThankYouCard
+
+
+/*
+This function gets called when the user clicks the go back button, confirming if they want to go back
+to the main menu.
+*/
+function goBackToMainMenu(){
+	if(confirm("Are you sure?", "Go Back To Main Menu")){
+		document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+	}
+}
+
+
+
+
+
+
+// Trying print to pdf stuff
+
+	var pdfDoc = new jsPDF();
+function makePDF(){
+	alert("making a pdf");
+
+	pdfDoc.text('Hello world!', 10, 10);
+	pdfDoc.save('sample.pdf');
+}
+
+
+var doc = new jsPDF();
+
+
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+$('#cmd').click(function () {   
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    alert("pdf?");
+    doc.save('sample-file.pdf');
+});
+
+
+ipc.on('print-to-pdf', function(event) {
+	const pdfPath = path.join('/print.pdf'); //os.tmpdir(), 
+	const win = BrowserWindow.fromWebContents(event.sender);
+
+	win.webContents.printToPDF({}, function(error, data) {
+		if(error) return console.log(error.message);
+
+		fs.writeFile(pdfPath, data, function(err) {
+			if(err) return console.log(err.message);
+			shell.openExternal('file://' + pdfPath);
+			event.sender.send('wrote-pdf', pdfPath);
+		});
+	})
+})
