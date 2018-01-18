@@ -68,8 +68,10 @@ This function updates the list of names to add any new names submitted.
 */
 function updateNamesArray(){
 	var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
-	stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
-	stream.end();
+	stream.once('open', function(fd) {
+		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
+		stream.end();
+	}
 }
 
 
