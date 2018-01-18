@@ -97,9 +97,6 @@ function askWhereToSave(){
 }//askWhereToSave
 
 
-
-
-
 /*
 This function checkmarks the "check if given a receipt" checkbox when the "Print Receipt" button is pressed.
 Then it calls function createReceipt() which will create the pdf with the receipt for the donation.
@@ -195,6 +192,9 @@ function createReceipt(){
 }//createReceipt()
 
 
+function gotoMainMenu() {
+  document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+}//gotoMainMenu
 
 
 
