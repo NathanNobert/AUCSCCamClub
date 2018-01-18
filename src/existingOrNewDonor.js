@@ -8,7 +8,10 @@ const fs = require('fs');
 
 function moveToDonorForm() {
 
+
 	document.getElementById(newdonor).innerHTML = window.location.replace("donorForm.html");
+
+	
 
 }
 
