@@ -26,6 +26,5 @@
     "pdfkit": "^0.8.3",
     "popper.js": "^1.12.9",
     "window-popup": "^1.1.0"
-
   }
 }
