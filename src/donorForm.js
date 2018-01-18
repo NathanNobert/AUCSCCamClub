@@ -195,6 +195,9 @@ function createReceipt(){
 }//createReceipt()
 
 
+function gotoMainMenu() {
+  document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+}//gotoMainMenu
 
 
 
