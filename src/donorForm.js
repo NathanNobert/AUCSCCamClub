@@ -344,9 +344,9 @@ function thankYouClick(donorFormInfo) {
 		doc.text("Dear " + donorFormInfo[0].first + ", " + donorFormInfo[0].last + "");
 		doc.text(" ");
 		doc.text(" ");
-		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your genrous donation on " + donorFormInfo[0].donationDate);
+		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your generous donation on " + donorFormInfo[0].donationDate);
 		doc.text(" ");
-		doc.text("Camrose Boy And Girls Club relies on the genrousity of donors such as yourself and is grateful for your support");
+		doc.text("Camrose Boy And Girls Club relies on the generousity of donors such as yourself and is grateful for your support");
 		doc.text(" ");
 		doc.text(result.value);
 		doc.text(" ");
