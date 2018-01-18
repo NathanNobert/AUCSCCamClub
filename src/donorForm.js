@@ -2,8 +2,8 @@
 This file contains all the javascript used for the donorForm page.
 */
 const{app, BrowserWindow} = require('electron')
-const path = require ('path')
-const url = require ('url')
+const path = require('path')
+const url = require('url')
 const fs = require('fs')
 const PDFDocument = require('pdfkit')
 const swal = require('sweetalert2')
@@ -15,7 +15,7 @@ This function reads the information from the donorForm.html file and creates a r
 function infoStorage() {
 
 	//var fileName = askWhereToSave();
-
+	alert("saving info");
 	var donorFormInfo = [{
 		first: document.getElementById("firstName").value,
 		last: document.getElementById("lastName").value,
@@ -34,6 +34,7 @@ function infoStorage() {
 		comment: document.getElementById("commentBox").value
 	}];//donorFormInfo
 
+	alert("writing info");
 	var fs = require('fs');
 	var stream = fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".txt"/*, {'flags':'a'}*/);
 
@@ -55,13 +56,24 @@ function infoStorage() {
 		'Thank you for your submission',
 		'Your PDF is generated and saved',
 		'success'
-	)
-
+	);
+	
 	makePDF(donorFormInfo);
+	updateNamesArray();
 	//gotoMainMenu();
 	
 
 }//infoStorage
+
+/*
+This function updates the list of names to add any new names submitted.
+*/
+function updateNamesArray(){
+	alert("updating names array");
+		var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
+		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
+		stream.end();
+}
 
 
 /*

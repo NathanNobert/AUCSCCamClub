@@ -29,7 +29,7 @@ function readTextFile(file){
 
 function moveToDonorForm() {
 
-	document.getElementById(newdonor).innerHTML = window.location.replace("donorLinearFormIndividual.html");
+	document.getElementById(newdonor).innerHTML = window.location.replace("donorForm.html");
 
 }
 
