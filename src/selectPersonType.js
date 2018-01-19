@@ -66,3 +66,10 @@ function quitApp(){
 function gotoMainMenu() {
 	document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
  }//gotoMainMenu
+
+ /*
+  This function sends the user to the options page
+*/
+function gotoOptionsPage() {
+  document.getElementById(gotoOptions).innerHTML = window.location.replace("optionsPage.html");
+ }//gotoMainMenu

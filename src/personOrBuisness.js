@@ -4,7 +4,6 @@ const main = remote.require('./index.js')
 
 function eitherBuisnessOrPerson(idOfButton) {
 	if(idOfButton === 'Buisness') {
-		alert("GOES INTO BUS")
 		document.getElementById(Buisness).innerHTML = window.location.replace("newOrExistingBuisness.html");
 	}
 	else if(idOfButton === 'Person') {

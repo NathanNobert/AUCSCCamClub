@@ -3,13 +3,10 @@ This file contains all the javascript used for the donorForm page.
 */
 
 const{app, BrowserWindow} = require('electron')
-
-const path = require ('path')
-
-const url = require ('url')
+const path = require('path')
+const url = require('url')
 const fs = require('fs')
 const PDFDocument = require('pdfkit')
-
 const swal = require('sweetalert2')
 
 
@@ -35,8 +32,8 @@ function infoStorage() {
 		cashInfo: document.getElementById("cash").value,
 		nonMonetary: document.getElementById("nonMonetaryAmount").value,
 		item: document.getElementById("nonMonetaryItem").value,
-		receiptCheckBox: document.getElementById("givenReceipt").value,
-		thankYouCheckBox: document.getElementById("givenCard").value,
+		receiptCheckBox: document.getElementById("givenReceipt").checked,
+		thankYouCheckBox: document.getElementById("givenCard").checked,
 		comment: document.getElementById("commentBox").value
 	}];//donorFormInfo
 
@@ -65,22 +62,23 @@ function infoStorage() {
 	)
 
 	makePDF(donorFormInfo);
-	updateNamesArray(donorFormInfo);
+	//updateNamesArray(donorFormInfo);
 	gotoMainMenu();
 	
 
 }//infoStorage
 
-/*
-This function updates the list of names to add any new names submitted.
-*/
-function updateNamesArray(donorFormInfo){
-	var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
-	
-	stream.write("\r\n")
-	stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last);
-	stream.end();
-}
+
+// /*
+// This function updates the list of names to add any new names submitted.
+// */
+// function updateNamesArray(){
+// 	var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
+// 	stream.once('open', function(fd) {
+// 		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
+// 		stream.end();
+// 	}
+// }
 
 /*
 Will use this function if we decide to give the user the option to choose where they want to save
@@ -145,15 +143,12 @@ function createReceipt(){
 		cashInfo: document.getElementById("cash").value,
 		item: document.getElementById("nonMonetaryItem").value
 	}];//donorFormInfo
-
 	//Create a document
 	doc = new PDFDocument
-
 	//This adds in the basic template of the receipt.
 	doc.image('assets/images/receiptTemplate.png', {
 		fit: [500, 300],
 	});
-
 	//This writes the information that changes in the receipt to the pdf at exact locations.
 	doc.fontSize(12)
 	doc.text(receiptNumber, 480, 130);
@@ -167,10 +162,8 @@ function createReceipt(){
 	doc.text(donorFormInfo[0].phone, 460, 220);
 	doc.text(donorFormInfo[0].monetary, 200, 185);
 	doc.text(donorFormInfo[0].nonMonetary, 200, 200);
-
 	//Updates the receipt number
 	receiptNumber = receiptNumber + 1;
-
 	//Puts in the checkmark in the appropriate place in the receipt for the type of donation that was given.
 	if(document.getElementById("monetaryAmount").value != "" && document.getElementById("monetaryAmount").value != null){
 		if(document.getElementById("cheque").checked){
@@ -180,7 +173,6 @@ function createReceipt(){
 			doc.lineTo(160, 180)                            
 			doc.stroke() 
 		}
-
 		if(document.getElementById("cash").checked){
 			//CheckMark for it it is paid in cash.
 			doc.moveTo(150, 195)                         
@@ -189,7 +181,6 @@ function createReceipt(){
 			doc.stroke() 
 		}
 	}
-
 	if(document.getElementById("nonMonetaryAmount").value != "" && document.getElementById("nonMonetaryAmount").value != null){
 		//CheckMark for it the donation was an item.
 		doc.moveTo(150, 210)                         
@@ -197,12 +188,15 @@ function createReceipt(){
 		doc.lineTo(160, 205)                            
 		doc.stroke() 
 	}
-
 	//This is where the pdf is saved and how it is named.
-	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorFormInfo[0].dateOfDonation + ".pdf"));
-
+	doc.pipe(fs.createWriteStream("receipt/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorFormInfo[0].dateOfDonation + ".pdf"));
 	//Finalize PDF file
 	doc.end()
+
+	webContents.reloadIgnoringCache();
+
+
+
 }//createReceipt()
 
 
@@ -243,7 +237,7 @@ function goBackToMainMenu(){
   }
 })
 
-}
+}//goBackToMainMenu
 
 /*
 This function gets called when the user clicks the submit form button,
@@ -258,12 +252,23 @@ function makePDF(donorFormInfo){
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
 	doc.text("Email Address: " + donorFormInfo[0].email);
 	doc.text("Phone Number: " + donorFormInfo[0].phone);
-	doc.text("Address: " + donorFormInfo[0].addressInfo + " , " + donorFormInfo[0].cityInfo + " , " + donorFormInfo[0].provinceInfo + " , " + donorFormInfo[0].postal);
+	doc.text("Address: " + donorFormInfo[0].addressInfo + ", " + donorFormInfo[0].cityInfo + ", " + donorFormInfo[0].provinceInfo + ", " + donorFormInfo[0].postal);
 	doc.text("Monetary amount donated: $" + donorFormInfo[0].monetary);
-	doc.text("Cash: " + donorFormInfo[0].cashInfo);
-	doc.text("Cheque: " + donorFormInfo[0].chequeInfo);
+	if(document.getElementById('cash').checked) {
+	  doc.text("Cash: Yes");
+	  doc.text("Cheque: No");
+	}
+	if(document.getElementById('cheque').checked) {
+	  doc.text("Cash: No");
+	  doc.text("Cheque: Yes");
+	}
 	doc.text("Non-Monetary estimated value: $" + donorFormInfo[0].nonMonetary + " The item donated: " + donorFormInfo[0].item);
-	doc.text(donorFormInfo[0].receiptCheckBox + "  " + donorFormInfo[0].thankYouCheckBox);
+	if(document.getElementById('givenReceipt').checked){
+		doc.text("Receipt was created.");
+	}
+	if(document.getElementById('givenCard').checked){
+		doc.text("Thank You card was created.");
+	}
 	doc.text("Comments: " + donorFormInfo[0].comment);
 
 	//doc.rect(doc.x, 0, 600, doc.y).stroke();
@@ -274,6 +279,7 @@ function makePDF(donorFormInfo){
 	// # Finalize PDF file
 	doc.end()
 }
+
 
 /*
 This function gets called when the user clicks the Generates a Thank you card button,
@@ -349,9 +355,9 @@ function thankYouClick(donorFormInfo) {
 		doc.text("Dear " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "");
 		doc.text(" ");
 		doc.text(" ");
-		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your genrous donation on " + donorFormInfo[0].donationDate);
+		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your generous donation on " + donorFormInfo[0].donationDate);
 		doc.text(" ");
-		doc.text("Camrose Boy And Girls Club relies on the genrousity of donors such as yourself and is grateful for your support");
+		doc.text("Camrose Boys And Girls Club relies on the generousity of donors such as yourself and is grateful for your support");
 		doc.text(" ");
 		doc.text(result.value);
 		doc.text(" ");
@@ -372,4 +378,5 @@ function thankYouClick(donorFormInfo) {
 		// # Finalize PDF file
 		doc.end()
 	})
-}
+}//thank you click
+

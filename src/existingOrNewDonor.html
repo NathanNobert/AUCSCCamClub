@@ -28,8 +28,11 @@ function poponload()
 		<p></p><!--creates space between the top of the jumbotron and the search bar-->
 
 		<div class="input-group">
-  			<!-- <input type="text" class="form-control" id = "firstname" placeholder="Please Enter First Name"> -->
-  			<input type="text" class="awesomplete" id="predictiveFirstNameList" placeholder="Please Enter First Name">
+  			<input type="text" class="form-control" id = "firstname" placeholder="Please Enter Name">
+      <!--
+  			<input type="text" class="" id="predictiveFirstNameList" placeholder="Please Enter First Name">
+  			<input type="text" class="" id="predictiveLastNameList" placeholder="Please Enter Last Name">
+-->
   			<div class="input-group-append">
     			<button class="btn btn-primary" type="button" id = "search" onclick="moveToExisistingForm()">Search</button>
   			</div>
@@ -40,6 +43,19 @@ function poponload()
 		<p></p><!--creates space between the top of the jumbotron and the Add New Button-->
 		<button class="btn btn-secondary" type="button" id = "newdonor" onclick="moveToDonorForm()">Add New Donor</button>
 
+		<div class="input-group space">
+			<label class="form-check-label" id="text" for="validationDefault02">Standard Form</label>
+			<input class="form-check-input" type="radio" checked="checked" name="exampleRadios" id="formA" value="formA">
+		</div>
+		<div class="input-group space">
+			<label class="form-check-label" id="text" for="validationDefault02">Linear Form</label>
+			<input class="form-check-input" type="radio" name="exampleRadios" id="formB" value="formB">
+		</div>
+		<div class="input-group space">
+			<label class="form-check-label" id="text" for="validationDefault02">Two Column Form</label>
+			<input class="form-check-input" type="radio" name="exampleRadios" id="formC" value="formC">
+		</div>
+	
 		<p></p><!--creates space between the top of the jumbotron and the Add New button-->
 		<p></p><!--creates space between the top of the jumbotron and the Add New Button-->
 

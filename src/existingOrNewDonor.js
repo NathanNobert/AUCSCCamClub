@@ -7,6 +7,7 @@ const fs = require('fs');
 file = "../donorNames.txt";
 let namesArray = [];
 readTextFile(file);
+
 /*
 This function reads a .txt file and stores each line into an array to be predictively searched.
 */
@@ -27,7 +28,16 @@ function readTextFile(file){
 
 
 function moveToDonorForm() {
-	document.getElementById(newdonor).innerHTML = window.location.replace("donorFormIndividual.html");
+
+	if(document.getElementById('formA').checked){
+		document.getElementById(newdonor).innerHTML = window.location.replace("donorFormIndividual.html");
+	}
+	if(document.getElementById('formB').checked){
+		document.getElementById(newdonor).innerHTML = window.location.replace("donorFormLinearIndividual.html");
+	}
+	if(document.getElementById('formC').checked){
+		document.getElementById(newdonor).innerHTML = window.location.replace("donorFormTwoColumnIndividual.html");
+	}
 }
 
 
@@ -62,12 +72,13 @@ function moveToExisistingForm() {
 	if(urlExists(searchedFile)) {
 		var win = new BrowserWindow({ show: false, width: 500, height: 400});
 		win.loadURL(url.format({
-    	pathname: path.join(__dirname, searchedFile),
+    	pathname: path.join(__dirname, 'editDonorForm.html'),
     	protocol: 'file:',
     	slashes: true
   	}));
     //waiting to show the screen until now allows the screen and elements to load.
   	win.show();
+  	win.maximize();
 	}
 	else{
 		alert("File does not exist");
@@ -76,30 +87,30 @@ function moveToExisistingForm() {
 
 
 function filledForm() {
-	var fName = ['Timmy', '', '', '', '',];
+	var fName = ['Amy', '', '', '', '',];
 		window.onload=function(){
 		document.getElementById('firstName').value=fName[0];
-		document.getElementById('lastName').value='Last Name';
-		document.getElementById('contactName').value='Firsty';
-		document.getElementById('emailAddress').value='M@gmail.R';
-		document.getElementById('phoneNumber').value='1234567890';
-		document.getElementById('donationDate').value='1990-09-09';
+		document.getElementById('lastName').value='Weber';
+		document.getElementById('contactName').value='Business';
+		document.getElementById('emailAddress').value='amy@weber.com';
+		document.getElementById('phoneNumber').value='0123456789';
+		document.getElementById('donationDate').value='2018-01-01';
 		document.getElementById('address').value='123 Fake Street';
-		document.getElementById('city').value='Fake City';
-		document.getElementById('postalCode').value='FFF FFF';
-		document.getElementById('monetaryAmount').value='2000';
+		document.getElementById('city').value='Camrose';
+		document.getElementById('postalCode').value='123456';
+		document.getElementById('monetaryAmount').value='100';
 		document.getElementById('nonMonetaryItem').value='Bench';
-		document.getElementById('nonMonetaryAmount').value='200';
-	}
+		document.getElementById('nonMonetaryAmount').value='100';}
 }
+
+	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
+
+
 /*
 These are 2 predictive search boxes that are used for first and last names
 */
-
-var input = document.getElementById("predictiveFirstNameList");
+var input = document.getElementById("firstName");
 
 new Awesomplete(input, {
   list: namesArray
-}); 
-
-
+});
