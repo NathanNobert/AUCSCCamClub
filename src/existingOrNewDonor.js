@@ -64,14 +64,16 @@ function moveToExisistingForm() {
 	}//while
 
 	var searchedLastName = "";
-
+	//Builds the last name with the second part of the inputted name
 	for(counter = i + 1; counter < searchedFullName.length; counter++){
 		searchedLastName = searchedLastName + searchedFullName.charAt(counter);
 	}//for
+	//Takes the first and last name name an turns them into a string that represents a text file
 	var fileToSearch = searchedLastName + ", " + searchedFirstName + ".txt";
+	//Takes the text file name string and turns it into a path to the file
 	var searchedFile = "../donorFormEntries/" + fileToSearch;
 
-
+	//Opens the window that corresponds with the text file searched if the file exists
 	if(urlExists(searchedFile)) {
 		var win = new BrowserWindow({ show: false, width: 500, height: 400});
 		win.loadURL(url.format({
@@ -83,12 +85,13 @@ function moveToExisistingForm() {
   	win.show();
   	win.maximize();
 	}//if
+	//Gives an error alert if the searched file name does not exist as a file
 	else{
 		alert("File does not exist");
 	}//else
 }//moveToExistingForm()
 
-
+//Fills the donor form that is opened with information that is appropriate to the user
 function filledForm() {
 	var fName = ['Amy', '', '', '', '',];
 		window.onload=function(){
