@@ -256,6 +256,12 @@ function makePDF(donorFormInfo){
 	// # Create a document
 	doc = new PDFDocument
 
+	doc.image('assets/images/logo B&G long.jpg', {
+			fit: [500, 300],
+			align: 'center',
+			valign: 'top'
+		});//doc.image
+
 	//doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
 	doc.text("Business name: " + donorFormInfo[0].business);
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
@@ -355,7 +361,7 @@ function thankYouClick(donorFormInfo) {
 		doc.text(" ");
 		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your generous donation on " + donorFormInfo[0].donationDate);
 		doc.text(" ");
-		doc.text("Camrose Boy And Girls Club relies on the generosity of donors such as yourself and is grateful for your support");
+		doc.text("Camrose Boys And Girls Club relies on the generosity of donors such as yourself and is grateful for your support");
 		doc.text(" ");
 		doc.text(result.value);
 		doc.text(" ");

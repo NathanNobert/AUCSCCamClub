@@ -4,8 +4,15 @@ const url = require('url')
 const fileExists = require('file-exists');
 
 function moveToDonorForm() {
-
-	document.getElementById(addnewbusiness).innerHTML = window.location.replace("donorFormBusiness.html");
+	if(document.getElementById('formA').checked){
+		document.getElementById(addnewbusiness).innerHTML = window.location.replace("donorFormBusiness.html");
+	}
+	if(document.getElementById('formB').checked){
+		document.getElementById(addnewbusiness).innerHTML = window.location.replace("donorFormLinearBusiness.html");
+	}
+	if(document.getElementById('formC').checked){
+		document.getElementById(addnewbusiness).innerHTML = window.location.replace("donorFormTwoColumnBusiness.html");
+	}	
 }
 
 

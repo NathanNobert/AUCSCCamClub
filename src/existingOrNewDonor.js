@@ -29,11 +29,15 @@ function readTextFile(file){
 
 
 function moveToDonorForm() {
-
-	document.getElementById(newdonor).innerHTML = window.location.replace("donorFormIndividual.html");
-
-
-
+	if(document.getElementById('formA').checked){
+		document.getElementById(newdonor).innerHTML = window.location.replace("donorFormIndividual.html");
+	}
+	if(document.getElementById('formB').checked){
+		document.getElementById(newdonor).innerHTML = window.location.replace("donorFormLinearIndividual.html");
+	}
+	if(document.getElementById('formC').checked){
+		document.getElementById(newdonor).innerHTML = window.location.replace("donorFormTwoColumnIndividual.html");
+	}
 }
 
 

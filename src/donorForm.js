@@ -31,8 +31,8 @@ function infoStorage() {
 		cashInfo: document.getElementById("cash").value,
 		nonMonetary: document.getElementById("nonMonetaryAmount").value,
 		item: document.getElementById("nonMonetaryItem").value,
-		receiptCheckBox: document.getElementById("givenReceipt").value,
-		thankYouCheckBox: document.getElementById("givenCard").value,
+		receiptCheckBox: document.getElementById("givenReceipt").checked,
+		thankYouCheckBox: document.getElementById("givenCard").checked,
 		comment: document.getElementById("commentBox").value
 	}];//donorFormInfo
 
@@ -64,6 +64,7 @@ function infoStorage() {
 	
 	makePDF(donorFormInfo);
 	updateNamesArray();
+	webContents.reloadIgnoringCache();
 	//gotoMainMenu();
 	
 
@@ -187,6 +188,8 @@ function createReceipt(){
 	//Finalize PDF file
 	doc.end()
 
+	webContents.reloadIgnoringCache();
+
 
 
 }//createReceipt()
@@ -256,13 +259,23 @@ function makePDF(donorFormInfo){
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
 	doc.text("Email Address: " + donorFormInfo[0].email);
 	doc.text("Phone Number: " + donorFormInfo[0].phone);
-	doc.text("Address: " + donorFormInfo[0].addressInfo + " , " + donorFormInfo[0].cityInfo + " , " + donorFormInfo[0].provinceInfo + " , " + donorFormInfo[0].postal);
+	doc.text("Address: " + donorFormInfo[0].addressInfo + ", " + donorFormInfo[0].cityInfo + ", " + donorFormInfo[0].provinceInfo + ", " + donorFormInfo[0].postal);
 	doc.text("Monetary amount donated: $" + donorFormInfo[0].monetary);
-	doc.text("Cash: " + donorFormInfo[0].cashInfo);
-	doc.text("Cheque: " + donorFormInfo[0].chequeInfo);
+	if(document.getElementById('cash').checked) {
+	  doc.text("Cash: Yes");
+	  doc.text("Cheque: No");
+	}
+	if(document.getElementById('cheque').checked) {
+	  doc.text("Cash: No");
+	  doc.text("Cheque: Yes");
+	}
 	doc.text("Non-Monetary estimated value: $" + donorFormInfo[0].nonMonetary + " The item donated: " + donorFormInfo[0].item);
-	doc.text(donorFormInfo[0].receiptCheckBox);
-	doc.text(donorFormInfo[0].thankYouCheckBox);
+	if(document.getElementById('givenReceipt').checked){
+		doc.text("Receipt was created.");
+	}
+	if(document.getElementById('givenCard').checked){
+		doc.text("Thank You card was created.");
+	}
 	doc.text("Comments: " + donorFormInfo[0].comment);
 
 	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
@@ -270,6 +283,7 @@ function makePDF(donorFormInfo){
 	//Finalize PDF file
 	doc.end()
 }
+
 
 /*
 This function gets called when the user clicks the Generates a Thank you card button,
@@ -347,7 +361,7 @@ function thankYouClick(donorFormInfo) {
 		doc.text(" ");
 		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your generous donation on " + donorFormInfo[0].donationDate);
 		doc.text(" ");
-		doc.text("Camrose Boy And Girls Club relies on the generousity of donors such as yourself and is grateful for your support");
+		doc.text("Camrose Boys And Girls Club relies on the generousity of donors such as yourself and is grateful for your support");
 		doc.text(" ");
 		doc.text(result.value);
 		doc.text(" ");
@@ -365,5 +379,6 @@ function thankYouClick(donorFormInfo) {
 		//Finalize PDF file
 		doc.end()
 	})
+	webContents.reloadIgnoringCache();
 }//thankYouClick()
 
