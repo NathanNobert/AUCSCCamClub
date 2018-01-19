@@ -89,20 +89,20 @@ function moveToExisistingForm() {
 
 
 function filledForm() {
-	var fName = ['Timmy', '', '', '', '',];
+	var fName = ['Amy', '', '', '', '',];
 		window.onload=function(){
 		document.getElementById('firstName').value=fName[0];
-		document.getElementById('lastName').value='Last Name';
-		document.getElementById('contactName').value='Firsty';
-		document.getElementById('emailAddress').value='M@gmail.R';
-		document.getElementById('phoneNumber').value='1234567890';
-		document.getElementById('donationDate').value='1990-09-09';
+		document.getElementById('lastName').value='Weber';
+		document.getElementById('contactName').value='Business';
+		document.getElementById('emailAddress').value='amy@weber.com';
+		document.getElementById('phoneNumber').value='0123456789';
+		document.getElementById('donationDate').value='2018-01-01';
 		document.getElementById('address').value='123 Fake Street';
-		document.getElementById('city').value='Fake City';
-		document.getElementById('postalCode').value='FFF FFF';
-		document.getElementById('monetaryAmount').value='2000';
+		document.getElementById('city').value='Camrose';
+		document.getElementById('postalCode').value='123456';
+		document.getElementById('monetaryAmount').value='100';
 		document.getElementById('nonMonetaryItem').value='Bench';
-		document.getElementById('nonMonetaryAmount').value='200';}
+		document.getElementById('nonMonetaryAmount').value='100';}
 }
 
 	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
