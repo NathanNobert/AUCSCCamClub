@@ -65,7 +65,7 @@ function infoStorage() {
 	)
 
 	makePDF(donorFormInfo);
-	updateNamesArray();
+	updateNamesArray(donorFormInfo);
 	gotoMainMenu();
 	
 
@@ -74,12 +74,12 @@ function infoStorage() {
 /*
 This function updates the list of names to add any new names submitted.
 */
-function updateNamesArray(){
+function updateNamesArray(donorFormInfo){
 	var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
-	stream.once('open', function(fd) {
-		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
-		stream.end();
-	});
+	
+	stream.write("\r\n")
+	stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last);
+	stream.end();
 }
 
 /*

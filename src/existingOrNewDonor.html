@@ -8,20 +8,17 @@
 	<!-- This allows us to add custom css on top of the Bootstrap built in css -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/customBootstrap.css">
 	<!-- <link rel="stylesheet" type="text/css" href="../assets/css/existingOrNewDonor.css"> -->
- <link rel="stylesheet" href="awesomplete.css" />
-
-<script src="awesomplete.js" async></script>
- 
+	<link rel="stylesheet" href="awesomplete.css" />
 
 </head>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function poponload()
 {
     testwindow = window.open("", "mywindow",);
     testwindow.moveTo(0, 0);
 }
-</script>
+</script> -->
 
 <body>
 	
@@ -31,31 +28,27 @@ function poponload()
 		<p></p><!--creates space between the top of the jumbotron and the search bar-->
 
 		<div class="input-group">
-  			<input type="text" class="form-control" id = "firstname" placeholder="Please Enter First Name">
-      <!--
-
-  			<input type="text" class="" id="predictiveFirstNameList" placeholder="Please Enter First Name">
-  			<input type="text" class="" id="predictiveLastNameList" placeholder="Please Enter Last Name">
--->
+  			<!-- <input type="text" class="form-control" id = "firstname" placeholder="Please Enter First Name"> -->
+  			<input type="text" class="awesomplete" id="predictiveFirstNameList" placeholder="Please Enter First Name">
   			<div class="input-group-append">
     			<button class="btn btn-primary" type="button" id = "search" onclick="moveToExisistingForm()">Search</button>
   			</div>
 		</div>
 
-	<hr class = "hr-text" data-content="Or">
-	<p></p><!--creates space between the top of the jumbotron and the Add New button-->
-	<p></p><!--creates space between the top of the jumbotron and the Add New Button-->
-	<button class="btn btn-secondary" type="button" id = "newdonor" onclick="moveToDonorForm()">Add New Donor</button>
+		<hr class = "hr-text" data-content="Or">
+		<p></p><!--creates space between the top of the jumbotron and the Add New button-->
+		<p></p><!--creates space between the top of the jumbotron and the Add New Button-->
+		<button class="btn btn-secondary" type="button" id = "newdonor" onclick="moveToDonorForm()">Add New Donor</button>
 
-	<p></p><!--creates space between the top of the jumbotron and the Add New button-->
-	<p></p><!--creates space between the top of the jumbotron and the Add New Button-->
+		<p></p><!--creates space between the top of the jumbotron and the Add New button-->
+		<p></p><!--creates space between the top of the jumbotron and the Add New Button-->
 
-</div>
+	</div>
 
 <!-- 			==================================     			-->
 
 
-
+<script src="awesomplete.js" async></script>
 <script type="text/javascript" src="existingOrNewDonor.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

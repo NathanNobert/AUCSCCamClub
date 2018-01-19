@@ -109,7 +109,7 @@ function gotoSignInPage() {
 This functions sends the user to the options page
 */
 function gotoOptionsPage() {
-  document.getElementById(gotoSignInPage).innerHTML = window.location.replace("optionsPage.html");
+  document.getElementById(options).innerHTML = window.location.replace("optionsPage.html");
 }
 
 /*
