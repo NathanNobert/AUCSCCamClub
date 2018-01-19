@@ -6,17 +6,18 @@ The goal for this app is to manage information about donors, members, and volunt
 The eventual goal is to have this app integrate a database to better store the information collected throughout each form.
 
 *Authors/bio's of this app:*  
-Nathan, Programmer, Team Leader  
-Bio: I am a third year computing science student at University of Alberta, Augustana campus. My passions include mobile and web developments and I love being a team leader. I hope to pursue mobile development after school for my own businesses work. Some of the programming languages I have used and know include Java, Kotlin, C, C#, Javascript, PHP. I am very interested in learning more about and developing on top of blockchain technologies and creating apps for the future of a blockchain web.
-
 Fatima, Programmer  
-Bio: I am a third year computing science student who previously study at the University Of Calgary and recently transferred to University Of Alberta, Augustana campus. I am very passionate about creating graphical interface and recently got into creating applications which i very much enjoyed. Some of the computer languages I have learnt were Python, Java, and HTML. In the future I would love to create my own application that would benefit society.
-
-Katharina, Programmer  
-Bio: I’m a second year student at the University of Alberta. I’m interested in increasing my skill and knowledge about computers. I like programming and I have had lots of fun learning about programming so far. I have specifically learned Python, and Java. I’m looking forward to the challenge that this project will provide.
-
+Bio: Fatima is a third year computing science student who previously studied at the University Of Calgary and recently transferred to University Of Alberta, Augustana campus. Fatima is very passionate about creating graphical interfaces and recently delved into creating applications which she has greatly enjoyed. Some of the computer languages Fatimas has learnt include Python, Java, and HTML. In the future she would love to create her own applications that would benefit society.  
+  
 Jack, Programmer  
-Bio: I am a second year computing science student at the University of Alberta’s Augustana campus. I enjoy the process of developing a program, and am particularly passionate about the deep coding. After university, I hope to program my own games. I know how to use the languages Python and Java, but am far better with Java then I am with Python. 
+Bio: Jack is a second year computing science student at the University of Alberta, Augustana campus. Jack enjoy’s the process of developing a program, and is particularly passionate about the deep coding aspect of a project. After university, he hopes to program his own games. The programming languages Jack is familiar with include Java and Python.  
+  
+Katharina, Programmer  
+Bio: Katharina is a second year student at the University of Alberta. She is interested in increasing her skill and knowledge about computers. Katharina likes programming and has had lots of fun learning about programming so far. She specifically learned Python, and Java. Katharina is looking forward to the challenge that this project will provide.  
+  
+Nathan, Programmer, Team Leader  
+Bio: Nathan is a third year computing science student at University of Alberta, Augustana campus. Nathan’s passions include mobile and web developments and he loves being a team leader. He hopes to pursue mobile and web development after school for his own businesses work. Some of the programming languages Nathan has used and know include Java, Kotlin, C, C#, Javascript, PHP. He is very interested in learning more about and developing on top of blockchain technologies and creating apps for the future of a blockchain web.
+
 
 
 *Framework and Programming Technologies Used*  
