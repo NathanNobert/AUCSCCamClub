@@ -12,6 +12,7 @@ readTextFile(file);
 /*
 This function reads a .txt file and stores each line into an array to be predictively searched.
 */
+//
 function readTextFile(file){
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
@@ -21,52 +22,52 @@ function readTextFile(file){
             	//saves each line of the file into an element of the array
                 var allText = rawFile.responseText.split("\n");
                 namesArray += allText;
-            }
-        }
-    }
+            }//if(rawFile.status === 200 || rawFile.status == 0)
+        }//if(rawFile.readtState === 4)
+    }//rawFile.onreadystatechange = function ()
     rawFile.send(null);
-}
+}//readTextFile(file)
 
 
 function moveToDonorForm() {
 	if(document.getElementById('formA').checked){
 		document.getElementById(newdonor).innerHTML = window.location.replace("donorFormIndividual.html");
-	}
+	}//if
 	if(document.getElementById('formB').checked){
 		document.getElementById(newdonor).innerHTML = window.location.replace("donorFormLinearIndividual.html");
-	}
+	}//if
 	if(document.getElementById('formC').checked){
 		document.getElementById(newdonor).innerHTML = window.location.replace("donorFormTwoColumnIndividual.html");
-	}
-}
+	}//if
+}//moveToDonorForm()
 
 
 
-
+//Checks is a file exists within the application
 function urlExists(url) {
 		var http = new XMLHttpRequest();
 		http.open('HEAD', url, false);
 		http.send();
 		return http.status==200;
-	}
-
+	}//urlExists(url)
+//Opens the form of the searched business
 function moveToExisistingForm() {
 	const remote = require('electron').remote;
 	const BrowserWindow = remote.BrowserWindow;
 	var searchedFullName = document.getElementById("firstname").value;
 	var i = 0;
 	var searchedFirstName = "";
-
+	//Builds the first name with the first part of the inputted name
 	while(searchedFullName.charAt(i) != " "){
 		searchedFirstName = searchedFirstName + searchedFullName.charAt(i);
 		i = i + 1;
-	}
+	}//while
 
 	var searchedLastName = "";
 
 	for(counter = i + 1; counter < searchedFullName.length; counter++){
 		searchedLastName = searchedLastName + searchedFullName.charAt(counter);
-	}
+	}//for
 	var fileToSearch = searchedLastName + ", " + searchedFirstName + ".txt";
 	var searchedFile = "../donorFormEntries/" + fileToSearch;
 
@@ -77,15 +78,15 @@ function moveToExisistingForm() {
     	pathname: path.join(__dirname, 'editDonorForm.html'),
     	protocol: 'file:',
     	slashes: true
-  	}));
+  	})); //if(urlExists(searchedFile))
     //waiting to show the screen until now allows the screen and elements to load.
   	win.show();
   	win.maximize();
-	}
+	}//if
 	else{
 		alert("File does not exist");
-	}
-}
+	}//else
+}//moveToExistingForm()
 
 
 function filledForm() {
@@ -103,7 +104,7 @@ function filledForm() {
 		document.getElementById('monetaryAmount').value='100';
 		document.getElementById('nonMonetaryItem').value='Bench';
 		document.getElementById('nonMonetaryAmount').value='100';}
-}
+}//filledForm()
 
 	//document.getElementById(newdonor).innerHTML = window.location.replace("donorFormV2.html");
 
