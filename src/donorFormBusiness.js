@@ -114,6 +114,12 @@ Then it calls function createReceipt() which will create the pdf with the receip
 function printReceipt() {
 	document.getElementById("givenReceipt").checked = true;
 	createReceipt();
+	swal(
+		'Thank you',
+		'Your reciept has been generated and saved',
+		'success'
+	)
+
 
 }//printReceipt
 
@@ -127,6 +133,7 @@ function createReceipt(){
 	var receiptNumber = 1;
 
 	var donorFormInfo = [{
+		business: document.getElementById("businessName").value,
 		first: document.getElementById("firstName").value,
 		last: document.getElementById("lastName").value,
 		phone: document.getElementById("phoneNumber").value,
@@ -195,7 +202,7 @@ function createReceipt(){
 	}
 
 	//This is where the pdf is saved and how it is named.
-	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorFormInfo[0].dateOfDonation + ".pdf"));
+	doc.pipe(fs.createWriteStream("receipt/"  + donorFormInfo[0].business + ".pdf"));
 
 	//Finalize PDF file
 	doc.end()
@@ -249,6 +256,12 @@ function makePDF(donorFormInfo){
 	// # Create a document
 	doc = new PDFDocument
 
+	doc.image('assets/images/logo B&G long.jpg', {
+			fit: [500, 300],
+			align: 'center',
+			valign: 'top'
+		});//doc.image
+
 	//doc.image('../assets/images/logoWithTextUnder.png', 320, 280, scale: 0.25);
 	doc.text("Business name: " + donorFormInfo[0].business);
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
@@ -280,6 +293,7 @@ function thankYouClick(donorFormInfo) {
 	document.getElementById("givenCard").checked = true;
 
 	var donorFormInfo = [{
+		business: document.getElementById("businessName").value,
 		first: document.getElementById("firstName").value,
 		last: document.getElementById("lastName").value,
 		donationDate: document.getElementById("donationDate").value,
@@ -342,12 +356,12 @@ function thankYouClick(donorFormInfo) {
 		doc.text(" ");
 		doc.text(" ");
 		doc.text(" ");
-		doc.text("Dear " + donorFormInfo[0].first + " " + donorFormInfo[0].last + "");
+		doc.text("Dear " + donorFormInfo[0].business + "");
 		doc.text(" ");
 		doc.text(" ");
-		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your genrous donation on " + donorFormInfo[0].donationDate);
+		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your generous donation on " + donorFormInfo[0].donationDate);
 		doc.text(" ");
-		doc.text("Camrose Boy And Girls Club relies on the genrousity of donors such as yourself and is grateful for your support");
+		doc.text("Camrose Boys And Girls Club relies on the generosity of donors such as yourself and is grateful for your support");
 		doc.text(" ");
 		doc.text(result.value);
 		doc.text(" ");
@@ -363,7 +377,7 @@ function thankYouClick(donorFormInfo) {
 		//doc.rect(doc.x, 0, 600, doc.y).stroke();
 		// # Pipe its output somewhere, like to a file or HTTP response
 		// # See below for browser usage
-		doc.pipe(fs.createWriteStream("thankYouCardsEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
+		doc.pipe(fs.createWriteStream("thankYouCardsEntries/" + donorFormInfo[0].business + ".pdf"));
 
 		// # Finalize PDF file
 		doc.end()

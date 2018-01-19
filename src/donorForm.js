@@ -6,10 +6,7 @@ const path = require('path')
 const url = require('url')
 const fs = require('fs')
 const PDFDocument = require('pdfkit')
-
-const main = remote.require('./index.js')
-
-
+const swal = require('sweetalert2')
 
 
 /*
@@ -34,8 +31,8 @@ function infoStorage() {
 		cashInfo: document.getElementById("cash").value,
 		nonMonetary: document.getElementById("nonMonetaryAmount").value,
 		item: document.getElementById("nonMonetaryItem").value,
-		receiptCheckBox: document.getElementById("givenReceipt").value,
-		thankYouCheckBox: document.getElementById("givenCard").value,
+		receiptCheckBox: document.getElementById("givenReceipt").checked,
+		thankYouCheckBox: document.getElementById("givenCard").checked,
 		comment: document.getElementById("commentBox").value
 	}];//donorFormInfo
 
@@ -67,21 +64,22 @@ function infoStorage() {
 	
 	makePDF(donorFormInfo);
 	updateNamesArray();
+	webContents.reloadIgnoringCache();
 	//gotoMainMenu();
 	
 
 }//infoStorage
 
-/*
-This function updates the list of names to add any new names submitted.
-*/
-function updateNamesArray(){
-	var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
-	stream.once('open', function(fd) {
-		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
-		stream.end();
-	}
-}
+// /*
+// This function updates the list of names to add any new names submitted.
+// */
+// function updateNamesArray(){
+// 	var stream = fs.createWriteStream("donorNames.txt", {'flags':'a'});
+// 	stream.once('open', function(fd) {
+// 		stream.write(donorFormInfo[0].first + " " + donorFormInfo[0].last + "\r\n");
+// 		stream.end();
+// 	}
+// }
 
 
 /*
@@ -100,22 +98,30 @@ function askWhereToSave(){
 }//askWhereToSave
 
 
-
 /*
 This function checkmarks the "check if given a receipt" checkbox when the "Print Receipt" button is pressed.
 Then it calls function createReceipt() which will create the pdf with the receipt for the donation.
 */
 function printReceipt() {
-	//Save the variables in the form that you need to print the receipt. 
-	let clientName = document.getElementById("firstName").value +" "+ document.getElementById("lastName").value;
-	let amountOfReceipt = document.getElementById("monetaryAmount").value + document.getElementById("nonMonetaryAmount").value;
-	let dateOfDonation = document.getElementById("donationDate").value;
-	alert("Name of client " + clientName +" Amount donated: "+amountOfReceipt+ " Date donated: "+dateOfDonation);
+	document.getElementById("givenReceipt").checked = true;
+	createReceipt();
 
-	document.getElementById(receipt).innerHTML = window.location.replace("printDonationReceipt.html");
-	//Open a new Window
+	swal(
+		'A Receipt has been created',
+		'Thank you',
+		'success'
+	);
 }//printReceipt
 
+/*
+This function takes the information from the fields in the form that is needed to create the receipt. Then
+creates a new pdf and writes the information for the receipt in a logical organization in the pdf. So, in 
+the end you have a nice looking receipt.
+*/
+
+function createReceipt(){
+	//Saving the information needed for the receipt.
+	var receiptNumber = 1;
 
 	var donorFormInfo = [{
 		first: document.getElementById("firstName").value,
@@ -132,15 +138,12 @@ function printReceipt() {
 		cashInfo: document.getElementById("cash").value,
 		item: document.getElementById("nonMonetaryItem").value
 	}];//donorFormInfo
-
 	//Create a document
 	doc = new PDFDocument
-
 	//This adds in the basic template of the receipt.
 	doc.image('assets/images/receiptTemplate.png', {
 		fit: [500, 300],
 	});
-
 	//This writes the information that changes in the receipt to the pdf at exact locations.
 	doc.fontSize(12)
 	doc.text(receiptNumber, 480, 130);
@@ -154,10 +157,8 @@ function printReceipt() {
 	doc.text(donorFormInfo[0].phone, 460, 220);
 	doc.text(donorFormInfo[0].monetary, 200, 185);
 	doc.text(donorFormInfo[0].nonMonetary, 200, 200);
-
 	//Updates the receipt number
 	receiptNumber = receiptNumber + 1;
-
 	//Puts in the checkmark in the appropriate place in the receipt for the type of donation that was given.
 	if(document.getElementById("monetaryAmount").value != "" && document.getElementById("monetaryAmount").value != null){
 		if(document.getElementById("cheque").checked){
@@ -167,7 +168,6 @@ function printReceipt() {
 			doc.lineTo(160, 180)                            
 			doc.stroke() 
 		}
-
 		if(document.getElementById("cash").checked){
 			//CheckMark for it it is paid in cash.
 			doc.moveTo(150, 195)                         
@@ -176,7 +176,6 @@ function printReceipt() {
 			doc.stroke() 
 		}
 	}
-
 	if(document.getElementById("nonMonetaryAmount").value != "" && document.getElementById("nonMonetaryAmount").value != null){
 		//CheckMark for it the donation was an item.
 		doc.moveTo(150, 210)                         
@@ -184,15 +183,21 @@ function printReceipt() {
 		doc.lineTo(160, 205)                            
 		doc.stroke() 
 	}
-
 	//This is where the pdf is saved and how it is named.
-	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorFormInfo[0].dateOfDonation + ".pdf"));
-
+	doc.pipe(fs.createWriteStream("receipt/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + donorFormInfo[0].dateOfDonation + ".pdf"));
 	//Finalize PDF file
 	doc.end()
+
+	webContents.reloadIgnoringCache();
+
+
+
 }//createReceipt()
 
 
+function gotoMainMenu() {
+  document.getElementById(gotoMainMenu).innerHTML = window.location.replace("selectPersonType.html");
+}//gotoMainMenu
 
 
 
@@ -233,7 +238,7 @@ function goBackToMainMenu(){
   }
 })
 
-}
+}//goBackToMainMenu
 
 
 /*
@@ -254,12 +259,23 @@ function makePDF(donorFormInfo){
 	doc.text("Full Name: " + donorFormInfo[0].first + " " + donorFormInfo[0].last);
 	doc.text("Email Address: " + donorFormInfo[0].email);
 	doc.text("Phone Number: " + donorFormInfo[0].phone);
-	doc.text("Address: " + donorFormInfo[0].addressInfo + " , " + donorFormInfo[0].cityInfo + " , " + donorFormInfo[0].provinceInfo + " , " + donorFormInfo[0].postal);
+	doc.text("Address: " + donorFormInfo[0].addressInfo + ", " + donorFormInfo[0].cityInfo + ", " + donorFormInfo[0].provinceInfo + ", " + donorFormInfo[0].postal);
 	doc.text("Monetary amount donated: $" + donorFormInfo[0].monetary);
-	doc.text("Cash: " + donorFormInfo[0].cashInfo);
-	doc.text("Cheque: " + donorFormInfo[0].chequeInfo);
+	if(document.getElementById('cash').checked) {
+	  doc.text("Cash: Yes");
+	  doc.text("Cheque: No");
+	}
+	if(document.getElementById('cheque').checked) {
+	  doc.text("Cash: No");
+	  doc.text("Cheque: Yes");
+	}
 	doc.text("Non-Monetary estimated value: $" + donorFormInfo[0].nonMonetary + " The item donated: " + donorFormInfo[0].item);
-	doc.text(donorFormInfo[0].receiptCheckBox + "  " + donorFormInfo[0].thankYouCheckBox);
+	if(document.getElementById('givenReceipt').checked){
+		doc.text("Receipt was created.");
+	}
+	if(document.getElementById('givenCard').checked){
+		doc.text("Thank You card was created.");
+	}
 	doc.text("Comments: " + donorFormInfo[0].comment);
 
 	doc.pipe(fs.createWriteStream("donorFormEntries/" + donorFormInfo[0].last + ", " + donorFormInfo[0].first + ".pdf"));
@@ -267,6 +283,7 @@ function makePDF(donorFormInfo){
 	//Finalize PDF file
 	doc.end()
 }
+
 
 /*
 This function gets called when the user clicks the Generates a Thank you card button,
@@ -339,12 +356,12 @@ function thankYouClick(donorFormInfo) {
 		doc.text(" ");
 		doc.text(" ");
 		doc.text(" ");
-		doc.text("Dear" + donorFormInfo[0].first + ", " + donorFormInfo[0].last + "");
+		doc.text("Dear " + donorFormInfo[0].first + ", " + donorFormInfo[0].last + "");
 		doc.text(" ");
 		doc.text(" ");
-		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your genrous donation on " + donorFormInfo[0].donationDate);
+		doc.text("On behalf of of Camrose Boys And Girls Club, I would like to thank you for your generous donation on " + donorFormInfo[0].donationDate);
 		doc.text(" ");
-		doc.text("Camrose Boy And Girls Club relies on the genrousity of donors such as yourself and is grateful for your support");
+		doc.text("Camrose Boys And Girls Club relies on the generousity of donors such as yourself and is grateful for your support");
 		doc.text(" ");
 		doc.text(result.value);
 		doc.text(" ");
@@ -362,5 +379,6 @@ function thankYouClick(donorFormInfo) {
 		//Finalize PDF file
 		doc.end()
 	})
+	webContents.reloadIgnoringCache();
 }//thankYouClick()
 
